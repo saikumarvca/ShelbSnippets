@@ -1,13 +1,13 @@
 # Shelb Snippets — Validation Report
 
-_Generated: 2026-05-25 (website-content-blocks pricing/stats/team/gallery/timeline rewrite pass)_
+_Generated: 2026-05-25 (Next.js + Vite website section variants pass)_
 
 ## 1. Summary
 
 | Check                                                   | Result            |
 |---------------------------------------------------------|-------------------|
 | Total snippet files scanned                             | **38**            |
-| Total snippets discovered                               | **2,163**         |
+| Total snippets discovered                               | **2,483**         |
 | `package.json` valid JSON                               | PASS              |
 | Invalid `.code-snippets` JSON files                     | **0**             |
 | Duplicate JSON keys in any file                         | **0**             |
@@ -21,13 +21,82 @@ _Generated: 2026-05-25 (website-content-blocks pricing/stats/team/gallery/timeli
 | TypeScript parse-check (120 storefront snippets)        | **0** failures    |
 | TypeScript parse-check (100 commerce snippets)          | **0** failures    |
 | TypeScript parse-check (100 content snippets — round 2) | **0** failures    |
+| TypeScript parse-check (160 Next.js section snippets)   | **0** failures    |
+| TypeScript parse-check (160 Vite section snippets)      | **0** failures    |
 | `npm run validate:snippets`                             | exit 0            |
 
 **Marketplace readiness: READY.**
 
 ---
 
-## 2. Scope of the latest pass (website-content-blocks, round 2)
+## 2. Scope of the latest pass (Next.js + Vite website sections)
+
+Two files were edited in this pass — strict **append-only**:
+
+- `snippets/nextjs-page-blocks.code-snippets`
+- `snippets/vite-blocks.code-snippets`
+
+### Next.js (`nextjs-page-blocks.code-snippets`) — 260 total
+
+| Family             | Count | Notes                                                     |
+|--------------------|-------|-----------------------------------------------------------|
+| `snxdash`          | 20    | Preserved from a previous pass.                           |
+| `snxlayout`        | 20    | Preserved from a previous pass.                           |
+| `snxform`          | 20    | Preserved from a previous pass.                           |
+| `snxtable`         | 20    | Preserved from a previous pass.                           |
+| `snxmeta`          | 20    | Preserved from a previous pass.                           |
+| `snxhero`          | 20    | **New** — App Router section variants.                    |
+| `snxabout`         | 20    | **New** — App Router section variants.                    |
+| `snxservices`      | 20    | **New** — App Router section variants.                    |
+| `snxcaro`          | 20    | **New** — App Router section variants.                    |
+| `snxprodcaro`      | 20    | **New** — App Router section variants.                    |
+| `snxnewsletter`    | 20    | **New** — App Router section variants.                    |
+| `snxfooter`        | 20    | **New** — App Router section variants.                    |
+| `snxhome`          | 20    | **New** — App Router section variants.                    |
+
+### Vite (`vite-blocks.code-snippets`) — 320 total
+
+| Family             | Count | Notes                                                     |
+|--------------------|-------|-----------------------------------------------------------|
+| `svtlogin`         | 20    | Preserved from a previous pass.                           |
+| `svtreg`           | 20    | Preserved from a previous pass.                           |
+| `svtdash`          | 20    | Preserved from a previous pass.                           |
+| `svtpage`          | 20    | Preserved from a previous pass.                           |
+| `svtroute`         | 20    | Preserved from a previous pass.                           |
+| `svtlayout`        | 20    | Preserved from a previous pass.                           |
+| `svtenv`           | 20    | Preserved from a previous pass.                           |
+| `svtconfig`        | 20    | Preserved from a previous pass.                           |
+| `svthero`          | 20    | **New** — React + TS section variants.                    |
+| `svtabout`         | 20    | **New** — React + TS section variants.                    |
+| `svtservices`      | 20    | **New** — React + TS section variants.                    |
+| `svtcaro`          | 20    | **New** — React + TS section variants.                    |
+| `svtprodcaro`      | 20    | **New** — React + TS section variants.                    |
+| `svtnewsletter`    | 20    | **New** — React + TS section variants.                    |
+| `svtfooter`        | 20    | **New** — React + TS section variants.                    |
+| `svthome`          | 20    | **New** — React + TS section variants.                    |
+
+### Conventions applied
+
+| Convention                                         | Next.js | Vite |
+|----------------------------------------------------|---------|------|
+| `export default function`                          | yes     | yes  |
+| `'use client'` only when state/effects are used     | yes     | n/a  |
+| `import Image from "next/image"` only when useful   | yes     | n/a  |
+| Standard `<img>` tags                              | n/a     | yes  |
+| `import Link from "next/link"` when nav exists      | yes     | n/a  |
+| `import { Link } from "react-router-dom"` when nav  | n/a     | yes  |
+| Tailwind CSS only, dependency-free                  | yes     | yes  |
+| React `useState` / `useEffect` only when needed     | yes     | yes  |
+
+The generator is reproducible:
+
+```
+node scripts/gen_next_vite_sections.js
+```
+
+---
+
+## 2a. Scope of an earlier pass (website-content-blocks, round 2)
 
 Only one file was edited in this pass: `snippets/website-content-blocks.code-snippets`.
 No sibling files were touched in this pass.

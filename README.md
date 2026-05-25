@@ -1349,6 +1349,110 @@ Each variant escalates in complexity — lower numbers tend to be minimal starte
 
 ---
 
+## Website and Storefront Block Snippets
+
+Shelb Snippets now includes ready-made **website sections** and **e-commerce storefront blocks** for building landing pages, business websites, SaaS sites, service sites and online stores faster. Drop a single prefix into a `.tsx` file and get a full, accessible, Tailwind-styled section — no extra dependencies, no design system to wire up first.
+
+- **Existing prefixes still work.** Every original short prefix (`scomp`, `sapi`, `secomapp`, `sehero`, `serphome`, `snxapi`, `svtpage`, and the rest) still expands exactly as it did before. The website and storefront blocks are purely additive.
+- **New website block snippets follow the same short Shelb prefix system.** `sre*` for framework-agnostic React sections, `se*` for e-commerce storefront blocks, `snx*` for Next.js App Router sections, and `svt*` for Vite + React Router sections.
+- **These snippets are useful for React, Next.js, Vite, Tailwind CSS, and e-commerce projects.** Each body is React + TypeScript, Tailwind-only, accessible, and free of external runtime dependencies.
+
+### React Website Sections
+
+| Shortcut Range | Purpose |
+|---|---|
+| `srehero01` – `srehero20` | Hero sections |
+| `sreabout01` – `sreabout20` | About us sections |
+| `sreservices01` – `sreservices20` | Services sections |
+| `srefeature01` – `srefeature20` | Features sections |
+| `srenew01` – `srenew20` | Newsletter sections |
+| `sretest01` – `sretest20` | Testimonials |
+| `srefaq01` – `srefaq20` | FAQ sections |
+| `srecontact01` – `srecontact20` | Contact sections |
+| `srefooter01` – `srefooter20` | Footers |
+| `srecta01` – `srecta20` | CTA sections |
+
+### Website Content Blocks
+
+| Shortcut Range | Purpose |
+|---|---|
+| `sreblog01` – `sreblog20` | Blog sections |
+| `srepricing01` – `srepricing20` | Pricing sections |
+| `srestats01` – `srestats20` | Stats sections |
+| `sreteam01` – `sreteam20` | Team sections |
+| `sregallery01` – `sregallery20` | Gallery sections |
+| `sretimeline01` – `sretimeline20` | Timeline sections |
+| `srewhy01` – `srewhy20` | Why choose us sections |
+| `srebrand01` – `srebrand20` | Brand/logo sections |
+
+### Carousel Blocks
+
+| Shortcut Range | Purpose |
+|---|---|
+| `srecaro01` – `srecaro20` | General carousel blocks |
+| `srehcaro01` – `srehcaro20` | Horizontal carousel blocks |
+| `sreimgcaro01` – `sreimgcaro20` | Image carousel blocks |
+| `srelogocaro01` – `srelogocaro20` | Logo carousel blocks |
+
+### E-commerce Storefront Blocks
+
+| Shortcut Range | Purpose |
+|---|---|
+| `sehome01` – `sehome20` | Storefront homepage blocks |
+| `sehero01` – `sehero20` | Storefront hero sections |
+| `secat01` – `secat20` | Category sections |
+| `seprodcaro01` – `seprodcaro20` | Product carousel sections |
+| `sehprodcaro01` – `sehprodcaro20` | Horizontal product carousels |
+| `sepcard01` – `sepcard20` | Product card variants |
+| `seoffer01` – `seoffer20` | Offers sections |
+| `sedeal01` – `sedeal20` | Deals sections |
+| `sebrand01` – `sebrand20` | Brand sections |
+| `secollection01` – `secollection20` | Collection sections |
+
+### Next.js Website Blocks
+
+| Shortcut Range | Purpose |
+|---|---|
+| `snxhero01` – `snxhero20` | Next.js hero sections |
+| `snxabout01` – `snxabout20` | Next.js about sections |
+| `snxservices01` – `snxservices20` | Next.js services sections |
+| `snxcaro01` – `snxcaro20` | Next.js carousel sections |
+| `snxprodcaro01` – `snxprodcaro20` | Next.js product carousels |
+| `snxnewsletter01` – `snxnewsletter20` | Next.js newsletter sections |
+| `snxfooter01` – `snxfooter20` | Next.js footers |
+| `snxhome01` – `snxhome20` | Next.js homepage shells |
+
+Next.js blocks follow App Router conventions: `export default function`, `'use client'` only where state is required, `next/image` only where image optimization is useful, and `Link` from `next/link` where navigation exists.
+
+### Vite Website Blocks
+
+| Shortcut Range | Purpose |
+|---|---|
+| `svthero01` – `svthero20` | Vite hero sections |
+| `svtabout01` – `svtabout20` | Vite about sections |
+| `svtservices01` – `svtservices20` | Vite services sections |
+| `svtcaro01` – `svtcaro20` | Vite carousel sections |
+| `svtprodcaro01` – `svtprodcaro20` | Vite product carousels |
+| `svtnewsletter01` – `svtnewsletter20` | Vite newsletter sections |
+| `svtfooter01` – `svtfooter20` | Vite footers |
+| `svthome01` – `svthome20` | Vite homepage shells |
+
+Vite blocks use standard React + TypeScript with plain `<img>` tags and a `Link` placeholder from `react-router-dom` only where routing is relevant.
+
+### Usage Examples
+
+- Type `srehero01` in a `.tsx` file to insert a basic hero section.
+- Type `sreabout02` to insert an about us section with image.
+- Type `sreservices01` to insert a services grid.
+- Type `srenew01` to insert a newsletter signup section.
+- Type `seprodcaro02` to insert a horizontal product carousel.
+- Type `sepcard05` to insert a product card with **Add to Cart** button.
+- Type `sehome19` to insert a storefront homepage with all key sections.
+
+Each website and storefront block follows the same pattern as the rest of the library: lower numbers are minimal starters, higher numbers add structure (toggles, filters, sample data, dark variants, enterprise layouts). All entries are validated for JSON correctness, globally unique prefixes, and TypeScript parse-cleanliness on every release.
+
+---
+
 ## License
 
 MIT
