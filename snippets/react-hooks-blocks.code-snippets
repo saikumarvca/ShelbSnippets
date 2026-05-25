@@ -1,0 +1,346 @@
+{
+  "Shelb React Hook — useToggle (srehook01)": {
+    "prefix": "srehook01",
+    "description": "Boolean toggle state with stable callback.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useToggle(initial: boolean = false) {",
+      "  const [value, setValue] = useState(initial);",
+      "  const toggle = useCallback(() => setValue((v) => !v), []);",
+      "  return { value, toggle, setValue } as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useDebounce (srehook02)": {
+    "prefix": "srehook02",
+    "description": "Debounced value with configurable delay.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useDebounce<T>(value: T, delay: number = 300) {",
+      "  const [debounced, setDebounced] = useState(value);",
+      "  useEffect(() => {",
+      "    const id = setTimeout(() => setDebounced(value), delay);",
+      "    return () => clearTimeout(id);",
+      "  }, [value, delay]);",
+      "  return debounced;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useLocalStorage (srehook03)": {
+    "prefix": "srehook03",
+    "description": "State that syncs with window.localStorage.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useLocalStorage<T>(key: string, initial: T) {",
+      "  const [stored, setStored] = useState<T>(() => {",
+      "    try { const raw = localStorage.getItem(key); return raw ? (JSON.parse(raw) as T) : initial; } catch { return initial; }",
+      "  });",
+      "  useEffect(() => { try { localStorage.setItem(key, JSON.stringify(stored)); } catch {} }, [key, stored]);",
+      "  return [stored, setStored] as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useSessionStorage (srehook04)": {
+    "prefix": "srehook04",
+    "description": "State that syncs with window.sessionStorage.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useSessionStorage<T>(key: string, initial: T) {",
+      "  const [stored, setStored] = useState<T>(() => {",
+      "    try { const raw = sessionStorage.getItem(key); return raw ? (JSON.parse(raw) as T) : initial; } catch { return initial; }",
+      "  });",
+      "  useEffect(() => { try { sessionStorage.setItem(key, JSON.stringify(stored)); } catch {} }, [key, stored]);",
+      "  return [stored, setStored] as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useMediaQuery (srehook05)": {
+    "prefix": "srehook05",
+    "description": "Reactive boolean for a CSS media query.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useMediaQuery(query: string) {",
+      "  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);",
+      "  useEffect(() => {",
+      "    const mql = window.matchMedia(query);",
+      "    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);",
+      "    mql.addEventListener(\"change\", handler);",
+      "    return () => mql.removeEventListener(\"change\", handler);",
+      "  }, [query]);",
+      "  return matches;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useClickOutside (srehook06)": {
+    "prefix": "srehook06",
+    "description": "Fire callback when click happens outside an element.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useClickOutside<T extends HTMLElement = HTMLElement>(onOutside: () => void) {",
+      "  const ref = useRef<T | null>(null);",
+      "  useEffect(() => {",
+      "    const handler = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) onOutside(); };",
+      "    document.addEventListener(\"mousedown\", handler);",
+      "    return () => document.removeEventListener(\"mousedown\", handler);",
+      "  }, [onOutside]);",
+      "  return ref;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useKeyPress (srehook07)": {
+    "prefix": "srehook07",
+    "description": "Detect when a keyboard key is held down.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useKeyPress(target: string) {",
+      "  const [pressed, setPressed] = useState(false);",
+      "  useEffect(() => {",
+      "    const down = (e: KeyboardEvent) => { if (e.key === target) setPressed(true); };",
+      "    const up = (e: KeyboardEvent) => { if (e.key === target) setPressed(false); };",
+      "    window.addEventListener(\"keydown\", down);",
+      "    window.addEventListener(\"keyup\", up);",
+      "    return () => { window.removeEventListener(\"keydown\", down); window.removeEventListener(\"keyup\", up); };",
+      "  }, [target]);",
+      "  return pressed;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useFetch (srehook08)": {
+    "prefix": "srehook08",
+    "description": "Tiny declarative fetch with status state.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useFetch<T = unknown>(url: string, init?: RequestInit) {",
+      "  const [data, setData] = useState<T | null>(null);",
+      "  const [error, setError] = useState<Error | null>(null);",
+      "  const [loading, setLoading] = useState(true);",
+      "  useEffect(() => {",
+      "    let alive = true;",
+      "    setLoading(true);",
+      "    fetch(url, init)",
+      "      .then((r) => { if (!r.ok) throw new Error(r.statusText); return r.json() as Promise<T>; })",
+      "      .then((d) => { if (alive) { setData(d); setError(null); } })",
+      "      .catch((e) => alive && setError(e))",
+      "      .finally(() => alive && setLoading(false));",
+      "    return () => { alive = false; };",
+      "  }, [url]);",
+      "  return { data, error, loading } as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useInterval (srehook09)": {
+    "prefix": "srehook09",
+    "description": "Declarative setInterval with latest callback.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useInterval(callback: () => void, delay: number | null) {",
+      "  const saved = useRef(callback);",
+      "  useEffect(() => { saved.current = callback; }, [callback]);",
+      "  useEffect(() => {",
+      "    if (delay == null) return;",
+      "    const id = setInterval(() => saved.current(), delay);",
+      "    return () => clearInterval(id);",
+      "  }, [delay]);",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useTimeout (srehook10)": {
+    "prefix": "srehook10",
+    "description": "Declarative setTimeout with latest callback.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useTimeout(callback: () => void, delay: number | null) {",
+      "  const saved = useRef(callback);",
+      "  useEffect(() => { saved.current = callback; }, [callback]);",
+      "  useEffect(() => {",
+      "    if (delay == null) return;",
+      "    const id = setTimeout(() => saved.current(), delay);",
+      "    return () => clearTimeout(id);",
+      "  }, [delay]);",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — usePrevious (srehook11)": {
+    "prefix": "srehook11",
+    "description": "Read the previous render value.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function usePrevious<T>(value: T) {",
+      "  const ref = useRef<T | undefined>(undefined);",
+      "  useEffect(() => { ref.current = value; }, [value]);",
+      "  return ref.current;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useWindowSize (srehook12)": {
+    "prefix": "srehook12",
+    "description": "Reactive window inner width/height.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useWindowSize() {",
+      "  const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });",
+      "  useEffect(() => {",
+      "    const handler = () => setSize({ width: window.innerWidth, height: window.innerHeight });",
+      "    window.addEventListener(\"resize\", handler);",
+      "    return () => window.removeEventListener(\"resize\", handler);",
+      "  }, []);",
+      "  return size;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useScrollLock (srehook13)": {
+    "prefix": "srehook13",
+    "description": "Lock and restore document body scroll.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useScrollLock(locked: boolean) {",
+      "  useEffect(() => {",
+      "    if (!locked) return;",
+      "    const original = document.body.style.overflow;",
+      "    document.body.style.overflow = \"hidden\";",
+      "    return () => { document.body.style.overflow = original; };",
+      "  }, [locked]);",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useOnlineStatus (srehook14)": {
+    "prefix": "srehook14",
+    "description": "Reactive navigator.onLine status.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useOnlineStatus() {",
+      "  const [online, setOnline] = useState(navigator.onLine);",
+      "  useEffect(() => {",
+      "    const on = () => setOnline(true);",
+      "    const off = () => setOnline(false);",
+      "    window.addEventListener(\"online\", on);",
+      "    window.addEventListener(\"offline\", off);",
+      "    return () => { window.removeEventListener(\"online\", on); window.removeEventListener(\"offline\", off); };",
+      "  }, []);",
+      "  return online;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useCopyToClipboard (srehook15)": {
+    "prefix": "srehook15",
+    "description": "Copy text to clipboard with success flag.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useCopyToClipboard() {",
+      "  const [copied, setCopied] = useState(false);",
+      "  const copy = useCallback(async (text: string) => {",
+      "    try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 1500); }",
+      "    catch { setCopied(false); }",
+      "  }, []);",
+      "  return { copied, copy } as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useEventListener (srehook16)": {
+    "prefix": "srehook16",
+    "description": "Type-safe event listener on window or element.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useEventListener<E extends Event = Event>(event: string, handler: (e: E) => void, target?: EventTarget | null) {",
+      "  useEffect(() => {",
+      "    const node = target ?? window;",
+      "    const listener = (e: Event) => handler(e as any);",
+      "    node.addEventListener(event, listener);",
+      "    return () => node.removeEventListener(event, listener);",
+      "  }, [event, handler, target]);",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useAuthGuard (srehook17)": {
+    "prefix": "srehook17",
+    "description": "Redirect when no auth token is present.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useAuthGuard(token: string | null, onUnauthorized: () => void) {",
+      "  useEffect(() => {",
+      "    if (!token) onUnauthorized();",
+      "  }, [token, onUnauthorized]);",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useForm (srehook18)": {
+    "prefix": "srehook18",
+    "description": "Tiny controlled-form helper.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useForm<T extends Record<string, unknown>>(initial: T) {",
+      "  const [values, setValues] = useState<T>(initial);",
+      "  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setValues((v) => ({ ...v, [e.target.name]: e.target.value }));",
+      "  const reset = () => setValues(initial);",
+      "  return { values, onChange, setValues, reset } as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — usePagination (srehook19)": {
+    "prefix": "srehook19",
+    "description": "Pagination state with helpers.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function usePagination(total: number, pageSize: number = 10) {",
+      "  const [page, setPage] = useState(1);",
+      "  const pageCount = Math.max(1, Math.ceil(total / pageSize));",
+      "  const next = () => setPage((p) => Math.min(p + 1, pageCount));",
+      "  const prev = () => setPage((p) => Math.max(p - 1, 1));",
+      "  return { page, pageCount, next, prev, setPage } as const;",
+      "}",
+      "$0"
+    ]
+  },
+  "Shelb React Hook — useTheme (srehook20)": {
+    "prefix": "srehook20",
+    "description": "Toggle a light/dark theme on <html> element.",
+    "body": [
+      "import { useCallback, useEffect, useRef, useState } from \"react\";",
+      "",
+      "export function useTheme() {",
+      "  const [theme, setTheme] = useState<\"light\" | \"dark\">(() => (document.documentElement.classList.contains(\"dark\") ? \"dark\" : \"light\"));",
+      "  const toggle = () => setTheme((t) => (t === \"dark\" ? \"light\" : \"dark\"));",
+      "  useEffect(() => { document.documentElement.classList.toggle(\"dark\", theme === \"dark\"); }, [theme]);",
+      "  return { theme, toggle, setTheme } as const;",
+      "}",
+      "$0"
+    ]
+  }
+}

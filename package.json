@@ -167,10 +167,91 @@
       { "language": "javascriptreact", "path": "snippets/ecommerce-auth-blocks.code-snippets" },
       { "language": "typescriptreact", "path": "snippets/ecommerce-auth-blocks.code-snippets" },
 
+      { "language": "javascript",      "path": "snippets/ecommerce-product-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-product-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-product-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-product-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/react-hooks-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/react-hooks-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/react-hooks-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/react-hooks-blocks.code-snippets" },
+
       { "language": "javascript",      "path": "snippets/auth-api-state-blocks.code-snippets" },
       { "language": "typescript",      "path": "snippets/auth-api-state-blocks.code-snippets" },
       { "language": "javascriptreact", "path": "snippets/auth-api-state-blocks.code-snippets" },
-      { "language": "typescriptreact", "path": "snippets/auth-api-state-blocks.code-snippets" }
+      { "language": "typescriptreact", "path": "snippets/auth-api-state-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/website-sections.code-snippets" },
+      { "language": "typescript",      "path": "snippets/website-sections.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/website-sections.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/website-sections.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/website-marketing-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/website-marketing-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/website-marketing-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/website-marketing-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/website-content-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/website-content-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/website-content-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/website-content-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/website-commerce-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/website-commerce-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/website-commerce-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/website-commerce-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce-storefront-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-storefront-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-storefront-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-storefront-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ai.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ai.code-snippets" },
+
+      { "language": "json",            "path": "snippets/architecture.code-snippets" },
+
+      { "language": "sql",             "path": "snippets/database.code-snippets" },
+
+      { "language": "rust",            "path": "snippets/desktop.code-snippets" },
+
+      { "language": "yaml",            "path": "snippets/devops.code-snippets" },
+      { "language": "dockerfile",      "path": "snippets/devops.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/express.code-snippets" },
+      { "language": "typescript",      "path": "snippets/express.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/mongo.code-snippets" },
+      { "language": "typescript",      "path": "snippets/mongo.code-snippets" },
+
+      { "language": "sql",             "path": "snippets/sqlite.code-snippets" },
+
+      { "language": "css",             "path": "snippets/tailwind.code-snippets" },
+      { "language": "javascript",      "path": "snippets/tailwind.code-snippets" },
+      { "language": "typescript",      "path": "snippets/tailwind.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/tailwind.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/tailwind.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/zustand.code-snippets" },
+      { "language": "typescript",      "path": "snippets/zustand.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/zustand.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/zustand.code-snippets" }
     ]
   },
   "scripts": {
@@ -178,6 +259,8 @@
     "compile": "tsc -p .",
     "watch": "tsc -p . -w",
     "build:esbuild": "node esbuild.js",
+    "validate:snippets": "node scripts/validate-snippets.js",
+    "validate:report": "node scripts/validate-snippets.js --report",
     "package": "vsce package"
   },
   "devDependencies": {
