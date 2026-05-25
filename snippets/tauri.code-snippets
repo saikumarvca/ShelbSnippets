@@ -1,0 +1,56 @@
+{
+  "Tauri Command (sta)": {
+    "prefix": "sta",
+    "body": [
+      "#[tauri::command]",
+      "fn greet(name: &str) -> String {",
+      "  format!(\"Hello {}\", name)",
+      "}"
+    ],
+    "description": "Rust command for tauri IPC"
+  },
+
+  "Rust Command (star)": {
+    "prefix": "star",
+    "body": ["fn ${1:name}() { println!(\"ok\"); }"] ,
+    "description": "Rust function command"
+  },
+
+  "SQLite Integration (stasql)": {
+    "prefix": "stasql",
+    "body": ["// SQLite integration placeholder"],
+    "description": "SQLite integration snippet"
+  },
+
+  "Tray Icon (statray)": {
+    "prefix": "statray",
+    "body": ["// tray icon setup"],
+    "description": "tray icon snippet"
+  },
+
+  "Updater (staup)": {
+    "prefix": "staup",
+    "body": ["// desktop updater placeholder"],
+    "description": "updater snippet"
+  },
+
+  "Secure IPC (staipc)": {
+    "prefix": "staipc",
+    "body": ["// secure IPC pattern"],
+    "description": "secure IPC"
+  },
+
+  "Window Manager (stawin)": {
+    "prefix": "stawin",
+    "body": ["// window management"],
+    "description": "window manager"
+  },
+
+  "ERP Desktop Shell (staerp)": {
+    "prefix": "staerp",
+    "body": ["// ERP desktop shell placeholder"],
+    "description": "ERP desktop shell"
+  }
+}
+
+

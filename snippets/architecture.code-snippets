@@ -1,0 +1,10 @@
+{
+  "Repository Pattern (srepo)": { "prefix": "srepo", "body": ["// repository pattern stub"], "description": "repository" },
+  "Service Layer (ssvc)": { "prefix": "ssvc", "body": ["// service layer stub"], "description": "service" },
+  "Module (smod)": { "prefix": "smod", "body": ["// module scaffold"], "description": "module" },
+  "Controller (sctrl)": { "prefix": "sctrl", "body": ["// controller stub"], "description": "controller" },
+  "API Structure (sapi)": { "prefix": "sapi", "body": ["// api structure"], "description": "api structure" },
+  "Monorepo (smon)": { "prefix": "smon", "body": ["// monorepo hints"], "description": "monorepo" },
+  "Turborepo (sturbo)": { "prefix": "sturbo", "body": ["// turborepo setup"], "description": "turborepo" },
+  "pnpm Workspace (spnpm)": { "prefix": "spnpm", "body": ["// pnpm workspace"], "description": "pnpm" }
+}

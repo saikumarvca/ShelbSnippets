@@ -1,0 +1,554 @@
+{
+  "Prisma Model (spr)": {
+    "prefix": "spr",
+    "body": [
+      "model ${1:Model} {",
+      "  id String @id @default(cuid())",
+      "  createdAt DateTime @default(now())",
+      "  name String",
+      "}"
+    ],
+    "description": "Prisma model template"
+  },
+
+  "Relation (sprr)": {
+    "prefix": "sprr",
+    "body": [
+      "model ${1:A} {",
+      "  id String @id @default(cuid())",
+      "  bs ${2:B}[]",
+      "}",
+      "model ${2:B} {",
+      "  id String @id @default(cuid())",
+      "  a ${1:A} @relation(fields: [aId], references: [id])",
+      "  aId String",
+      "}"
+    ],
+    "description": "Prisma relation example"
+  },
+
+  "Enum (spre)": {
+    "prefix": "spre",
+    "body": ["enum ${1:Status} {\n  ACTIVE\n  INACTIVE\n}\n"],
+    "description": "Prisma enum"
+  },
+
+  "Indexes (spri)": {
+    "prefix": "spri",
+    "body": ["@@index([${1:field}])"],
+    "description": "Prisma index snippet"
+  },
+
+  "Audit Schema (spra)": {
+    "prefix": "spra",
+    "body": [
+      "model Audit {",
+      "  id String @id @default(cuid())",
+      "  entity String",
+      "  action String",
+      "  userId String?",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "Audit schema template"
+  },
+
+  "Multitenancy (sprm)": {
+    "prefix": "sprm",
+    "body": ["// Multitenancy patterns: tenantId fields, filtered views"],
+    "description": "Multitenancy hint"
+  },
+
+  "CRUD Schema (sprcrud)": {
+    "prefix": "sprcrud",
+    "body": ["model ${1:Model} {\n  id String @id @default(cuid())\n  name String\n}\n"],
+    "description": "Prisma CRUD model"
+  },
+
+  "Soft Delete (sprsoft)": {
+    "prefix": "sprsoft",
+    "body": ["deletedAt DateTime?"],
+    "description": "Soft delete field"
+  },
+
+  "User: Mini (sprusermini)": {
+    "prefix": "sprusermini",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  email String @unique",
+      "  password String",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "User model (id + email + password)"
+  },
+
+  "User: Basic (spruserbasic)": {
+    "prefix": "spruserbasic",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  name String",
+      "  email String @unique",
+      "  password String",
+      "  role String @default(\"user\")",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "User model with name, email, password"
+  },
+
+  "User: Phone Login (spruserphone)": {
+    "prefix": "spruserphone",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  phone String @unique",
+      "  phoneVerified Boolean @default(false)",
+      "  password String?",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "User with phone login fields"
+  },
+
+  "User: OTP (spruserotp)": {
+    "prefix": "spruserotp",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  email String?",
+      "  phone String?",
+      "  otpSecret String?",
+      "  otpExpires DateTime?",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "OTP auth fields for user"
+  },
+
+  "User: Email Verify (spruserverify)": {
+    "prefix": "spruserverify",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  email String @unique",
+      "  emailVerified Boolean @default(false)",
+      "  verificationToken String?",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "User email verification fields"
+  },
+
+  "User: 2FA (spruser2fa)": {
+    "prefix": "spruser2fa",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  email String @unique",
+      "  twoFASecret String?",
+      "  twoFAEnabled Boolean @default(false)",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "User with 2FA fields"
+  },
+
+  "User: OAuth (spruseroauth)": {
+    "prefix": "spruseroauth",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  provider String",
+      "  providerId String",
+      "  email String?",
+      "  createdAt DateTime @default(now())",
+      "  @@unique([provider, providerId])",
+      "}"
+    ],
+    "description": "OAuth provider linkage"
+  },
+
+  "User: Full (spruserfull)": {
+    "prefix": "spruserfull",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  name String",
+      "  email String @unique",
+      "  phone String?",
+      "  password String?",
+      "  role String",
+      "  metadata Json?",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "Enterprise user with metadata"
+  },
+
+  "User: ERP Employee (sprusererp)": {
+    "prefix": "sprusererp",
+    "body": [
+      "model Employee {",
+      "  id String @id @default(cuid())",
+      "  userId String @unique",
+      "  department String",
+      "  title String",
+      "  hiredAt DateTime?",
+      "}"
+    ],
+    "description": "ERP employee auth mapping"
+  },
+
+  "User: Multi-tenant (sprusermulti)": {
+    "prefix": "sprusermulti",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  tenantId String",
+      "  email String",
+      "  password String",
+      "  @@index([tenantId])",
+      "}"
+    ],
+    "description": "Multi-tenant user pattern"
+  },
+
+  "User: Audit (spruseraudit)": {
+    "prefix": "spruseraudit",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  email String @unique",
+      "  updatedBy String?",
+      "  updatedAt DateTime?",
+      "}"
+    ],
+    "description": "User with audit fields"
+  },
+
+  "User: Soft Delete (sprusersoft)": {
+    "prefix": "sprusersoft",
+    "body": [
+      "model User {",
+      "  id String @id @default(cuid())",
+      "  email String @unique",
+      "  deletedAt DateTime?",
+      "}"
+    ],
+    "description": "User soft-delete field"
+  },
+
+  "Product: Mini (sprproductmini)": {
+    "prefix": "sprproductmini",
+    "body": [
+      "model Product {",
+      "  id String @id @default(cuid())",
+      "  title String",
+      "  price Float",
+      "}"
+    ],
+    "description": "Simple product model"
+  },
+
+  "Product: Basic (sprproductbasic)": {
+    "prefix": "sprproductbasic",
+    "body": [
+      "model Product {",
+      "  id String @id @default(cuid())",
+      "  title String",
+      "  description String?",
+      "  price Float",
+      "  sku String?",
+      "}"
+    ],
+    "description": "Basic ecommerce product"
+  },
+
+  "Product: Variant (sprproductvariant)": {
+    "prefix": "sprproductvariant",
+    "body": [
+      "model Product {",
+      "  id String @id @default(cuid())",
+      "  title String",
+      "  variants Variant[]",
+      "}",
+      "model Variant {",
+      "  id String @id @default(cuid())",
+      "  productId String",
+      "  sku String",
+      "  price Float",
+      "  attributes Json",
+      "  @@index([productId])",
+      "}"
+    ],
+    "description": "Product with variant model"
+  },
+
+  "Product: Inventory (sprproductinventory)": {
+    "prefix": "sprproductinventory",
+    "body": [
+      "model Inventory {",
+      "  id String @id @default(cuid())",
+      "  productId String",
+      "  stock Int @default(0)",
+      "  location String?",
+      "  @@index([productId])",
+      "}"
+    ],
+    "description": "Inventory enabled product"
+  },
+
+  "Product: SEO (sprproductseo)": {
+    "prefix": "sprproductseo",
+    "body": [
+      "model ProductSEO {",
+      "  id String @id @default(cuid())",
+      "  productId String",
+      "  title String",
+      "  metaDescription String?",
+      "}"
+    ],
+    "description": "SEO fields for product"
+  },
+
+  "Product: Digital (sprproductdigital)": {
+    "prefix": "sprproductdigital",
+    "body": [
+      "model Product {",
+      "  id String @id @default(cuid())",
+      "  title String",
+      "  fileUrl String",
+      "  licenseKey String?",
+      "}"
+    ],
+    "description": "Digital product model"
+  },
+
+  "Product: Subscription (sprproductsubscription)": {
+    "prefix": "sprproductsubscription",
+    "body": [
+      "model SubscriptionProduct {",
+      "  id String @id @default(cuid())",
+      "  productId String",
+      "  interval String",
+      "  price Float",
+      "}"
+    ],
+    "description": "Subscription product model"
+  },
+
+  "Product: Vendor (sprproductvendor)": {
+    "prefix": "sprproductvendor",
+    "body": [
+      "model Product {",
+      "  id String @id @default(cuid())",
+      "  vendorId String",
+      "  title String",
+      "}"
+    ],
+    "description": "Marketplace product with vendor" 
+  },
+
+  "Product: ERP (sprproducterp)": {
+    "prefix": "sprproducterp",
+    "body": ["// product fields mapped to ERP accounting lines"],
+    "description": "ERP-integrated product"
+  },
+
+  "Product: AI (sprproductai)": {
+    "prefix": "sprproductai",
+    "body": ["// AI recommendation metadata, embedding ids"],
+    "description": "AI-ready product" 
+  },
+
+  "Product: Full (sprproductfull)": {
+    "prefix": "sprproductfull",
+    "body": ["// enterprise full product model including variants, inventory, SEO, pricing tiers"],
+    "description": "Enterprise product" 
+  },
+
+  "Order: Mini (sprordermini)": {
+    "prefix": "sprordermini",
+    "body": [
+      "model Order {",
+      "  id String @id @default(cuid())",
+      "  total Float",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "Minimal order" 
+  },
+
+  "Order: Basic (sprorderbasic)": {
+    "prefix": "sprorderbasic",
+    "body": [
+      "model Order {",
+      "  id String @id @default(cuid())",
+      "  userId String",
+      "  total Float",
+      "  status String",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "Ecommerce order" 
+  },
+
+  "Order: Payment (sprorderpayment)": {
+    "prefix": "sprorderpayment",
+    "body": ["// payment fields: provider, status, transactionId"],
+    "description": "Payment enabled order" 
+  },
+
+  "Order: Shipping (sprordership)": {
+    "prefix": "sprordership",
+    "body": ["// shipping fields: addressId, carrier, trackingNumber"],
+    "description": "Shipping enabled order" 
+  },
+
+  "Order: Refund (sprorderrefund)": {
+    "prefix": "sprorderrefund",
+    "body": ["// refund status and records"],
+    "description": "Refund-enabled order" 
+  },
+
+  "Order: GST (sprordergst)": {
+    "prefix": "sprordergst",
+    "body": ["// gst fields for order"],
+    "description": "GST-enabled order" 
+  },
+
+  "Order: Invoice (sprorderinvoice)": {
+    "prefix": "sprorderinvoice",
+    "body": ["// invoice fields and references"],
+    "description": "Invoice-enabled order" 
+  },
+
+  "Order: Marketplace (sprordermarket)": {
+    "prefix": "sprordermarket",
+    "body": ["// marketplace order with vendor splits"],
+    "description": "Marketplace order" 
+  },
+
+  "Order: ERP (sprordererp)": {
+    "prefix": "sprordererp",
+    "body": ["// ERP order mapping"],
+    "description": "ERP order" 
+  },
+
+  "Order: Full (sprorderfull)": {
+    "prefix": "sprorderfull",
+    "body": ["// enterprise order with audit, refunds, taxes, fulfillment"],
+    "description": "Enterprise order" 
+  },
+
+  "Cart: Mini (sprcartmini)": { "prefix": "sprcartmini", "body": ["// basic cart model"], "description": "basic cart" },
+  "Cart: Coupon (sprcartcoupon)": { "prefix": "sprcartcoupon", "body": ["// coupon support in cart"], "description": "coupon" },
+  "Cart: Tax (sprcarttax)": { "prefix": "sprcarttax", "body": ["// tax calculations"], "description": "tax" },
+  "Cart: Shipping (sprcartshipping)": { "prefix": "sprcartshipping", "body": ["// shipping calc"], "description": "shipping" },
+  "Cart: Persistent (sprcartpersistent)": { "prefix": "sprcartpersistent", "body": ["// persistent cart via userId/guestId"], "description": "persistent cart" },
+  "Cart: Guest (sprcartguest)": { "prefix": "sprcartguest", "body": ["// guest cart pattern"], "description": "guest cart" },
+  "Cart: Multi (sprcartmulti)": { "prefix": "sprcartmulti", "body": ["// multi-vendor cart"], "description": "multi-vendor" },
+  "Cart: Full (sprcartfull)": { "prefix": "sprcartfull", "body": ["// enterprise cart"], "description": "enterprise cart" },
+
+  "Payment: Mini (sprpaymini)": { "prefix": "sprpaymini", "body": ["// minimal payment record"], "description": "payment" },
+  "Payment: UPI (sprpayupi)": { "prefix": "sprpayupi", "body": ["// UPI payment fields"], "description": "UPI" },
+  "Payment: Razorpay (sprpayrazor)": { "prefix": "sprpayrazor", "body": ["// Razorpay integration fields"], "description": "Razorpay" },
+  "Payment: Stripe (sprpaystripe)": { "prefix": "sprpaystripe", "body": ["// Stripe integration fields"], "description": "Stripe" },
+  "Payment: Wallet (sprpaywallet)": { "prefix": "sprpaywallet", "body": ["// wallet payment record"], "description": "wallet" },
+  "Payment: Ledger (sprpayledger)": { "prefix": "sprpayledger", "body": ["// ledger accounting entries"], "description": "ledger" },
+  "Payment: Multi (sprpaymulti)": { "prefix": "sprpaymulti", "body": ["// multi-gateway mapping"], "description": "multi-gateway" },
+  "Payment: Full (sprpayfull)": { "prefix": "sprpayfull", "body": ["// enterprise payment model"], "description": "enterprise payment" },
+
+  "Review: Mini (sprreviewmini)": { "prefix": "sprreviewmini", "body": ["model Review { id String @id @default(cuid()) content String }"], "description": "text review" },
+  "Review: Rating (sprreviewrating)": { "prefix": "sprreviewrating", "body": ["rating Int"], "description": "rating only" },
+  "Review: Media (sprreviewmedia)": { "prefix": "sprreviewmedia", "body": ["// image/video reviews"], "description": "media" },
+  "Review: Verify (sprreviewverify)": { "prefix": "sprreviewverify", "body": ["verified Boolean @default(false)"], "description": "verified buyer" },
+  "Review: Helpful (sprreviewhelpful)": { "prefix": "sprreviewhelpful", "body": ["helpfulCount Int @default(0)"], "description": "helpful votes" },
+  "Review: Full (sprreviewfull)": { "prefix": "sprreviewfull", "body": ["// enterprise reviews"], "description": "enterprise reviews" },
+
+  "Inventory: Mini (sprstockmini)": { "prefix": "sprstockmini", "body": ["stock Int @default(0)"], "description": "stock count" },
+  "Inventory: Warehouse (sprstockwarehouse)": { "prefix": "sprstockwarehouse", "body": ["// warehouse support fields"], "description": "warehouse" },
+  "Inventory: Batch (sprstockbatch)": { "prefix": "sprstockbatch", "body": ["// batch tracking fields"], "description": "batch" },
+  "Inventory: Expiry (sprstockexpiry)": { "prefix": "sprstockexpiry", "body": ["expiry DateTime?"], "description": "expiry tracking" },
+  "Inventory: Serial (sprstockserial)": { "prefix": "sprstockserial", "body": ["serial String"], "description": "serial tracking" },
+  "Inventory: ERP (sprstockerp)": { "prefix": "sprstockerp", "body": ["// ERP inventory mapping"], "description": "ERP inventory" },
+  "Inventory: Full (sprstockfull)": { "prefix": "sprstockfull", "body": ["// enterprise inventory"], "description": "enterprise inventory" },
+
+  "Address: Mini (spraddressmini)": { "prefix": "spraddressmini", "body": ["model Address { id String @id @default(cuid()) line1 String }"], "description": "simple address" },
+  "Address: Shipping (spraddressship)": { "prefix": "spraddressship", "body": ["// shipping address fields"], "description": "shipping" },
+  "Address: Billing (spraddressbill)": { "prefix": "spraddressbill", "body": ["// billing address fields"], "description": "billing" },
+  "Address: Geo (spraddressgeo)": { "prefix": "spraddressgeo", "body": ["latitude Float?\nlongitude Float?"], "description": "geo coordinates" },
+  "Address: Multi (spraddressmulti)": { "prefix": "spraddressmulti", "body": ["// multiple addresses per user"], "description": "multiple addresses" },
+  "Address: Full (spraddressfull)": { "prefix": "spraddressfull", "body": ["// enterprise address model"], "description": "enterprise address" },
+
+  "Vendor: Mini (sprvendormini)": { "prefix": "sprvendormini", "body": ["model Vendor { id String @id @default(cuid()) name String }"], "description": "simple vendor" },
+  "Vendor: Store (sprvendorstore)": { "prefix": "sprvendorstore", "body": ["// storefront fields"], "description": "storefront" },
+  "Vendor: Verify (sprvendorverify)": { "prefix": "sprvendorverify", "body": ["verified Boolean @default(false)"], "description": "verified vendor" },
+  "Vendor: Payout (sprvendorpay)": { "prefix": "sprvendorpay", "body": ["// payout fields"], "description": "payouts" },
+  "Vendor: Analytics (sprvendoranalytics)": { "prefix": "sprvendoranalytics", "body": ["// vendor analytics"], "description": "analytics" },
+  "Vendor: Full (sprvendorfull)": { "prefix": "sprvendorfull", "body": ["// marketplace vendor model"], "description": "marketplace vendor" },
+
+  "Employee: Mini (sprempmini)": { "prefix": "sprempmini", "body": ["model Employee { id String @id @default(cuid()) name String }"], "description": "employee basics" },
+  "Employee: Role (spremprole)": { "prefix": "spremprole", "body": ["// role mapping"], "description": "employee roles" },
+  "Employee: Attendance (sprempattendance)": { "prefix": "sprempattendance", "body": ["// attendance records"], "description": "attendance" },
+  "Employee: Payroll (spremppayroll)": { "prefix": "spremppayroll", "body": ["// payroll fields"], "description": "payroll" },
+  "Employee: RBAC (spremprbac)": { "prefix": "spremprbac", "body": ["// rbac mappings"], "description": "rbac" },
+  "Employee: Audit (sprempaudit)": { "prefix": "sprempaudit", "body": ["// employee audit enabled"], "description": "audit" },
+  "Employee: Full (sprempfull)": { "prefix": "sprempfull", "body": ["// enterprise employee model"], "description": "enterprise" },
+
+  "Invoice: Mini (sprinvmini)": { "prefix": "sprinvmini", "body": ["model Invoice { id String @id @default(cuid()) amount Float }"], "description": "simple invoice" },
+  "Invoice: GST (sprinvgst)": { "prefix": "sprinvgst", "body": ["// GST invoice fields"], "description": "GST invoice" },
+  "Invoice: Tax (sprinvtax)": { "prefix": "sprinvtax", "body": ["// tax invoice"], "description": "tax invoice" },
+  "Invoice: Ledger (sprinvledger)": { "prefix": "sprinvledger", "body": ["// ledger invoice mapping"], "description": "ledger" },
+  "Invoice: PDF (sprinvpdf)": { "prefix": "sprinvpdf", "body": ["// pdf generation fields"], "description": "pdf invoice" },
+  "Invoice: Full (sprinvfull)": { "prefix": "sprinvfull", "body": ["// enterprise invoice"], "description": "enterprise invoice" },
+
+  "Role: Mini (sprrolemini)": { "prefix": "sprrolemini", "body": ["model Role { id String @id @default(cuid()) name String }"], "description": "basic role" },
+  "Role: Perm (sprroleperm)": { "prefix": "sprroleperm", "body": ["// permission mapping"], "description": "permissions" },
+  "Role: RBAC (sprrolerbac)": { "prefix": "sprrolerbac", "body": ["// rbac"], "description": "rbac" },
+  "Role: Tenant (sprroletenant)": { "prefix": "sprroletenant", "body": ["// tenant roles"], "description": "tenant roles" },
+  "Role: ERP (sprroleerp)": { "prefix": "sprroleerp", "body": ["// ERP roles"], "description": "ERP roles" },
+  "Role: Full (sprrolefull)": { "prefix": "sprrolefull", "body": ["// enterprise RBAC"], "description": "enterprise rbac" },
+
+  "Notif: Mini (sprnotifmini)": { "prefix": "sprnotifmini", "body": ["// notification record"], "description": "notifications" },
+  "Notif: Email (sprnotifemail)": { "prefix": "sprnotifemail", "body": ["// email notif fields"], "description": "email" },
+  "Notif: Push (sprnotifpush)": { "prefix": "sprnotifpush", "body": ["// push notif fields"], "description": "push" },
+  "Notif: SMS (sprnotifsms)": { "prefix": "sprnotifsms", "body": ["// sms notif fields"], "description": "sms" },
+  "Notif: Multi (sprnotifmulti)": { "prefix": "sprnotifmulti", "body": ["// multi-channel notif"], "description": "multi-channel" },
+  "Notif: Full (sprnotiffull)": { "prefix": "sprnotiffull", "body": ["// enterprise notif"], "description": "enterprise notif" },
+
+  "Analytics: Mini (spranalyticsmini)": { "prefix": "spranalyticsmini", "body": ["// page analytics"], "description": "analytics" },
+  "Analytics: Sales (spranalyticssales)": { "prefix": "spranalyticssales", "body": ["// sales analytics"], "description": "sales" },
+  "Analytics: User (spranalyticsuser)": { "prefix": "spranalyticsuser", "body": ["// user analytics"], "description": "user analytics" },
+  "Analytics: Campaign (spranalyticscampaign)": { "prefix": "spranalyticscampaign", "body": ["// marketing analytics"], "description": "campaign" },
+  "Analytics: AI (spranalyticsai)": { "prefix": "spranalyticsai", "body": ["// ai insights"], "description": "ai insights" },
+  "Analytics: Full (spranalyticsfull)": { "prefix": "spranalyticsfull", "body": ["// enterprise analytics"], "description": "enterprise analytics" },
+
+  "Tenant: Mini (sprtenantmini)": { "prefix": "sprtenantmini", "body": ["model Tenant { id String @id @default(cuid()) name String }"], "description": "tenant" },
+  "Tenant: Workspace (sprtenantworkspace)": { "prefix": "sprtenantworkspace", "body": ["// workspace mapping"], "description": "workspace" },
+  "Tenant: Billing (sprtenantbilling)": { "prefix": "sprtenantbilling", "body": ["// billing fields"], "description": "billing" },
+  "Tenant: Plan (sprtenantplan)": { "prefix": "sprtenantplan", "body": ["// plan model"], "description": "plans" },
+  "Tenant: Usage (sprtenantusage)": { "prefix": "sprtenantusage", "body": ["// usage tracking"], "description": "usage" },
+  "Tenant: Full (sprtenantfull)": { "prefix": "sprtenantfull", "body": ["// enterprise saas tenant model"], "description": "enterprise tenant" },
+
+  "AI Search (spraisearch)": { "prefix": "spraisearch", "body": ["// ai search embedding id field"], "description": "AI search" },
+  "AI Recommend (sprairecommend)": { "prefix": "sprairecommend", "body": ["// recommendations metadata"], "description": "recommendations" },
+  "AI Vector (spraivector)": { "prefix": "spraivector", "body": ["// vector db id field"], "description": "vector db" },
+  "AI Embedding (spraiembed)": { "prefix": "spraiembed", "body": ["// embedding field"], "description": "embeddings" },
+  "AI Full (spraifull)": { "prefix": "spraifull", "body": ["// AI-ready ecommerce schema"], "description": "AI-ready ecommerce" },
+
+  "Audit: Mini (sprauditmini)": { "prefix": "sprauditmini", "body": ["// basic audit entry"], "description": "audit" },
+  "Audit: User (spraudituser)": { "prefix": "spraudituser", "body": ["// user logs"], "description": "user logs" },
+  "Audit: Admin (sprauditadmin)": { "prefix": "sprauditadmin", "body": ["// admin logs"], "description": "admin logs" },
+  "Audit: Security (sprauditsecurity)": { "prefix": "sprauditsecurity", "body": ["// security logs"], "description": "security logs" },
+  "Audit: Full (sprauditfull)": { "prefix": "sprauditfull", "body": ["// enterprise audit logs"], "description": "enterprise audit" },
+
+  "Settings: Mini (sprsettingsmini)": { "prefix": "sprsettingsmini", "body": ["// simple settings model"], "description": "settings" },
+  "Settings: User (sprsettingsuser)": { "prefix": "sprsettingsuser", "body": ["// user settings"], "description": "user settings" },
+  "Settings: App (sprsettingsapp)": { "prefix": "sprsettingsapp", "body": ["// app config"], "description": "app config" },
+  "Settings: Feature (sprsettingsfeature)": { "prefix": "sprsettingsfeature", "body": ["// feature flags"], "description": "feature flags" },
+  "Settings: Full (sprsettingsfull)": { "prefix": "sprsettingsfull", "body": ["// enterprise settings model"], "description": "enterprise settings" }
+}

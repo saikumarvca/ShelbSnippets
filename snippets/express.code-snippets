@@ -1,0 +1,57 @@
+{
+  "Express App (sex)": {
+    "prefix": "sex",
+    "body": [
+      "import express from 'express';",
+      "const app = express();",
+      "app.listen(3000);"
+    ],
+    "description": "Express app starter"
+  },
+
+  "Router (sexr)": {
+    "prefix": "sexr",
+    "body": [
+      "import { Router } from 'express';",
+      "const router = Router();",
+      "export default router;"
+    ],
+    "description": "Express router"
+  },
+
+  "Controller (sexc)": {
+    "prefix": "sexc",
+    "body": ["export const handler = (req, res) => res.json({ ok: true })"],
+    "description": "Controller stub"
+  },
+
+  "Middleware (sexm)": {
+    "prefix": "sexm",
+    "body": ["export function middleware(req, res, next) { next() }"] ,
+    "description": "Middleware template"
+  },
+
+  "Auth Middleware (sexa)": {
+    "prefix": "sexa",
+    "body": ["export function auth(req, res, next) { /* check */ next() }"] ,
+    "description": "Auth middleware"
+  },
+
+  "CRUD Controller (sexcrud)": {
+    "prefix": "sexcrud",
+    "body": ["// CRUD controller skeleton"],
+    "description": "CRUD controller"
+  },
+
+  "Error Handler (sexerr)": {
+    "prefix": "sexerr",
+    "body": ["export function errorHandler(err, req, res, next) { res.status(500).json({error: err.message}) }"] ,
+    "description": "Error handler"
+  },
+
+  "Service Layer (sexsvc)": {
+    "prefix": "sexsvc",
+    "body": ["export class Service { }"],
+    "description": "Service layer stub"
+  }
+}

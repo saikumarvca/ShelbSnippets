@@ -1,0 +1,6 @@
+{
+  "SQLite Init (ssl)": { "prefix": "ssl", "body": ["-- sqlite init"], "description": "sqlite init" },
+  "CRUD (sslc)": { "prefix": "sslc", "body": ["-- crud sql"], "description": "sqlite crud" },
+  "Transaction (sslt)": { "prefix": "sslt", "body": ["BEGIN TRANSACTION;"], "description": "transaction" },
+  "Migration (sslm)": { "prefix": "sslm", "body": ["-- migration"], "description": "migration" }
+}

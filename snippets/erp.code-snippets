@@ -1,0 +1,23 @@
+{
+  "ERP CRUD Page (serp)": {
+    "prefix": "serp",
+    "body": [
+      "<div>",
+      "  <h1>${1:Module} Management</h1>",
+      "  <!-- CRUD UI -->",
+      "</div>"
+    ],
+    "description": "ERP CRUD page layout"
+  },
+
+  "Invoice System (serpinv)": { "prefix": "serpinv", "body": ["// invoice schema"], "description": "invoice system" },
+  "Ledger (serpled)": { "prefix": "serpled", "body": ["// ledger schema"], "description": "ledger" },
+  "Employee Module (serpemp)": { "prefix": "serpemp", "body": ["// employee schema"], "description": "employee module" },
+  "RBAC (serprole)": { "prefix": "serprole", "body": ["// role permissions"], "description": "RBAC" },
+  "Audit Logs (serpaudit)": { "prefix": "serpaudit", "body": ["// audit log schema"], "description": "audit logs" },
+  "Report Viewer (serpreport)": { "prefix": "serpreport", "body": ["// report viewer"], "description": "report viewer" },
+  "Dashboard (serpdash)": { "prefix": "serpdash", "body": ["// dashboard widgets"], "description": "dashboard" },
+  "Enterprise CRUD (serpcrud)": { "prefix": "serpcrud", "body": ["// enterprise crud layout"], "description": "enterprise CRUD" }
+}
+
+

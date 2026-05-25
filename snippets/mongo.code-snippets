@@ -1,0 +1,17 @@
+{
+  "Mongoose Schema (smg)": {
+    "prefix": "smg",
+    "body": [
+      "import mongoose from 'mongoose'",
+      "const Schema = mongoose.Schema",
+      "const ${1:Model} = new Schema({ name: String })",
+      "export default mongoose.model('${1:Model}', ${1:Model})"
+    ],
+    "description": "Mongoose schema"
+  },
+
+  "Aggregation (smga)": { "prefix": "smga", "body": ["// aggregation pipeline"], "description": "aggregation" },
+  "Repository (smgr)": { "prefix": "smgr", "body": ["// repository pattern for mongoose"], "description": "repository" },
+  "CRUD Model (smgc)": { "prefix": "smgc", "body": ["// crud model"], "description": "crud model" },
+  "Soft Delete (smgsoft)": { "prefix": "smgsoft", "body": ["deletedAt: Date"], "description": "soft delete" }
+}

@@ -1,0 +1,98 @@
+{
+  "Next App Router Page (snx)": {
+    "prefix": "snx",
+    "body": [
+      "export default function Page() {",
+      "  return (",
+      "    <main>${0}</main>",
+      "  );",
+      "}"
+    ],
+    "description": "Next.js App Router page"
+  },
+
+  "Layout (snxl)": {
+    "prefix": "snxl",
+    "body": [
+      "export default function RootLayout({ children }) {",
+      "  return (<html><body>{children}</body></html>);",
+      "}"
+    ],
+    "description": "Next.js layout.tsx"
+  },
+
+  "API Route (snxa)": {
+    "prefix": "snxa",
+    "body": [
+      "export default function handler(req, res) {",
+      "  res.status(200).json({ ok: true });",
+      "}"
+    ],
+    "description": "API route handler"
+  },
+
+  "Server Action (snxs)": {
+    "prefix": "snxs",
+    "body": [
+      "export async function action(formData) {\n  'use server'\n  // server logic\n}",
+    ],
+    "description": "Server action"
+  },
+
+  "Middleware (snxm)": {
+    "prefix": "snxm",
+    "body": [
+      "export function middleware(req) {\n  // middleware logic\n}",
+    ],
+    "description": "Next.js middleware"
+  },
+
+  "Metadata (snxh)": {
+    "prefix": "snxh",
+    "body": [
+      "export const metadata = { title: '${1:Title}' };"
+    ],
+    "description": "Page metadata"
+  },
+
+  "Dashboard Page (snxd)": {
+    "prefix": "snxd",
+    "body": [
+      "export default function Dashboard() {\n  return <div>${0}</div>\n}",
+    ],
+    "description": "Dashboard page"
+  },
+
+  "Auth Layout (snxauth)": {
+    "prefix": "snxauth",
+    "body": [
+      "export default function AuthLayout({ children }) {\n  return <div className=\"auth\">{children}</div>\n}",
+    ],
+    "description": "Auth layout"
+  },
+
+  "CRUD Route (snxcrud)": {
+    "prefix": "snxcrud",
+    "body": [
+      "export default function CRUD() {\n  return <div>${0}</div>\n}",
+    ],
+    "description": "CRUD route template"
+  },
+
+  "Data Table Page (snxtable)": {
+    "prefix": "snxtable",
+    "body": [
+      "export default function DataTable() {\n  return <div>${0}</div>\n}",
+    ],
+    "description": "Data table page"
+  },
+
+  "Server Form (snxform)": {
+    "prefix": "snxform",
+    "body": [
+      "export default function ServerForm() {\n  return <form>${0}</form>\n}",
+    ],
+    "description": "Server form"
+  }
+}
+

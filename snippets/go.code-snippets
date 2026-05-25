@@ -1,0 +1,111 @@
+{
+  "Go REST Handler (sgo)": {
+    "prefix": "sgo",
+    "body": [
+      "package main",
+      "\n",
+      "import (",
+      "  \"net/http\"",
+      ")",
+      "\n",
+      "func handler(w http.ResponseWriter, r *http.Request) {",
+      "  w.Write([]byte(\"ok\"))",
+      "}"
+    ],
+    "description": "Go HTTP handler"
+  }
+
+  "Fiber Server (sgof)": {
+    "prefix": "sgof",
+    "body": [
+      "package main",
+      "",
+      "import (\"github.com/gofiber/fiber/v2\")",
+      "func main() {",
+      "  app := fiber.New()",
+      "  app.Listen(3000)",
+      "}"
+    ],
+    "description": "Fiber server scaffold"
+  },
+
+  "Gin Server (sgog)": {
+    "prefix": "sgog",
+    "body": [
+      "package main",
+      "",
+      "import (\"github.com/gin-gonic/gin\")",
+      "func main() {",
+      "  r := gin.Default()",
+      "  r.Run()",
+      "}"
+    ],
+    "description": "Gin server scaffold"
+  },
+
+  "REST API (sgor)": {
+    "prefix": "sgor",
+    "body": [
+      "func RegisterRoutes(r *gin.Engine) {\n  r.GET(\"/\", handler)\n}",
+    ],
+    "description": "REST API route registration"
+  },
+
+  "Worker Pool (sgow)": {
+    "prefix": "sgow",
+    "body": [
+      "func worker(id int, jobs <-chan Job, results chan<- Result) {\n  for j := range jobs {\n    // process\n  }\n}",
+    ],
+    "description": "Worker pool pattern"
+  },
+
+  "Goroutine (sgogr)": {
+    "prefix": "sgogr",
+    "body": ["go func() {\n  // concurrent work\n}()"],
+    "description": "Goroutine starter"
+  },
+
+  "Struct (sgos)": {
+    "prefix": "sgos",
+    "body": ["type ${1:Name} struct {\n  ${2:Field} string\n}\n"],
+    "description": "Go struct"
+  },
+
+  "Interface (sgoi)": {
+    "prefix": "sgoi",
+    "body": ["type ${1:Name} interface {\n  ${2:Method}()\n}\n"],
+    "description": "Go interface"
+  },
+
+  "Repository Pattern (sgorepo)": {
+    "prefix": "sgorepo",
+    "body": [
+      "type ${1:Repo} struct {}",
+      "func (r *${1:Repo}) Insert(item interface{}) error { return nil }"
+    ],
+    "description": "Repository pattern stub"
+  },
+
+  "Service Layer (sgosvc)": {
+    "prefix": "sgosvc",
+    "body": [
+      "type ${1:Service} struct { repo *${2:Repo} }",
+      "func (s *${1:Service}) Do() {}"
+    ],
+    "description": "Service layer stub"
+  },
+
+  "WebSocket (sgows)": {
+    "prefix": "sgows",
+    "body": ["// websocket handler placeholder"],
+    "description": "Websocket scaffold"
+  },
+
+  "ERP API Starter (sgoerp)": {
+    "prefix": "sgoerp",
+    "body": ["// ERP API starter code"],
+    "description": "ERP API starter"
+  }
+}
+}
+

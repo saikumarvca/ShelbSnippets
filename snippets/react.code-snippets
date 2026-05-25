@@ -1,0 +1,208 @@
+{
+  "React Component (sre)": {
+    "prefix": "sre",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export default function ${1:Component}(${2:props}) {",
+      "  return (",
+      "    <div>${0}</div>",
+      "  );",
+      "}"
+    ],
+    "description": "Create a React functional component"
+  },
+
+  "React Memo Component (srem)": {
+    "prefix": "srem",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export const ${1:Component} = React.memo(function ${1:Component}(${2:props}) {",
+      "  return (",
+      "    <div>${0}</div>",
+      "  );",
+      "});"
+    ],
+    "description": "Memoized component"
+  },
+
+  "ForwardRef Component (sref)": {
+    "prefix": "sref",
+    "body": [
+      "import React, { forwardRef } from 'react';",
+      "",
+      "export const ${1:Component} = forwardRef(function ${1:Component}(${2:props}, ref) {",
+      "  return <div ref={ref}>${0}</div>",
+      "});"
+    ],
+    "description": "React forwardRef component"
+  },
+
+  "Custom Hook (sreh)": {
+    "prefix": "sreh",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "export function use${1:Name}(${2:initial}) {",
+      "  const [state, setState] = useState(${2:initial});",
+      "  useEffect(() => {",
+      "    // effect",
+      "  }, []);",
+      "  return [state, setState];",
+      "}"
+    ],
+    "description": "Custom hook scaffold"
+  },
+
+  "useState Shortcut (sres)": {
+    "prefix": "sres",
+    "body": ["const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:initial});$0"],
+    "description": "useState boilerplate"
+  },
+
+  "useEffect Shortcut (sree)": {
+    "prefix": "sree",
+    "body": ["useEffect(() => {\n  ${1:// effect}\n}, [${2:deps}]);$0"],
+    "description": "useEffect boilerplate"
+  },
+
+  "Context Provider (srec)": {
+    "prefix": "srec",
+    "body": [
+      "import React, { createContext, useContext, useState } from 'react';",
+      "",
+      "const ${1:Name}Context = createContext(null);",
+      "export function ${1:Name}Provider({ children }) {",
+      "  const [state, setState] = useState(null);",
+      "  return <${1:Name}Context.Provider value={{ state, setState }}>{children}</${1:Name}Context.Provider>;",
+      "}",
+      "export const use${1:Name} = () => useContext(${1:Name}Context);"
+    ],
+    "description": "Context provider template"
+  },
+
+  "React Router Page (srer)": {
+    "prefix": "srer",
+    "body": [
+      "import React from 'react';",
+      "import { Link } from 'react-router-dom';",
+      "",
+      "export default function ${1:Page}() {",
+      "  return (<div>${0}</div>);",
+      "}"
+    ],
+    "description": "React Router page"
+  },
+
+  "React Query Setup (sreq)": {
+    "prefix": "sreq",
+    "body": [
+      "import { QueryClient, QueryClientProvider } from '@tanstack/react-query';",
+      "",
+      "const queryClient = new QueryClient();",
+      "export function ReactQueryProvider({ children }) {",
+      "  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;",
+      "}"
+    ],
+    "description": "React Query provider setup"
+  },
+
+  "TanStack Table Example (sret)": {
+    "prefix": "sret",
+    "body": [
+      "import { useReactTable } from '@tanstack/react-table';",
+      "",
+      "// columns and data setup",
+      "const columns = ${1:[]};",
+      "const data = ${2:[]};",
+      "const table = useReactTable({ data, columns });",
+      "export default function Table() { return <div>${0}</div>; }"
+    ],
+    "description": "TanStack Table starter"
+  },
+
+  "Dashboard Widget (sred)": {
+    "prefix": "sred",
+    "body": [
+      "export function ${1:Widget}() {",
+      "  return (<section className=\"p-4 bg-white rounded shadow\">${0}</section>);",
+      "}"
+    ],
+    "description": "Dashboard widget layout"
+  },
+
+  "Modal Component (sremd)": {
+    "prefix": "sremd",
+    "body": [
+      "export function ${1:Modal}({ open, onClose, children }) {",
+      "  if (!open) return null;",
+      "  return (",
+      "    <div className=\"modal\">",
+      "      <div className=\"modal-content\">{children}</div>",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Simple modal component"
+  },
+
+  "Form Template (sreform)": {
+    "prefix": "sreform",
+    "body": [
+      "export function ${1:Form}() {",
+      "  const [values, setValues] = useState({});",
+      "  const submit = (e) => { e.preventDefault(); /* handle submit */ };",
+      "  return (<form onSubmit={submit}>{children}</form>);",
+      "}"
+    ],
+    "description": "Form template"
+  },
+
+  "CRUD Page (srecrud)": {
+    "prefix": "srecrud",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export default function ${1:CRUDPage}() {",
+      "  return (<div>${0}</div>);",
+      "}"
+    ],
+    "description": "CRUD page scaffold"
+  },
+
+  "Sidebar Layout (sreside)": {
+    "prefix": "sreside",
+    "body": [
+      "export function Sidebar() {",
+      "  return (<aside className=\"w-64\">${0}</aside>);",
+      "}"
+    ],
+    "description": "Sidebar layout"
+  },
+
+  "Tab System (sretab)": {
+    "prefix": "sretab",
+    "body": [
+      "export function Tabs() {",
+      "  const [active, setActive] = useState(0);",
+      "  return (<div>${0}</div>);",
+      "}"
+    ],
+    "description": "Tab system skeleton"
+  },
+
+  "ERP Screen Layout (sreerp)": {
+    "prefix": "sreerp",
+    "body": [
+      "export default function ERPPage() {",
+      "  return (<div className=\"erp-shell\">",
+      "    <aside className=\"erp-sidebar\">Sidebar</aside>",
+      "    <main className=\"erp-main\">${0}</main>",
+      "  </div>);",
+      "}"
+    ],
+    "description": "ERP screen layout"
+  }
+}
+

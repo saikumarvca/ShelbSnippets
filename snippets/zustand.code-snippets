@@ -1,0 +1,15 @@
+{
+  "Zustand Store (szu)": {
+    "prefix": "szu",
+    "body": [
+      "import create from 'zustand'",
+      "export const useStore = create((set) => ({ items: [], setItems: (items) => set({ items }) }))"
+    ],
+    "description": "Zustand store"
+  },
+
+  "Async Action (szua)": { "prefix": "szua", "body": ["const fetchItems = async () => {}"], "description": "async action" },
+  "Persisted Store (szup)": { "prefix": "szup", "body": ["// persist store with middleware"], "description": "persisted store hint" },
+  "Middleware (szum)": { "prefix": "szum", "body": ["// middleware example"], "description": "middleware" },
+  "CRUD State (szuc)": { "prefix": "szuc", "body": ["// CRUD state helpers"], "description": "crud state" }
+}

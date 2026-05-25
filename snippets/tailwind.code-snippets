@@ -1,0 +1,12 @@
+{
+  "Flex Center (stw)": { "prefix": "stw", "body": ["className=\"flex items-center justify-center\""], "description": "flex center" },
+  "Card (stwc)": { "prefix": "stwc", "body": ["className=\"p-4 bg-white rounded shadow\""], "description": "card" },
+  "Responsive Grid (stwg)": { "prefix": "stwg", "body": ["className=\"grid grid-cols-1 md:grid-cols-3 gap-4\""], "description": "responsive grid" },
+  "Dashboard (stwd)": { "prefix": "stwd", "body": ["className=\"dashboard-grid\""], "description": "dashboard layout" },
+  "Sidebar (stws)": { "prefix": "stws", "body": ["className=\"w-64 bg-gray-50\""], "description": "sidebar" },
+  "Navbar (stwn)": { "prefix": "stwn", "body": ["className=\"flex items-center justify-between p-4\""], "description": "navbar" },
+  "Modal (stwm)": { "prefix": "stwm", "body": ["className=\"modal\""], "description": "modal" },
+  "Form Layout (stwf)": { "prefix": "stwf", "body": ["className=\"space-y-4\""], "description": "form layout" },
+  "Table Layout (stwt)": { "prefix": "stwt", "body": ["className=\"min-w-full divide-y divide-gray-200\""], "description": "table layout" },
+  "Command Bar (stwcmd)": { "prefix": "stwcmd", "body": ["className=\"flex items-center space-x-2\""], "description": "command bar" }
+}

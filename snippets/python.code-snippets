@@ -1,0 +1,74 @@
+{
+  "FastAPI App (spy)": {
+    "prefix": "spy",
+    "body": [
+      "from fastapi import FastAPI",
+      "app = FastAPI()",
+      "@app.get('/')",
+      "async def root():",
+      "    return { 'ok': True }"
+    ],
+    "description": "FastAPI app scaffold"
+  },
+
+  "Python Main (spy-main)": {
+    "prefix": "spy",
+    "body": [
+      "if __name__ == '__main__':",
+      "    print('running')"
+    ],
+    "description": "Python main"
+  },
+
+  "FastAPI Starter (spyf)": {
+    "prefix": "spyf",
+    "body": [
+      "from fastapi import FastAPI",
+      "app = FastAPI()",
+      "@app.get('/')",
+      "async def root():",
+      "    return { 'ok': True }"
+    ],
+    "description": "FastAPI starter"
+  },
+
+  "Flask App (spyfl)": {
+    "prefix": "spyfl",
+    "body": [
+      "from flask import Flask\napp = Flask(__name__)\n@app.route('/')\ndef root():\n    return {'ok': True}"
+    ],
+    "description": "Flask app scaffold"
+  },
+
+  "Async Worker (spya)": {
+    "prefix": "spya",
+    "body": ["async def worker():\n  pass"],
+    "description": "Async worker"
+  },
+
+  "Class (spyc)": {
+    "prefix": "spyc",
+    "body": ["class ${1:Name}:\n    def __init__(self):\n        pass"],
+    "description": "Python class"
+  },
+
+  "Background Job (spyb)": {
+    "prefix": "spyb",
+    "body": ["def job():\n    # background job\n    pass"],
+    "description": "Background job"
+  },
+
+  "Automation Script (spyauto)": {
+    "prefix": "spyauto",
+    "body": ["# automation script\nif __name__ == '__main__':\n    pass"],
+    "description": "Automation script"
+  },
+
+  "File Processor (spyfile)": {
+    "prefix": "spyfile",
+    "body": ["def process(path):\n    with open(path) as f:\n        return f.read()"],
+    "description": "File processor"
+  }
+}
+
+

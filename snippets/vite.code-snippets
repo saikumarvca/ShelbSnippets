@@ -1,0 +1,54 @@
+{
+  "Vite React Entry (svt)": {
+    "prefix": "svt",
+    "body": [
+      "import React from 'react'",
+      "import { createRoot } from 'react-dom/client'",
+      "import App from './App'",
+      "const root = createRoot(document.getElementById('root'))",
+      "root.render(<App />)"
+    ],
+    "description": "Vite react entrypoint"
+  },
+
+  "Vite Config (svtc)": {
+    "prefix": "svtc",
+    "body": [
+      "import { defineConfig } from 'vite'",
+      "export default defineConfig({})"
+    ],
+    "description": "vite.config.ts"
+  },
+
+  "TSConfig (svtt)": {
+    "prefix": "svtt",
+    "body": [
+      "{",
+      "  \"compilerOptions\": {\n    \"jsx\": \"react-jsx\"\n  }",
+      "}"
+    ],
+    "description": "tsconfig snippet"
+  },
+
+  "Vite Plugin (svtp)": {
+    "prefix": "svtp",
+    "body": ["export default function myPlugin() { return { name: 'my-plugin' } }"] ,
+    "description": "Vite plugin scaffold"
+  },
+
+  "Env Setup (svtenv)": {
+    "prefix": "svtenv",
+    "body": ["VITE_API_URL=http://localhost:3000"],
+    "description": "Vite env setup"
+  },
+
+  "React Router Setup (svtr)": {
+    "prefix": "svtr",
+    "body": [
+      "import { BrowserRouter } from 'react-router-dom'",
+      "export function AppRouter({ children }) { return <BrowserRouter>{children}</BrowserRouter> }"
+    ],
+    "description": "React Router setup"
+  }
+}
+

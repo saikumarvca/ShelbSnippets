@@ -1,0 +1,8 @@
+{
+  "Dockerfile (sdoc)": { "prefix": "sdoc", "body": ["FROM node:18-alpine\nWORKDIR /app\nCOPY . .\nRUN npm ci\nCMD [\"node\",\"dist/index.js\"]"], "description": "Dockerfile" },
+  "Docker Compose (sdocc)": { "prefix": "sdocc", "body": ["version: '3'\nservices:\n  app:\n    build: ."], "description": "docker-compose" },
+  "GitHub Actions (sgi)": { "prefix": "sgi", "body": ["name: CI\non: [push]"], "description": "GitHub Actions" },
+  "Kubernetes (sk8)": { "prefix": "sk8", "body": ["apiVersion: v1\nkind: Pod"], "description": "k8s snippet" },
+  "Env Template (senv)": { "prefix": "senv", "body": ["ENV_VAR=value"], "description": "env template" },
+  "CI/CD Pipeline (scicd)": { "prefix": "scicd", "body": ["# ci/cd pipeline"], "description": "ci/cd" }
+}

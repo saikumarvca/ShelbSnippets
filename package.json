@@ -1,0 +1,107 @@
+{
+  "name": "shelb-snippets",
+  "displayName": "Shelb Snippets",
+  "publisher": "saikumarvca",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "description": "Turbo productivity toolkit for full-stack + desktop ERP development.",
+  "categories": ["Snippets", "Other"],
+  "keywords": ["snippets","erp","tauri","react","nextjs","productivity","scaffolding"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saikumarvca/ShelbSnippets"
+  },
+  "icon": "media/icon.svg",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:shelb.generateCrud",
+    "onCommand:shelb.generateERP",
+    "onCommand:shelb.generateTauri",
+    "onView:snippetExplorer"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "shelb.generateCrud",
+        "title": "Shelb: Generate CRUD Module"
+      },
+      {
+        "command": "shelb.generateERP",
+        "title": "Shelb: Generate ERP Module"
+      },
+      {
+        "command": "shelb.generateTauri",
+        "title": "Shelb: Generate Tauri Desktop Module"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Shelb Snippets",
+      "properties": {
+        "shelb.enableAI": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable AI features (architecture only — no external APIs enabled by default)."
+        },
+        "shelb.enableERP": {
+          "type": "boolean",
+          "default": true
+        },
+        "shelb.enableTauri": {
+          "type": "boolean",
+          "default": true
+        },
+        "shelb.enableWorkspaceDetection": {
+          "type": "boolean",
+          "default": true
+        },
+        "shelb.defaultBackend": {
+          "type": "string",
+          "default": "node",
+          "description": "Default backend for generated modules (node/go/rust)."
+        },
+        "shelb.defaultFrontend": {
+          "type": "string",
+          "default": "react",
+          "description": "Default frontend for generated modules."
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "snippetExplorer",
+          "name": "Shelb Snippets"
+        }
+      ]
+    },
+    "snippets": [
+      { "language": "javascriptreact", "path": "snippets/react.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/react.code-snippets" },
+      { "language": "javascript", "path": "snippets/nextjs.code-snippets" },
+      { "language": "typescript", "path": "snippets/vite.code-snippets" },
+      { "language": "go", "path": "snippets/go.code-snippets" },
+      { "language": "prisma", "path": "snippets/prisma.code-snippets" },
+      { "language": "python", "path": "snippets/python.code-snippets" },
+      { "language": "rust", "path": "snippets/tauri.code-snippets" },
+      { "language": "json", "path": "snippets/erp.code-snippets" }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p .",
+    "watch": "tsc -p . -w",
+    "build:esbuild": "node esbuild.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6",
+    "@types/node": "^18.16.19",
+    "@types/vscode": "^1.79.0",
+    "esbuild": "^0.18.11",
+    "vsce": "^2.10.0"
+  },
+  "dependencies": {}
+}

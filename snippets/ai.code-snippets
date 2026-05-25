@@ -1,0 +1,6 @@
+{
+  "AI Form (saiform)": { "prefix": "saiform", "body": ["// AI form k8s prompt"], "description": "AI form (interface only)" },
+  "AI API (saiapi)": { "prefix": "saiapi", "body": ["// AI API scaffold"], "description": "AI API" },
+  "AI SQL (saisql)": { "prefix": "saisql", "body": ["-- generate SQL with AI"], "description": "AI SQL" },
+  "AI ERP (saierp)": { "prefix": "saierp", "body": ["// AI ERP generator placeholder"], "description": "AI ERP module" }
+}

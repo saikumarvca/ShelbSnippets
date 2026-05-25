@@ -1,0 +1,8 @@
+{
+  "Desktop Shell (sdesk)": { "prefix": "sdesk", "body": ["// desktop shell layout"], "description": "desktop shell" },
+  "Tab Workspace (sdesktab)": { "prefix": "sdesktab", "body": ["// tab workspace"], "description": "tab workspace" },
+  "VSCode-like Menu (sdeskmenu)": { "prefix": "sdeskmenu", "body": ["// menu"], "description": "menu" },
+  "Sidebar (sdeskside)": { "prefix": "sdeskside", "body": ["// sidebar"], "description": "sidebar" },
+  "Command Palette (sdeskcmd)": { "prefix": "sdeskcmd", "body": ["// command palette"], "description": "command palette" },
+  "Dock Layout (sdeskdock)": { "prefix": "sdeskdock", "body": ["// dock layout"], "description": "dock layout" }
+}

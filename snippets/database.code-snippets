@@ -1,0 +1,7 @@
+{
+  "SQL Query (ssql)": { "prefix": "ssql", "body": ["SELECT * FROM ${1:table};"], "description": "SQL query" },
+  "Create Table (ssqlc)": { "prefix": "ssqlc", "body": ["CREATE TABLE ${1:table} (id SERIAL PRIMARY KEY);"], "description": "create table" },
+  "Joins (ssqlj)": { "prefix": "ssqlj", "body": ["SELECT a.* FROM a JOIN b ON a.b_id = b.id;"], "description": "joins" },
+  "Transaction (ssqlt)": { "prefix": "ssqlt", "body": ["BEGIN;\n-- statements\nCOMMIT;"], "description": "transaction" },
+  "Migration (ssqlm)": { "prefix": "ssqlm", "body": ["-- migration up/down"], "description": "migration template" }
+}
