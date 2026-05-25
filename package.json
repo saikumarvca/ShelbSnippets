@@ -167,16 +167,6 @@
       { "language": "javascriptreact", "path": "snippets/ecommerce-auth-blocks.code-snippets" },
       { "language": "typescriptreact", "path": "snippets/ecommerce-auth-blocks.code-snippets" },
 
-      { "language": "javascript",      "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
-      { "language": "typescript",      "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
-      { "language": "javascriptreact", "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
-      { "language": "typescriptreact", "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
-
-      { "language": "javascript",      "path": "snippets/ecommerce-admin-blocks.code-snippets" },
-      { "language": "typescript",      "path": "snippets/ecommerce-admin-blocks.code-snippets" },
-      { "language": "javascriptreact", "path": "snippets/ecommerce-admin-blocks.code-snippets" },
-      { "language": "typescriptreact", "path": "snippets/ecommerce-admin-blocks.code-snippets" },
-
       { "language": "javascript",      "path": "snippets/auth-api-state-blocks.code-snippets" },
       { "language": "typescript",      "path": "snippets/auth-api-state-blocks.code-snippets" },
       { "language": "javascriptreact", "path": "snippets/auth-api-state-blocks.code-snippets" },

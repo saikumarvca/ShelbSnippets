@@ -372,5 +372,14 @@
   "Order: Mini (sprordermini)": {
     "prefix": "sprordermini",
     "body": [
-    
-
+      "model Order {",
+      "  id String @id @default(cuid())",
+      "  userId String",
+      "  total Float",
+      "  status String @default(\"pending\")",
+      "  createdAt DateTime @default(now())",
+      "}"
+    ],
+    "description": "Minimal order model"
+  }
+}

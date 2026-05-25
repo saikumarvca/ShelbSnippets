@@ -13,7 +13,7 @@
       "}"
     ],
     "description": "Go HTTP handler"
-  }
+  },
 
   "Fiber Server (sgof)": {
     "prefix": "sgof",
@@ -46,7 +46,7 @@
   "REST API (sgor)": {
     "prefix": "sgor",
     "body": [
-      "func RegisterRoutes(r *gin.Engine) {\n  r.GET(\"/\", handler)\n}",
+      "func RegisterRoutes(r *gin.Engine) {\n  r.GET(\"/\", handler)\n}"
     ],
     "description": "REST API route registration"
   },
@@ -54,7 +54,7 @@
   "Worker Pool (sgow)": {
     "prefix": "sgow",
     "body": [
-      "func worker(id int, jobs <-chan Job, results chan<- Result) {\n  for j := range jobs {\n    // process\n  }\n}",
+      "func worker(id int, jobs <-chan Job, results chan<- Result) {\n  for j := range jobs {\n    // process\n  }\n}"
     ],
     "description": "Worker pool pattern"
   },
@@ -107,5 +107,3 @@
     "description": "ERP API starter"
   }
 }
-}
-

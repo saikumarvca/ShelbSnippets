@@ -11,8 +11,8 @@
     "description": "FastAPI app scaffold"
   },
 
-  "Python Main (spy-main)": {
-    "prefix": "spy",
+  "Python Main (spymain)": {
+    "prefix": "spymain",
     "body": [
       "if __name__ == '__main__':",
       "    print('running')"

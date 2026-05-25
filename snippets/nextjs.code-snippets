@@ -34,7 +34,7 @@
   "Server Action (snxs)": {
     "prefix": "snxs",
     "body": [
-      "export async function action(formData) {\n  'use server'\n  // server logic\n}",
+      "export async function action(formData) {\n  'use server'\n  // server logic\n}"
     ],
     "description": "Server action"
   },
@@ -42,7 +42,7 @@
   "Middleware (snxm)": {
     "prefix": "snxm",
     "body": [
-      "export function middleware(req) {\n  // middleware logic\n}",
+      "export function middleware(req) {\n  // middleware logic\n}"
     ],
     "description": "Next.js middleware"
   },
@@ -58,7 +58,7 @@
   "Dashboard Page (snxd)": {
     "prefix": "snxd",
     "body": [
-      "export default function Dashboard() {\n  return <div>${0}</div>\n}",
+      "export default function Dashboard() {\n  return <div>${0}</div>\n}"
     ],
     "description": "Dashboard page"
   },
@@ -66,7 +66,7 @@
   "Auth Layout (snxauth)": {
     "prefix": "snxauth",
     "body": [
-      "export default function AuthLayout({ children }) {\n  return <div className=\"auth\">{children}</div>\n}",
+      "export default function AuthLayout({ children }) {\n  return <div className=\"auth\">{children}</div>\n}"
     ],
     "description": "Auth layout"
   },
@@ -74,7 +74,7 @@
   "CRUD Route (snxcrud)": {
     "prefix": "snxcrud",
     "body": [
-      "export default function CRUD() {\n  return <div>${0}</div>\n}",
+      "export default function CRUD() {\n  return <div>${0}</div>\n}"
     ],
     "description": "CRUD route template"
   },
@@ -82,7 +82,7 @@
   "Data Table Page (snxtable)": {
     "prefix": "snxtable",
     "body": [
-      "export default function DataTable() {\n  return <div>${0}</div>\n}",
+      "export default function DataTable() {\n  return <div>${0}</div>\n}"
     ],
     "description": "Data table page"
   },
@@ -90,7 +90,7 @@
   "Server Form (snxform)": {
     "prefix": "snxform",
     "body": [
-      "export default function ServerForm() {\n  return <form>${0}</form>\n}",
+      "export default function ServerForm() {\n  return <form>${0}</form>\n}"
     ],
     "description": "Server form"
   }

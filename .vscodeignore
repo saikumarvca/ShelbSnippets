@@ -2,11 +2,16 @@ node_modules
 .vscode
 .git
 .gitignore
+.gitattributes
 .DS_Store
 .claude
 src
+scripts
+docs
+images
 esbuild.js
 tsconfig.json
 out/test
 **/*.map
 **/*.ts
+*.vsix
