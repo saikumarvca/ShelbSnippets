@@ -1,0 +1,2044 @@
+{
+  "Shelb Next Dashboard — Basic (snxdash01)": {
+    "prefix": "snxdash01",
+    "description": "Next.js App Router basic dashboard page (server component, metadata + KPI grid).",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"${4:Dashboard}\" };",
+      "",
+      "export default function ${1:DashboardPage}() {",
+      "  const stats = [",
+      "    { label: \"Revenue\", value: \"$48,500\" },",
+      "    { label: \"Customers\", value: \"1,284\" },",
+      "    { label: \"Orders\", value: \"382\" },",
+      "    { label: \"Refunds\", value: \"12\" },",
+      "  ];",
+      "  return (",
+      "    <main className={\"p-6 space-y-6 \" + (\"${5:}\" || \"\")}>",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Overview}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">",
+      "        {stats.map((s) => (<article key={s.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{s.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{s.value}</p></article>))}",
+      "      </section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Admin (snxdash02)": {
+    "prefix": "snxdash02",
+    "description": "Next.js admin dashboard page with KPIs and recent activity.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"${4:Admin overview}\" };",
+      "",
+      "export default function ${1:AdminDashboardPage}() {",
+      "  const kpis = [{ label: \"Active users\", value: \"4,210\" }, { label: \"Approvals\", value: \"17\" }, { label: \"Errors\", value: \"3\" }, { label: \"Uptime\", value: \"99.98%\" }];",
+      "  const activity = [{ who: \"Anita\", what: \"approved INV-2041\", when: \"2m\" }, { who: \"Ravi\", what: \"created user account\", when: \"14m\" }, { who: \"System\", what: \"rotated API keys\", when: \"1h\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <div className=\"flex items-center justify-between\"><h1 className=\"text-2xl font-semibold text-gray-900\">${4:Admin overview}</h1><button type=\"button\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">New user</button></div>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{k.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Recent activity</h2><ul className=\"mt-3 divide-y divide-gray-100\">{activity.map((a, i) => (<li key={i} className=\"py-2 text-sm text-gray-700\"><b>{a.who}</b> {a.what} <span className=\"text-gray-400\">· {a.when}</span></li>))}</ul></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — ERP (snxdash03)": {
+    "prefix": "snxdash03",
+    "description": "Next.js ERP dashboard page with module tiles.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"ERP overview\" };",
+      "",
+      "export default function ${1:ERPDashboardPage}() {",
+      "  const modules = [{ name: \"Sales\", value: \"₹12.4L\", note: \"this month\" }, { name: \"Inventory\", value: \"3,210\", note: \"SKUs\" }, { name: \"HR\", value: \"248\", note: \"employees\" }, { name: \"Finance\", value: \"₹84K\", note: \"receivables\" }, { name: \"Procurement\", value: \"19\", note: \"open POs\" }, { name: \"Production\", value: \"82%\", note: \"OEE\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <header><p className=\"text-xs uppercase tracking-widest text-blue-700\">ERP</p><h1 className=\"text-2xl font-semibold text-gray-900\">${4:Overview}</h1></header>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4\">{modules.map((m) => (<article key={m.name} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{m.name}</p><p className=\"mt-1 text-xl font-bold text-gray-900\">{m.value}</p><p className=\"text-xs text-gray-500\">{m.note}</p></article>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — SaaS (snxdash04)": {
+    "prefix": "snxdash04",
+    "description": "Next.js SaaS dashboard page with MRR/ARR/Churn KPIs and chart placeholder.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Workspace overview\" };",
+      "",
+      "export default function ${1:SaaSDashboardPage}() {",
+      "  const kpis = [{ label: \"MRR\", value: \"$28,540\", delta: \"+4.1%\" }, { label: \"ARR\", value: \"$342K\", delta: \"+6.0%\" }, { label: \"Seats\", value: \"612\", delta: \"+18\" }, { label: \"Churn\", value: \"1.9%\", delta: \"-0.3pp\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Workspace overview}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><div className=\"mt-1 flex items-end justify-between\"><p className=\"text-2xl font-bold text-gray-900\">{k.value}</p><span className=\"text-xs font-medium text-emerald-700\">{k.delta}</span></div></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Revenue · last 30 days</h2><div className=\"mt-3 h-40 rounded-md bg-gray-50 grid place-items-center text-xs text-gray-400\">chart placeholder</div></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Analytics (snxdash05)": {
+    "prefix": "snxdash05",
+    "description": "Next.js analytics dashboard page with traffic + conversion + top pages.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Analytics\" };",
+      "",
+      "export default function ${1:AnalyticsDashboardPage}() {",
+      "  const stats = [{ label: \"Page views\", value: \"248,109\" }, { label: \"Visitors\", value: \"34,802\" }, { label: \"Avg. session\", value: \"3m 14s\" }, { label: \"Conversion\", value: \"3.42%\" }];",
+      "  const top = [\"/pricing\", \"/features\", \"/docs\", \"/blog\", \"/changelog\"];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Analytics}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{stats.map((s) => (<div key={s.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{s.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{s.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Top pages</h2><ol className=\"mt-2 divide-y divide-gray-100 text-sm\">{top.map((p, i) => (<li key={p} className=\"py-2 flex items-center justify-between\"><span>{i + 1}. <code>{p}</code></span><span className=\"text-gray-400\">{(100 - i * 12)}%</span></li>))}</ol></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Finance (snxdash06)": {
+    "prefix": "snxdash06",
+    "description": "Next.js finance dashboard with revenue/expenses/profit + ledger preview.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Finance\" };",
+      "",
+      "export default function ${1:FinanceDashboardPage}() {",
+      "  const kpis = [{ label: \"Revenue\", value: \"₹54.2L\" }, { label: \"Expenses\", value: \"₹31.8L\" }, { label: \"Profit\", value: \"₹22.4L\" }, { label: \"Receivables\", value: \"₹6.7L\" }];",
+      "  const ledger = [{ date: \"25 May\", desc: \"Vendor payout — Acme\", amount: \"-₹1,20,000\" }, { date: \"24 May\", desc: \"Customer payment — Tata\", amount: \"+₹4,80,000\" }, { date: \"23 May\", desc: \"Payroll\", amount: \"-₹8,40,000\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Finance}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{k.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Recent ledger entries</h2><ul className=\"mt-2 divide-y divide-gray-100 text-sm\">{ledger.map((l, i) => (<li key={i} className=\"py-2 flex items-center justify-between\"><span><span className=\"text-gray-400 mr-2\">{l.date}</span>{l.desc}</span><span className=\"font-medium\">{l.amount}</span></li>))}</ul></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — HR (snxdash07)": {
+    "prefix": "snxdash07",
+    "description": "Next.js HR dashboard with attendance + leaves + payroll snapshot.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"HR overview\" };",
+      "",
+      "export default function ${1:HRDashboardPage}() {",
+      "  const kpis = [{ label: \"Employees\", value: \"248\" }, { label: \"Present\", value: \"221\" }, { label: \"On leave\", value: \"12\" }, { label: \"Payroll due\", value: \"₹84.6L\" }];",
+      "  const leaves = [{ name: \"Priya Nair\", reason: \"Sick\", until: \"27 May\" }, { name: \"Arjun Mehta\", reason: \"Paternity\", until: \"02 Jun\" }, { name: \"Rahul S.\", reason: \"Casual\", until: \"26 May\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:HR overview}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{k.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">On leave today</h2><ul className=\"mt-2 divide-y divide-gray-100 text-sm\">{leaves.map((l, i) => (<li key={i} className=\"py-2 flex items-center justify-between\"><span><b>{l.name}</b> · {l.reason}</span><span className=\"text-gray-400\">until {l.until}</span></li>))}</ul></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — CRM (snxdash08)": {
+    "prefix": "snxdash08",
+    "description": "Next.js CRM dashboard with leads/deals KPIs and pipeline stages.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"CRM\" };",
+      "",
+      "export default function ${1:CRMDashboardPage}() {",
+      "  const kpis = [{ label: \"New leads\", value: \"128\" }, { label: \"Open deals\", value: \"42\" }, { label: \"Won (mo)\", value: \"18\" }, { label: \"Pipeline value\", value: \"₹3.4Cr\" }];",
+      "  const pipeline = [{ stage: \"Qualified\", count: 24 }, { stage: \"Proposal\", count: 12 }, { stage: \"Negotiation\", count: 6 }, { stage: \"Won\", count: 18 }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:CRM}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{k.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Pipeline</h2><div className=\"mt-3 grid grid-cols-2 sm:grid-cols-4 gap-3\">{pipeline.map((p) => (<div key={p.stage} className=\"rounded-md border border-gray-200 p-3\"><p className=\"text-xs text-gray-500\">{p.stage}</p><p className=\"text-lg font-bold text-gray-900\">{p.count}</p></div>))}</div></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Inventory (snxdash09)": {
+    "prefix": "snxdash09",
+    "description": "Next.js inventory dashboard with stock levels and low-stock alerts.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Inventory\" };",
+      "",
+      "export default function ${1:InventoryDashboardPage}() {",
+      "  const kpis = [{ label: \"SKUs\", value: \"3,210\" }, { label: \"In stock\", value: \"2,984\" }, { label: \"Low stock\", value: \"38\" }, { label: \"Out of stock\", value: \"6\" }];",
+      "  const low = [{ sku: \"SKU-1042\", name: \"Steel washers 8mm\", qty: 12 }, { sku: \"SKU-2310\", name: \"Cardboard A4 box\", qty: 4 }, { sku: \"SKU-7766\", name: \"USB-C cable 1m\", qty: 9 }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Inventory}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{k.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-amber-200 bg-amber-50 p-5\"><h2 className=\"text-sm font-semibold text-amber-900\">Low stock alerts</h2><ul className=\"mt-2 divide-y divide-amber-100 text-sm\">{low.map((l) => (<li key={l.sku} className=\"py-2 flex items-center justify-between\"><span><b>{l.sku}</b> · {l.name}</span><span className=\"font-medium text-amber-800\">{l.qty} left</span></li>))}</ul></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — E-commerce (snxdash10)": {
+    "prefix": "snxdash10",
+    "description": "Next.js e-commerce dashboard with orders, GMV and top products.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Store overview\" };",
+      "",
+      "export default function ${1:EcommerceDashboardPage}() {",
+      "  const kpis = [{ label: \"Orders today\", value: \"248\" }, { label: \"GMV\", value: \"$18,420\" }, { label: \"AOV\", value: \"$74.30\" }, { label: \"Returns\", value: \"6\" }];",
+      "  const top = [{ name: \"Premium Tote\", sold: 84 }, { name: \"Wireless Earbuds\", sold: 62 }, { name: \"Cotton T-Shirt\", sold: 51 }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Store overview}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{k.value}</p></div>))}</section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Top products today</h2><ul className=\"mt-2 divide-y divide-gray-100 text-sm\">{top.map((t, i) => (<li key={t.name} className=\"py-2 flex items-center justify-between\"><span>{i + 1}. {t.name}</span><span className=\"font-medium\">{t.sold} sold</span></li>))}</ul></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Project (snxdash11)": {
+    "prefix": "snxdash11",
+    "description": "Next.js project dashboard with project cards and progress bars.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Projects\" };",
+      "",
+      "export default function ${1:ProjectDashboardPage}() {",
+      "  const items = [{ name: \"Apollo billing\", owner: \"Anita\", progress: 68 }, { name: \"Vendor onboarding\", owner: \"Ravi\", progress: 24 }, { name: \"Mobile inventory\", owner: \"Priya\", progress: 91 }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Projects}</h1>",
+      "      <section className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">{items.map((p) => (<article key={p.name} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">{p.name}</h2><p className=\"text-xs text-gray-500\">Owner · {p.owner}</p><div className=\"mt-3 h-2 rounded-full bg-gray-100 overflow-hidden\" role=\"progressbar\" aria-valuenow={p.progress} aria-valuemin={0} aria-valuemax={100}><div className=\"h-full bg-blue-600\" style={{ width: p.progress + \"%\" }} /></div><p className=\"mt-1 text-xs text-gray-500\">{p.progress}% complete</p></article>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Tasks (snxdash12)": {
+    "prefix": "snxdash12",
+    "description": "Next.js task dashboard with three swimlanes.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Tasks\" };",
+      "",
+      "export default function ${1:TaskDashboardPage}() {",
+      "  const lanes: Record<string, string[]> = { \"To do\": [\"Draft pricing page\", \"Refactor auth module\"], \"In progress\": [\"Integrate ledger API\", \"QA invoice flow\"], \"Done\": [\"Migrate DB to PG16\"] };",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Tasks}</h1>",
+      "      <section className=\"grid grid-cols-1 md:grid-cols-3 gap-4\">{Object.entries(lanes).map(([lane, tasks]) => (<div key={lane} className=\"rounded-2xl border border-gray-200 bg-white p-4\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{lane}</p><ul className=\"mt-3 space-y-2 text-sm\">{tasks.map((t) => (<li key={t} className=\"rounded-md border border-gray-200 px-3 py-2\">{t}</li>))}{tasks.length === 0 && <li className=\"text-xs text-gray-400\">No tasks</li>}</ul></div>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Reports (snxdash13)": {
+    "prefix": "snxdash13",
+    "description": "Next.js reports dashboard listing scheduled and recent reports.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Reports\" };",
+      "",
+      "export default function ${1:ReportsDashboardPage}() {",
+      "  const items = [{ name: \"Monthly P&L\", schedule: \"1st of every month\", last: \"01 May\" }, { name: \"Inventory aging\", schedule: \"Every Monday\", last: \"19 May\" }, { name: \"Sales by region\", schedule: \"Daily 18:00\", last: \"Today\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <div className=\"flex items-center justify-between\"><h1 className=\"text-2xl font-semibold text-gray-900\">${4:Reports}</h1><button type=\"button\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">New report</button></div>",
+      "      <section className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4\">{items.map((r) => (<article key={r.name} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">{r.name}</h2><p className=\"text-xs text-gray-500\">{r.schedule}</p><p className=\"mt-2 text-xs text-gray-400\">Last run · {r.last}</p><button type=\"button\" className=\"mt-3 rounded-md border border-gray-200 px-3 py-1.5 text-xs hover:bg-gray-50\">Run now</button></article>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — User Management (snxdash14)": {
+    "prefix": "snxdash14",
+    "description": "Next.js user-management dashboard with users table preview.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Users\" };",
+      "",
+      "export default function ${1:UserManagementDashboardPage}() {",
+      "  const users = [{ name: \"Anita Rao\", email: \"anita@acme.com\", role: \"Admin\", status: \"Active\" }, { name: \"Ravi Iyer\", email: \"ravi@acme.com\", role: \"Manager\", status: \"Active\" }, { name: \"Priya Nair\", email: \"priya@acme.com\", role: \"Employee\", status: \"Invited\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <div className=\"flex items-center justify-between\"><h1 className=\"text-2xl font-semibold text-gray-900\">${4:Users}</h1><button type=\"button\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">Invite user</button></div>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Email</th><th className=\"px-4 py-3\">Role</th><th className=\"px-4 py-3\">Status</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{users.map((u) => (<tr key={u.email}><td className=\"px-4 py-3 font-medium\">{u.name}</td><td className=\"px-4 py-3 text-gray-600\">{u.email}</td><td className=\"px-4 py-3\">{u.role}</td><td className=\"px-4 py-3\"><span className=\"rounded-full bg-emerald-50 text-emerald-700 text-xs px-2 py-0.5\">{u.status}</span></td></tr>))}</tbody></table></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Card Grid (snxdash15)": {
+    "prefix": "snxdash15",
+    "description": "Next.js card-grid dashboard for module shortcuts or quick links.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Shortcuts\" };",
+      "",
+      "export default function ${1:CardGridDashboardPage}() {",
+      "  const items = [{ name: \"Create invoice\", desc: \"Bill a customer\" }, { name: \"Add product\", desc: \"Catalog entry\" }, { name: \"Run report\", desc: \"Ad-hoc query\" }, { name: \"Invite user\", desc: \"Send email invite\" }, { name: \"Approve leave\", desc: \"HR queue\" }, { name: \"Pay vendor\", desc: \"AP workflow\" }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Shortcuts}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4\">{items.map((c) => (<a key={c.name} href=\"#\" className=\"rounded-2xl border border-gray-200 bg-white p-5 hover:border-blue-300 hover:bg-blue-50/40\"><p className=\"text-sm font-semibold text-gray-900\">{c.name}</p><p className=\"text-xs text-gray-500\">{c.desc}</p></a>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Table Hero (snxdash16)": {
+    "prefix": "snxdash16",
+    "description": "Next.js table-hero dashboard with search and inline table.",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:TableDashboardPage}() {",
+      "  const [q, setQ] = useState(\"\");",
+      "  const rows = [{ id: \"R-1001\", name: \"Acme Corp\", value: \"$24,500\" }, { id: \"R-1002\", name: \"Tata Steel\", value: \"$48,200\" }, { id: \"R-1003\", name: \"Infosys\", value: \"$12,800\" }];",
+      "  const visible = rows.filter((r) => r.name.toLowerCase().includes(q.toLowerCase()));",
+      "  return (",
+      "    <main className=\"p-6 space-y-4\">",
+      "      <div className=\"flex items-center justify-between\"><h1 className=\"text-2xl font-semibold text-gray-900\">${4:Records}</h1><input type=\"search\" value={q} onChange={(e) => setQ(e.target.value)} placeholder=\"Search…\" className=\"rounded-md border border-gray-300 px-3 py-1.5 text-sm\" /></div>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Value</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{visible.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3 font-medium\">{r.value}</td></tr>))}{visible.length === 0 && (<tr><td colSpan={3} className=\"px-4 py-8 text-center text-xs text-gray-400\">No records</td></tr>)}</tbody></table></section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Async Server Fetch (snxdash17)": {
+    "prefix": "snxdash17",
+    "description": "Next.js server-component dashboard fetching data with async/await.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"${4:Server overview}\" };",
+      "",
+      "async function getStats() {",
+      "  const res = await fetch(\"${2:https://api.example.com/stats}\", { next: { revalidate: 60 } });",
+      "  if (!res.ok) throw new Error(\"Failed to load stats\");",
+      "  return (await res.json()) as { label: string; value: string }[];",
+      "}",
+      "",
+      "export default async function ${1:ServerDashboardPage}() {",
+      "  const stats = await getStats();",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Server overview}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">",
+      "        {stats.length === 0 ? (",
+      "          <p className=\"col-span-full text-sm text-gray-400\">No data available</p>",
+      "        ) : (",
+      "          stats.map((s) => (<div key={s.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{s.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{s.value}</p></div>))",
+      "        )}",
+      "      </section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Client useEffect (snxdash18)": {
+    "prefix": "snxdash18",
+    "description": "Next.js client dashboard fetching with useEffect (with loading + empty state).",
+    "body": [
+      "\"use client\";",
+      "import { useEffect, useState } from \"react\";",
+      "",
+      "interface Stat { label: string; value: string; }",
+      "",
+      "export default function ${1:ClientDashboardPage}() {",
+      "  const [stats, setStats] = useState<Stat[]>([]);",
+      "  const [loading, setLoading] = useState(true);",
+      "  useEffect(() => { fetch(\"${2:/api/stats}\").then((r) => r.json()).then(setStats).finally(() => setLoading(false)); }, []);",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Live overview}</h1>",
+      "      {loading ? (",
+      "        <div className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{Array.from({ length: 4 }).map((_, i) => (<div key={i} className=\"h-24 rounded-2xl border border-gray-100 bg-gray-50 animate-pulse\" />))}</div>",
+      "      ) : stats.length === 0 ? (",
+      "        <div className=\"rounded-xl border border-dashed border-gray-300 bg-white p-10 text-center text-sm text-gray-500\">No metrics yet</div>",
+      "      ) : (",
+      "        <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{stats.map((s) => (<div key={s.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{s.label}</p><p className=\"mt-1 text-2xl font-bold text-gray-900\">{s.value}</p></div>))}</section>",
+      "      )}",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — Dark (snxdash19)": {
+    "prefix": "snxdash19",
+    "description": "Next.js dark-themed dashboard page.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"${4:Overview}\" };",
+      "",
+      "export default function ${1:DarkDashboardPage}() {",
+      "  const kpis = [{ label: \"MRR\", value: \"$28.5K\" }, { label: \"Active users\", value: \"4,210\" }, { label: \"Errors\", value: \"3\" }, { label: \"Uptime\", value: \"99.98%\" }];",
+      "  return (",
+      "    <main className=\"min-h-screen bg-zinc-950 text-zinc-100 p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold\">${4:Overview}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl bg-zinc-900 border border-zinc-800 p-5\"><p className=\"text-xs uppercase tracking-wider text-zinc-400\">{k.label}</p><p className=\"mt-1 text-2xl font-bold\">{k.value}</p></div>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Dashboard — KPI Focused (snxdash20)": {
+    "prefix": "snxdash20",
+    "description": "Next.js KPI-focused dashboard with deltas and trend indicators.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"Key metrics\" };",
+      "",
+      "export default function ${1:KpiDashboardPage}() {",
+      "  const kpis = [{ label: \"Revenue\", value: \"$48,500\", delta: 4.2 }, { label: \"Customers\", value: \"1,284\", delta: 2.1 }, { label: \"Orders\", value: \"382\", delta: -1.3 }, { label: \"Refunds\", value: \"12\", delta: -8.0 }, { label: \"NPS\", value: \"+58\", delta: 0.4 }, { label: \"Churn\", value: \"1.9%\", delta: -0.3 }];",
+      "  return (",
+      "    <main className=\"p-6 space-y-6\">",
+      "      <h1 className=\"text-2xl font-semibold text-gray-900\">${4:Key metrics}</h1>",
+      "      <section className=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4\">{kpis.map((k) => (<div key={k.label} className=\"rounded-2xl border border-gray-200 bg-white p-5\"><p className=\"text-xs uppercase tracking-wider text-gray-500\">{k.label}</p><div className=\"mt-1 flex items-end justify-between\"><p className=\"text-2xl font-bold text-gray-900\">{k.value}</p><span className={\"text-xs font-medium \" + (k.delta >= 0 ? \"text-emerald-700\" : \"text-red-700\")}>{k.delta >= 0 ? \"↑\" : \"↓\"} {Math.abs(k.delta)}%</span></div></div>))}</section>",
+      "    </main>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Root (snxlayout01)": {
+    "prefix": "snxlayout01",
+    "description": "Next.js basic root layout.tsx with html/body and global font setup.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "import \"./globals.css\";",
+      "",
+      "export const metadata: Metadata = { title: \"${4:Shelb}\", description: \"${3:Modern business toolkit.}\" };",
+      "",
+      "export default function ${1:RootLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <html lang=\"en\">",
+      "      <body className=\"min-h-screen bg-white text-gray-900 antialiased\">{children}</body>",
+      "    </html>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Dashboard (snxlayout02)": {
+    "prefix": "snxlayout02",
+    "description": "Next.js dashboard layout.tsx with sidebar + topbar + main slot.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:DashboardLayout}({ children }: { children: React.ReactNode }) {",
+      "  const nav = [{ label: \"Overview\", href: \"/dashboard\" }, { label: \"Reports\", href: \"/reports\" }, { label: \"Settings\", href: \"/settings\" }];",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[16rem_1fr] grid-rows-[3.5rem_1fr] bg-gray-50\">",
+      "      <aside className=\"row-span-2 bg-white border-r border-gray-200 p-3\"><p className=\"px-3 py-2 text-base font-semibold text-gray-900\">${4:Shelb}</p><nav className=\"mt-2 space-y-1 text-sm\">{nav.map((it) => (<Link key={it.href} href={it.href} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">{it.label}</Link>))}</nav></aside>",
+      "      <header className=\"bg-white border-b border-gray-200 px-4 flex items-center justify-between\"><span className=\"text-sm font-semibold text-gray-900\">${4:Dashboard}</span><button type=\"button\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1.5\">New</button></header>",
+      "      <main className=\"p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Sidebar Only (snxlayout03)": {
+    "prefix": "snxlayout03",
+    "description": "Next.js layout with a fixed sidebar nav and main content area.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:SidebarLayout}({ children }: { children: React.ReactNode }) {",
+      "  const nav = [{ label: \"Home\", href: \"/\" }, { label: \"Items\", href: \"/items\" }, { label: \"Settings\", href: \"/settings\" }];",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[16rem_1fr] bg-gray-50\">",
+      "      <aside className=\"bg-white border-r border-gray-200 p-3\"><p className=\"px-3 py-2 font-semibold text-gray-900\">${4:Shelb}</p><nav className=\"mt-2 space-y-1 text-sm\">{nav.map((it) => (<Link key={it.href} href={it.href} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">{it.label}</Link>))}</nav></aside>",
+      "      <main className=\"p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Topbar Only (snxlayout04)": {
+    "prefix": "snxlayout04",
+    "description": "Next.js layout with a sticky topbar and centered container.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:TopbarLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen bg-gray-50\">",
+      "      <header className=\"sticky top-0 z-10 bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between\"><Link href=\"/\" className=\"text-sm font-semibold text-gray-900\">${4:Shelb}</Link><nav className=\"text-sm text-gray-600 flex items-center gap-5\"><Link href=\"/docs\">Docs</Link><Link href=\"/pricing\">Pricing</Link><Link href=\"/login\">Sign in</Link></nav></header>",
+      "      <main className=\"mx-auto max-w-6xl p-6\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Auth (snxlayout05)": {
+    "prefix": "snxlayout05",
+    "description": "Next.js auth route group layout (centered card layout for /login, /signup).",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:AuthLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4\">",
+      "      <Link href=\"/\" className=\"mb-6 flex items-center gap-2\"><span className=\"h-8 w-8 rounded-md bg-blue-600 text-white grid place-items-center font-bold\">S</span><span className=\"font-semibold text-gray-900\">${4:Shelb}</span></Link>",
+      "      <div className=\"w-full max-w-md\">{children}</div>",
+      "      <p className=\"mt-4 text-xs text-gray-400\">© ${4:Shelb} · <Link href=\"/privacy\" className=\"hover:underline\">Privacy</Link></p>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Settings (snxlayout06)": {
+    "prefix": "snxlayout06",
+    "description": "Next.js /settings layout with left subnav and content panel.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:SettingsLayout}({ children }: { children: React.ReactNode }) {",
+      "  const tabs = [{ label: \"Profile\", href: \"/settings/profile\" }, { label: \"Team\", href: \"/settings/team\" }, { label: \"Billing\", href: \"/settings/billing\" }, { label: \"Security\", href: \"/settings/security\" }];",
+      "  return (",
+      "    <div className=\"grid grid-cols-1 lg:grid-cols-[14rem_1fr] gap-6 p-6\">",
+      "      <nav aria-label=\"Settings\" className=\"space-y-1 text-sm\">{tabs.map((t) => (<Link key={t.href} href={t.href} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">{t.label}</Link>))}</nav>",
+      "      <section>{children}</section>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Admin (snxlayout07)": {
+    "prefix": "snxlayout07",
+    "description": "Next.js /admin layout with admin sidebar and admin topbar.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:AdminLayout}({ children }: { children: React.ReactNode }) {",
+      "  const nav = [{ label: \"Users\", href: \"/admin/users\" }, { label: \"Audit log\", href: \"/admin/audit\" }, { label: \"Settings\", href: \"/admin/settings\" }];",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[15rem_1fr] grid-rows-[3rem_1fr] bg-slate-50\">",
+      "      <aside className=\"row-span-2 bg-slate-900 text-slate-100 p-3\"><p className=\"px-3 py-2 text-base font-semibold\">${4:Shelb} Admin</p><nav className=\"mt-2 space-y-1 text-sm\">{nav.map((it) => (<Link key={it.href} href={it.href} className=\"block rounded px-3 py-2 text-slate-300 hover:bg-slate-800\">{it.label}</Link>))}</nav></aside>",
+      "      <header className=\"bg-white border-b border-slate-200 px-4 flex items-center justify-between text-sm\"><span className=\"font-semibold text-slate-900\">Admin console</span><Link href=\"/\" className=\"text-slate-500 hover:underline\">Exit admin</Link></header>",
+      "      <main className=\"p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — SaaS (snxlayout08)": {
+    "prefix": "snxlayout08",
+    "description": "Next.js SaaS app layout with workspace switcher header.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:SaaSLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-rows-[3rem_1fr] grid-cols-[16rem_1fr]\">",
+      "      <header className=\"col-span-2 bg-white border-b border-gray-200 px-4 flex items-center gap-3 text-sm\"><span className=\"font-semibold text-gray-900\">${4:Shelb}</span><span className=\"text-gray-400\">/</span><button className=\"rounded-md border border-gray-200 px-2 py-1 text-xs hover:bg-gray-50\">Acme Inc. ▾</button><div className=\"ml-auto flex items-center gap-3\"><Link href=\"/help\" className=\"text-gray-500\">Help</Link><div className=\"h-7 w-7 rounded-full bg-gray-200 grid place-items-center text-xs\">A</div></div></header>",
+      "      <aside className=\"bg-white border-r border-gray-200 p-3\"><nav className=\"space-y-1 text-sm\"><Link href=\"/app\" className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Home</Link><Link href=\"/app/projects\" className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Projects</Link><Link href=\"/app/team\" className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Team</Link></nav></aside>",
+      "      <main className=\"bg-gray-50 p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Marketing (snxlayout09)": {
+    "prefix": "snxlayout09",
+    "description": "Next.js marketing layout with header, footer and content slot.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:MarketingLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen flex flex-col bg-white\">",
+      "      <header className=\"px-6 py-4 flex items-center justify-between\"><Link href=\"/\" className=\"font-bold text-blue-600\">${4:Shelb}</Link><nav className=\"text-sm text-gray-600 flex items-center gap-5\"><Link href=\"/features\">Features</Link><Link href=\"/pricing\">Pricing</Link><Link href=\"/login\">Sign in</Link><Link href=\"/signup\" className=\"rounded-md bg-gray-900 text-white px-3 py-1.5\">Get started</Link></nav></header>",
+      "      <main className=\"flex-1\">{children}</main>",
+      "      <footer className=\"px-6 py-6 border-t border-gray-100 text-xs text-gray-400 flex items-center justify-between\"><span>© ${4:Shelb}</span><div className=\"flex gap-4\"><Link href=\"/privacy\">Privacy</Link><Link href=\"/terms\">Terms</Link></div></footer>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Docs (snxlayout10)": {
+    "prefix": "snxlayout10",
+    "description": "Next.js docs layout with side toc and prose article area.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:DocsLayout}({ children }: { children: React.ReactNode }) {",
+      "  const toc = [{ label: \"Introduction\", href: \"/docs\" }, { label: \"Quickstart\", href: \"/docs/quickstart\" }, { label: \"Concepts\", href: \"/docs/concepts\" }, { label: \"API\", href: \"/docs/api\" }];",
+      "  return (",
+      "    <div className=\"grid grid-cols-1 lg:grid-cols-[14rem_1fr] gap-8 px-6 py-8 max-w-6xl mx-auto\">",
+      "      <aside className=\"border-r border-gray-100 pr-4\"><nav className=\"space-y-1 text-sm\">{toc.map((t) => (<Link key={t.href} href={t.href} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">{t.label}</Link>))}</nav></aside>",
+      "      <article className=\"prose prose-sm sm:prose max-w-none\">{children}</article>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Tenant (snxlayout11)": {
+    "prefix": "snxlayout11",
+    "description": "Next.js tenant layout reading [tenant] params for branding context.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:TenantLayout}({ children, params }: { children: React.ReactNode; params: { tenant: string } }) {",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[16rem_1fr] grid-rows-[3rem_1fr] bg-gray-50\">",
+      "      <header className=\"col-span-2 bg-white border-b border-gray-200 px-4 flex items-center text-sm gap-3\"><span className=\"font-semibold text-gray-900\">${4:Shelb}</span><span className=\"text-gray-400\">/</span><span className=\"text-gray-700\">{params.tenant}</span></header>",
+      "      <aside className=\"bg-white border-r border-gray-200 p-3\"><nav className=\"space-y-1 text-sm\"><Link href={\"/\" + params.tenant} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Overview</Link><Link href={\"/\" + params.tenant + \"/settings\"} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Settings</Link></nav></aside>",
+      "      <main className=\"p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Locale (snxlayout12)": {
+    "prefix": "snxlayout12",
+    "description": "Next.js locale-aware layout reading [locale] params and setting html lang.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = { title: \"${4:Shelb}\" };",
+      "",
+      "export default function ${1:LocaleLayout}({ children, params }: { children: React.ReactNode; params: { locale: string } }) {",
+      "  return (",
+      "    <html lang={params.locale} dir={params.locale === \"ar\" ? \"rtl\" : \"ltr\"}>",
+      "      <body className=\"min-h-screen bg-white text-gray-900 antialiased\">{children}</body>",
+      "    </html>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Centered (snxlayout13)": {
+    "prefix": "snxlayout13",
+    "description": "Next.js centered single-card layout (auth screens, empty states).",
+    "body": [
+      "export default function ${1:CenteredLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen grid place-items-center bg-gray-50 px-4\">",
+      "      <div className=\"w-full max-w-md\">{children}</div>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Two Column (snxlayout14)": {
+    "prefix": "snxlayout14",
+    "description": "Next.js two-column layout (main + aside).",
+    "body": [
+      "export default function ${1:TwoColumnLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-6 p-6\">",
+      "      <section>{children}</section>",
+      "      <aside className=\"space-y-4\"><div className=\"rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-500\">Side panel</div></aside>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Three Column (snxlayout15)": {
+    "prefix": "snxlayout15",
+    "description": "Next.js three-column layout (left nav + main + right panel).",
+    "body": [
+      "export default function ${1:ThreeColumnLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"grid grid-cols-1 lg:grid-cols-[14rem_1fr_18rem] gap-6 p-6\">",
+      "      <aside><div className=\"rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-500\">Left nav</div></aside>",
+      "      <main>{children}</main>",
+      "      <aside><div className=\"rounded-2xl border border-gray-200 bg-white p-4 text-sm text-gray-500\">Right side</div></aside>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Full Screen (snxlayout16)": {
+    "prefix": "snxlayout16",
+    "description": "Next.js full-screen layout (kiosk / focus mode).",
+    "body": [
+      "export default function ${1:FullscreenLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"fixed inset-0 bg-white overflow-auto\">",
+      "      {children}",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Mobile First (snxlayout17)": {
+    "prefix": "snxlayout17",
+    "description": "Next.js mobile-first layout with bottom tab bar.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:MobileLayout}({ children }: { children: React.ReactNode }) {",
+      "  const tabs = [{ label: \"Home\", href: \"/\" }, { label: \"Tasks\", href: \"/tasks\" }, { label: \"Inbox\", href: \"/inbox\" }, { label: \"More\", href: \"/more\" }];",
+      "  return (",
+      "    <div className=\"min-h-[100svh] flex flex-col bg-white\">",
+      "      <header className=\"px-4 py-3 border-b border-gray-100 text-base font-semibold\">${4:Shelb}</header>",
+      "      <main className=\"flex-1 p-4 pb-20 overflow-auto\">{children}</main>",
+      "      <nav className=\"fixed bottom-0 inset-x-0 grid grid-cols-4 bg-white border-t border-gray-100\">{tabs.map((t) => (<Link key={t.href} href={t.href} className=\"text-center text-xs py-3 text-gray-700\">{t.label}</Link>))}</nav>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — ERP (snxlayout18)": {
+    "prefix": "snxlayout18",
+    "description": "Next.js ERP-style layout with module nav, topbar and tabs row.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:ERPLayout}({ children }: { children: React.ReactNode }) {",
+      "  const modules = [{ label: \"Sales\", href: \"/erp/sales\" }, { label: \"Inventory\", href: \"/erp/inventory\" }, { label: \"HR\", href: \"/erp/hr\" }, { label: \"Finance\", href: \"/erp/finance\" }];",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[14rem_1fr] grid-rows-[3rem_2.5rem_1fr] bg-gray-50\">",
+      "      <aside className=\"row-span-3 bg-white border-r border-gray-200 p-3\"><p className=\"text-xs uppercase tracking-widest text-blue-700\">ERP</p><nav className=\"mt-2 space-y-1 text-sm\">{modules.map((m) => (<Link key={m.href} href={m.href} className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">{m.label}</Link>))}</nav></aside>",
+      "      <header className=\"bg-white border-b border-gray-200 px-4 flex items-center justify-between text-sm\"><span className=\"font-semibold text-gray-900\">${4:Shelb} ERP</span><button type=\"button\" className=\"rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3 py-1.5\">New</button></header>",
+      "      <nav className=\"bg-white border-b border-gray-100 px-4 flex items-center gap-1 text-sm\"><Link href=\"#\" className=\"px-3 py-1.5 rounded-md text-gray-600 hover:bg-gray-50\">Overview</Link><Link href=\"#\" className=\"px-3 py-1.5 rounded-md text-gray-600 hover:bg-gray-50\">Reports</Link></nav>",
+      "      <main className=\"p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — App Shell (snxlayout19)": {
+    "prefix": "snxlayout19",
+    "description": "Next.js complete app shell with sidebar, topbar (search + user) and footer.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:AppShellLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[16rem_1fr] grid-rows-[3.5rem_1fr_2.5rem]\">",
+      "      <aside className=\"row-span-3 bg-white border-r border-gray-200 p-3\"><p className=\"font-semibold text-gray-900\">${4:Shelb}</p><nav className=\"mt-3 space-y-1 text-sm\"><Link href=\"/\" className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Home</Link><Link href=\"/projects\" className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Projects</Link><Link href=\"/team\" className=\"block rounded px-3 py-2 text-gray-700 hover:bg-gray-50\">Team</Link></nav></aside>",
+      "      <header className=\"bg-white border-b border-gray-200 flex items-center gap-4 px-4\"><input type=\"search\" placeholder=\"Search…\" className=\"flex-1 max-w-md rounded-md border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm\" /><button type=\"button\" className=\"rounded-full h-8 w-8 bg-gray-200 grid place-items-center text-xs\" aria-label=\"Account\">A</button></header>",
+      "      <main className=\"p-6 bg-gray-50 overflow-auto\">{children}</main>",
+      "      <footer className=\"bg-white border-t border-gray-200 text-xs text-gray-400 flex items-center px-4\">© ${4:Shelb}</footer>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Layout — Dark (snxlayout20)": {
+    "prefix": "snxlayout20",
+    "description": "Next.js dark-themed app layout.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "export default function ${1:DarkLayout}({ children }: { children: React.ReactNode }) {",
+      "  return (",
+      "    <div className=\"min-h-screen grid grid-cols-[16rem_1fr] bg-zinc-950 text-zinc-100\">",
+      "      <aside className=\"bg-zinc-900 border-r border-zinc-800 p-3\"><p className=\"font-semibold\">${4:Shelb}</p><nav className=\"mt-3 space-y-1 text-sm\"><Link href=\"/\" className=\"block rounded px-3 py-2 text-zinc-300 hover:bg-zinc-800\">Home</Link><Link href=\"/projects\" className=\"block rounded px-3 py-2 text-zinc-300 hover:bg-zinc-800\">Projects</Link></nav></aside>",
+      "      <main className=\"p-6 overflow-auto\">{children}</main>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Form — Basic Client (snxform01)": {
+    "prefix": "snxform01",
+    "description": "Next.js basic client form with useState + fetch.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:BasicForm}() {",
+      "  const [data, setData] = useState({ name: \"\", email: \"\" });",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault();",
+      "    await fetch(\"${2:/api/items}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) });",
+      "  }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-md space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input required value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Email</label><input type=\"email\" required value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Server Action (snxform02)": {
+    "prefix": "snxform02",
+    "description": "Next.js form using a server action with FormData.",
+    "body": [
+      "import { revalidatePath } from \"next/cache\";",
+      "",
+      "async function ${2:saveItem}(formData: FormData) {",
+      "  \"use server\";",
+      "  const name = String(formData.get(\"name\") ?? \"\");",
+      "  await fetch(\"${3:/api/items}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ name }) });",
+      "  revalidatePath(\"${4:/items}\");",
+      "}",
+      "",
+      "export default function ${1:ServerActionForm}() {",
+      "  return (",
+      "    <form action={${2:saveItem}} className=\"max-w-md space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input name=\"name\" required className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Login (snxform03)": {
+    "prefix": "snxform03",
+    "description": "Next.js login form posting to /api/auth/login.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "import { useRouter } from \"next/navigation\";",
+      "",
+      "export default function ${1:LoginForm}() {",
+      "  const router = useRouter();",
+      "  const [email, setEmail] = useState(\"\");",
+      "  const [password, setPassword] = useState(\"\");",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault();",
+      "    const res = await fetch(\"${2:/api/auth/login}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ email, password }) });",
+      "    if (res.ok) router.push(\"${3:/dashboard}\");",
+      "  }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-md space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Email</label><input type=\"email\" required value={email} onChange={(e) => setEmail(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Password</label><input type=\"password\" required value={password} onChange={(e) => setPassword(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" className=\"w-full rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Sign in}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Register (snxform04)": {
+    "prefix": "snxform04",
+    "description": "Next.js register form posting to /api/auth/register.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "import { useRouter } from \"next/navigation\";",
+      "",
+      "export default function ${1:RegisterForm}() {",
+      "  const router = useRouter();",
+      "  const [data, setData] = useState({ name: \"\", email: \"\", password: \"\" });",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/auth/register}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); router.push(\"${3:/dashboard}\"); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-md space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Full name</label><input required value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Email</label><input type=\"email\" required value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Password</label><input type=\"password\" minLength={8} required value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" className=\"w-full rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Create account}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Profile (snxform05)": {
+    "prefix": "snxform05",
+    "description": "Next.js profile form with name, email and bio fields.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:ProfileForm}({ initial = { name: \"\", email: \"\", bio: \"\" } }: { initial?: { name: string; email: string; bio: string } }) {",
+      "  const [data, setData] = useState(initial);",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/profile}\", { method: \"PUT\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-5\">",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\">",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Email</label><input type=\"email\" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      </div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Bio</label><textarea rows={4} value={data.bio} onChange={(e) => setData({ ...data, bio: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save changes}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Settings (snxform06)": {
+    "prefix": "snxform06",
+    "description": "Next.js settings form with grouped sections.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:SettingsForm}() {",
+      "  const [workspace, setWorkspace] = useState(\"acme\");",
+      "  const [notify, setNotify] = useState(true);",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/settings}\", { method: \"PUT\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ workspace, notify }) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-6\">",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5 space-y-3\"><h2 className=\"text-sm font-semibold text-gray-900\">Workspace</h2><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Slug</label><input value={workspace} onChange={(e) => setWorkspace(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div></section>",
+      "      <section className=\"rounded-2xl border border-gray-200 bg-white p-5\"><h2 className=\"text-sm font-semibold text-gray-900\">Notifications</h2><label className=\"mt-3 inline-flex items-center gap-2 text-sm text-gray-700\"><input type=\"checkbox\" checked={notify} onChange={(e) => setNotify(e.target.checked)} />Email daily summaries</label></section>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save settings}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Product (snxform07)": {
+    "prefix": "snxform07",
+    "description": "Next.js product form with SKU, name, price and category.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:ProductForm}() {",
+      "  const [data, setData] = useState({ sku: \"\", name: \"\", price: 0, category: \"General\" });",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/products}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-4\">",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\">",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">SKU</label><input value={data.sku} onChange={(e) => setData({ ...data, sku: e.target.value.toUpperCase() })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm uppercase\" /></div>",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Category</label><select value={data.category} onChange={(e) => setData({ ...data, category: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>General</option><option>Electronics</option><option>Apparel</option></select></div>",
+      "      </div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input required value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Price</label><input type=\"number\" min={0} step=\"0.01\" value={data.price} onChange={(e) => setData({ ...data, price: Number(e.target.value) })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save product}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Invoice (snxform08)": {
+    "prefix": "snxform08",
+    "description": "Next.js invoice form with customer, dates and line items.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:InvoiceForm}() {",
+      "  const [customer, setCustomer] = useState(\"\");",
+      "  const [date, setDate] = useState(\"\");",
+      "  const [lines, setLines] = useState([{ desc: \"\", qty: 1, rate: 0 }]);",
+      "  const total = lines.reduce((s, l) => s + l.qty * l.rate, 0);",
+      "  function setLine(i: number, patch: Partial<{ desc: string; qty: number; rate: number }>) { setLines((arr) => arr.map((l, idx) => idx === i ? { ...l, ...patch } : l)); }",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/invoices}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ customer, date, lines, total }) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"space-y-4\">",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\"><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Customer</label><input required value={customer} onChange={(e) => setCustomer(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Date</label><input type=\"date\" value={date} onChange={(e) => setDate(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div></div>",
+      "      <div className=\"rounded-xl border border-gray-200 overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-3 py-2\">Item</th><th className=\"px-3 py-2 w-20\">Qty</th><th className=\"px-3 py-2 w-28\">Rate</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{lines.map((l, i) => (<tr key={i}><td className=\"px-3 py-1.5\"><input value={l.desc} onChange={(e) => setLine(i, { desc: e.target.value })} className=\"w-full px-2 py-1 border border-gray-200 rounded\" /></td><td className=\"px-3 py-1.5\"><input type=\"number\" value={l.qty} onChange={(e) => setLine(i, { qty: Number(e.target.value) })} className=\"w-full px-2 py-1 border border-gray-200 rounded\" /></td><td className=\"px-3 py-1.5\"><input type=\"number\" step=\"0.01\" value={l.rate} onChange={(e) => setLine(i, { rate: Number(e.target.value) })} className=\"w-full px-2 py-1 border border-gray-200 rounded\" /></td></tr>))}</tbody></table></div>",
+      "      <div className=\"flex items-center justify-between\"><button type=\"button\" onClick={() => setLines((a) => [...a, { desc: \"\", qty: 1, rate: 0 }])} className=\"rounded-md border border-gray-200 text-sm px-3 py-1.5 hover:bg-gray-50\">Add line</button><p className=\"text-sm font-semibold\">Total: {total.toFixed(2)}</p></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save invoice}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Employee (snxform09)": {
+    "prefix": "snxform09",
+    "description": "Next.js employee form with personal and employment fields.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:EmployeeForm}() {",
+      "  const [data, setData] = useState({ empId: \"\", name: \"\", email: \"\", department: \"Engineering\", role: \"Employee\" });",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/employees}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-4\">",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\"><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Employee ID</label><input value={data.empId} onChange={(e) => setData({ ...data, empId: e.target.value.toUpperCase() })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm uppercase\" /></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input required value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Email</label><input type=\"email\" required value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\"><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Department</label><select value={data.department} onChange={(e) => setData({ ...data, department: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>Engineering</option><option>Operations</option><option>HR</option><option>Finance</option></select></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Role</label><select value={data.role} onChange={(e) => setData({ ...data, role: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>Admin</option><option>Manager</option><option>Employee</option></select></div></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save employee}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Task (snxform10)": {
+    "prefix": "snxform10",
+    "description": "Next.js task form with title, assignee, status and due date.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:TaskForm}() {",
+      "  const [data, setData] = useState({ title: \"\", assignee: \"\", status: \"Todo\", due: \"\" });",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/tasks}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Title</label><input required value={data.title} onChange={(e) => setData({ ...data, title: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"grid sm:grid-cols-3 gap-4\">",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Assignee</label><input value={data.assignee} onChange={(e) => setData({ ...data, assignee: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Status</label><select value={data.status} onChange={(e) => setData({ ...data, status: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>Todo</option><option>Doing</option><option>Done</option></select></div>",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Due</label><input type=\"date\" value={data.due} onChange={(e) => setData({ ...data, due: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      </div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Create task}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Project (snxform11)": {
+    "prefix": "snxform11",
+    "description": "Next.js project form with name, code, owner and status.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:ProjectForm}() {",
+      "  const [data, setData] = useState({ name: \"\", code: \"\", owner: \"\", status: \"Active\" });",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/projects}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-4\">",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\"><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input required value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Code</label><input value={data.code} onChange={(e) => setData({ ...data, code: e.target.value.toUpperCase() })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm uppercase\" /></div></div>",
+      "      <div className=\"grid sm:grid-cols-2 gap-4\"><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Owner</label><input value={data.owner} onChange={(e) => setData({ ...data, owner: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Status</label><select value={data.status} onChange={(e) => setData({ ...data, status: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>Active</option><option>On hold</option><option>Closed</option></select></div></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Create project}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Search/Filter (snxform12)": {
+    "prefix": "snxform12",
+    "description": "Next.js search/filter form that pushes querystring with useRouter.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "import { useRouter, useSearchParams } from \"next/navigation\";",
+      "",
+      "export default function ${1:FilterForm}() {",
+      "  const router = useRouter();",
+      "  const params = useSearchParams();",
+      "  const [q, setQ] = useState(params.get(\"q\") ?? \"\");",
+      "  const [status, setStatus] = useState(params.get(\"status\") ?? \"\");",
+      "  function onSubmit(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault();",
+      "    const next = new URLSearchParams();",
+      "    if (q) next.set(\"q\", q);",
+      "    if (status) next.set(\"status\", status);",
+      "    router.push(\"${2:/items}?\" + next.toString());",
+      "  }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"flex flex-wrap items-end gap-3\">",
+      "      <div><label className=\"block text-xs uppercase tracking-wider text-gray-500\">Search</label><input value={q} onChange={(e) => setQ(e.target.value)} className=\"rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div><label className=\"block text-xs uppercase tracking-wider text-gray-500\">Status</label><select value={status} onChange={(e) => setStatus(e.target.value)} className=\"rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option value=\"\">Any</option><option>Open</option><option>Closed</option></select></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Apply}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — File Upload (snxform13)": {
+    "prefix": "snxform13",
+    "description": "Next.js file upload form posting multipart/form-data.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:FileUploadForm}() {",
+      "  const [file, setFile] = useState<File | null>(null);",
+      "  const [uploading, setUploading] = useState(false);",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault(); if (!file) return; setUploading(true);",
+      "    const fd = new FormData(); fd.append(\"file\", file);",
+      "    await fetch(\"${2:/api/upload}\", { method: \"POST\", body: fd });",
+      "    setUploading(false);",
+      "  }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-md space-y-4\">",
+      "      <label htmlFor=\"file\" className=\"flex items-center justify-between gap-3 rounded-md border border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 px-3 py-2 text-sm text-gray-600 cursor-pointer\"><span>{file ? file.name : \"Choose file…\"}</span><span className=\"rounded bg-white border border-gray-200 px-2 py-1 text-xs\">Browse</span></label>",
+      "      <input id=\"file\" type=\"file\" onChange={(e) => setFile(e.target.files?.[0] ?? null)} className=\"sr-only\" />",
+      "      <button type=\"submit\" disabled={!file || uploading} className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 disabled:opacity-60\">{uploading ? \"Uploading…\" : \"${6:Upload}\"}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Multi-step (snxform14)": {
+    "prefix": "snxform14",
+    "description": "Next.js multi-step form with progress bar.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "import { useRouter } from \"next/navigation\";",
+      "",
+      "export default function ${1:MultiStepForm}() {",
+      "  const router = useRouter();",
+      "  const [step, setStep] = useState(1);",
+      "  const [data, setData] = useState({ name: \"\", company: \"\", plan: \"Pro\" });",
+      "  async function next(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault();",
+      "    if (step < 3) return setStep(step + 1);",
+      "    await fetch(\"${2:/api/signup}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) });",
+      "    router.push(\"${3:/dashboard}\");",
+      "  }",
+      "  return (",
+      "    <form onSubmit={next} className=\"max-w-md space-y-5\">",
+      "      <div className=\"flex gap-2\">{[1, 2, 3].map((n) => <div key={n} className={\"flex-1 h-1 rounded \" + (n <= step ? \"bg-blue-600\" : \"bg-gray-200\")} />)}</div>",
+      "      {step === 1 && <input placeholder=\"Your name\" value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" />}",
+      "      {step === 2 && <input placeholder=\"Company\" value={data.company} onChange={(e) => setData({ ...data, company: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" />}",
+      "      {step === 3 && <select value={data.plan} onChange={(e) => setData({ ...data, plan: e.target.value })} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>Starter</option><option>Pro</option><option>Enterprise</option></select>}",
+      "      <button type=\"submit\" className=\"w-full rounded-md bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm\">{step < 3 ? \"Continue\" : \"${6:Finish}\"}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Validation (snxform15)": {
+    "prefix": "snxform15",
+    "description": "Next.js form with inline validation and submit gating.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:ValidatedForm}() {",
+      "  const [name, setName] = useState(\"\");",
+      "  const [email, setEmail] = useState(\"\");",
+      "  const [touched, setTouched] = useState({ name: false, email: false });",
+      "  const nameError = !name ? \"Name is required\" : name.length < 2 ? \"Too short\" : \"\";",
+      "  const emailError = !email ? \"Email is required\" : !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email) ? \"Invalid email\" : \"\";",
+      "  const isValid = !nameError && !emailError;",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); setTouched({ name: true, email: true }); if (!isValid) return; await fetch(\"${2:/api/items}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ name, email }) }); }",
+      "  return (",
+      "    <form noValidate onSubmit={onSubmit} className=\"max-w-md space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input value={name} onChange={(e) => setName(e.target.value)} onBlur={() => setTouched((t) => ({ ...t, name: true }))} aria-invalid={touched.name && !!nameError} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm aria-[invalid=true]:border-red-500\" />{touched.name && nameError && <p className=\"text-xs text-red-600\">{nameError}</p>}</div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Email</label><input value={email} onChange={(e) => setEmail(e.target.value)} onBlur={() => setTouched((t) => ({ ...t, email: true }))} aria-invalid={touched.email && !!emailError} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm aria-[invalid=true]:border-red-500\" />{touched.email && emailError && <p className=\"text-xs text-red-600\">{emailError}</p>}</div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Submit}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Loading State (snxform16)": {
+    "prefix": "snxform16",
+    "description": "Next.js form with explicit loading + error + success state.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:LoadingForm}() {",
+      "  const [name, setName] = useState(\"\");",
+      "  const [loading, setLoading] = useState(false);",
+      "  const [error, setError] = useState<string | null>(null);",
+      "  const [done, setDone] = useState(false);",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault(); setLoading(true); setError(null); setDone(false);",
+      "    try {",
+      "      const res = await fetch(\"${2:/api/items}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ name }) });",
+      "      if (!res.ok) throw new Error(\"Save failed.\");",
+      "      setDone(true);",
+      "    } catch (err) { setError((err as Error).message); } finally { setLoading(false); }",
+      "  }",
+      "  return (",
+      "    <form onSubmit={onSubmit} aria-busy={loading} className=\"max-w-md space-y-4\">",
+      "      {error && <p role=\"alert\" className=\"rounded-md bg-red-50 text-red-700 px-3 py-2 text-sm\">{error}</p>}",
+      "      {done && <p role=\"status\" className=\"rounded-md bg-emerald-50 text-emerald-700 px-3 py-2 text-sm\">Saved successfully.</p>}",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Name</label><input required value={name} onChange={(e) => setName(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <button type=\"submit\" disabled={loading} className=\"inline-flex items-center gap-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 disabled:opacity-60\">{loading && (<svg className=\"animate-spin h-4 w-4\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" strokeWidth=\"4\" fill=\"none\" className=\"opacity-25\" /><path d=\"M4 12a8 8 0 018-8\" stroke=\"currentColor\" strokeWidth=\"4\" fill=\"none\" className=\"opacity-75\" /></svg>)}{loading ? \"Saving…\" : \"${6:Save}\"}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Select Fields (snxform17)": {
+    "prefix": "snxform17",
+    "description": "Next.js form built around multiple select inputs and dependent options.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:SelectsForm}() {",
+      "  const states: Record<string, string[]> = { India: [\"Karnataka\", \"Maharashtra\", \"Tamil Nadu\"], USA: [\"California\", \"Texas\", \"New York\"] };",
+      "  const [country, setCountry] = useState(\"India\");",
+      "  const [state, setState] = useState(\"Karnataka\");",
+      "  const [currency, setCurrency] = useState(\"INR\");",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/preferences}\", { method: \"PUT\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ country, state, currency }) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-4\">",
+      "      <div className=\"grid sm:grid-cols-3 gap-4\">",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Country</label><select value={country} onChange={(e) => { setCountry(e.target.value); setState(states[e.target.value][0]); }} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\">{Object.keys(states).map((c) => <option key={c}>{c}</option>)}</select></div>",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">State</label><select value={state} onChange={(e) => setState(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\">{states[country].map((s) => <option key={s}>{s}</option>)}</select></div>",
+      "        <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Currency</label><select value={currency} onChange={(e) => setCurrency(e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm bg-white\"><option>INR</option><option>USD</option><option>EUR</option></select></div>",
+      "      </div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Checkbox & Radio (snxform18)": {
+    "prefix": "snxform18",
+    "description": "Next.js form with checkbox group and radio group.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:CheckRadioForm}() {",
+      "  const [topics, setTopics] = useState<string[]>([\"product\"]);",
+      "  const [contact, setContact] = useState(\"email\");",
+      "  function toggle(v: string) { setTopics((s) => s.includes(v) ? s.filter((x) => x !== v) : [...s, v]); }",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/preferences}\", { method: \"PUT\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ topics, contact }) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-5\">",
+      "      <fieldset><legend className=\"text-sm font-medium text-gray-700\">Email me about</legend><div className=\"mt-2 space-y-1 text-sm\">{[\"product\", \"billing\", \"security\", \"newsletter\"].map((t) => (<label key={t} className=\"flex items-center gap-2\"><input type=\"checkbox\" checked={topics.includes(t)} onChange={() => toggle(t)} />{t}</label>))}</div></fieldset>",
+      "      <fieldset><legend className=\"text-sm font-medium text-gray-700\">Preferred contact</legend><div className=\"mt-2 flex gap-4 text-sm\">{[\"email\", \"phone\", \"sms\"].map((m) => (<label key={m} className=\"inline-flex items-center gap-2\"><input type=\"radio\" name=\"contact\" value={m} checked={contact === m} onChange={() => setContact(m)} />{m}</label>))}</div></fieldset>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save preferences}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — Address (snxform19)": {
+    "prefix": "snxform19",
+    "description": "Next.js address form with line1, line2, city, state, postal, country.",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "",
+      "export default function ${1:AddressForm}() {",
+      "  const [data, setData] = useState({ line1: \"\", line2: \"\", city: \"\", state: \"\", postal: \"\", country: \"India\" });",
+      "  function set<K extends keyof typeof data>(k: K, v: string) { setData((d) => ({ ...d, [k]: v })); }",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); await fetch(\"${2:/api/addresses}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(data) }); }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"max-w-xl space-y-4\">",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Line 1</label><input required value={data.line1} onChange={(e) => set(\"line1\", e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Line 2</label><input value={data.line2} onChange={(e) => set(\"line2\", e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div>",
+      "      <div className=\"grid sm:grid-cols-3 gap-4\"><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">City</label><input value={data.city} onChange={(e) => set(\"city\", e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">State</label><input value={data.state} onChange={(e) => set(\"state\", e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div><div className=\"space-y-1\"><label className=\"block text-sm font-medium text-gray-700\">Postal</label><input value={data.postal} onChange={(e) => set(\"postal\", e.target.value)} className=\"w-full rounded-md border border-gray-300 px-3 py-2 text-sm\" /></div></div>",
+      "      <button type=\"submit\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Save address}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Form — POST to API (snxform20)": {
+    "prefix": "snxform20",
+    "description": "Next.js form that posts JSON to a Next route handler with router.refresh().",
+    "body": [
+      "\"use client\";",
+      "import { useState, FormEvent } from \"react\";",
+      "import { useRouter } from \"next/navigation\";",
+      "",
+      "export default function ${1:PostToApiForm}() {",
+      "  const router = useRouter();",
+      "  const [name, setName] = useState(\"\");",
+      "  const [loading, setLoading] = useState(false);",
+      "  async function onSubmit(e: FormEvent<HTMLFormElement>) {",
+      "    e.preventDefault(); setLoading(true);",
+      "    await fetch(\"${2:/api/items}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ name }) });",
+      "    setName(\"\");",
+      "    router.refresh();",
+      "    setLoading(false);",
+      "  }",
+      "  return (",
+      "    <form onSubmit={onSubmit} className=\"flex items-center gap-2 max-w-md\">",
+      "      <input placeholder=\"New item…\" required value={name} onChange={(e) => setName(e.target.value)} className=\"flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm\" />",
+      "      <button type=\"submit\" disabled={loading} className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 disabled:opacity-60\">{loading ? \"…\" : \"${6:Add}\"}</button>",
+      "      $0",
+      "    </form>",
+      "  );",
+      "}"
+    ]
+  },
+
+  "Shelb Next Table — Basic Client (snxtable01)": {
+    "prefix": "snxtable01",
+    "description": "Next.js basic client table with sample data.",
+    "body": [
+      "\"use client\";",
+      "",
+      "export default function ${1:BasicTable}() {",
+      "  const items = [{ id: \"1\", name: \"Acme\", value: \"$1,200\" }, { id: \"2\", name: \"Tata\", value: \"$2,800\" }];",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\">",
+      "      <table className=\"w-full text-sm\">",
+      "        <thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Value</th></tr></thead>",
+      "        <tbody className=\"divide-y divide-gray-100\">{items.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3 font-medium\">{r.value}</td></tr>))}</tbody>",
+      "      </table>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Async Server (snxtable02)": {
+    "prefix": "snxtable02",
+    "description": "Next.js server component table fetching data via async/await.",
+    "body": [
+      "interface Row { id: string; name: string; value: string; }",
+      "",
+      "async function getRows(): Promise<Row[]> {",
+      "  const res = await fetch(\"${2:https://api.example.com/items}\", { next: { revalidate: 60 } });",
+      "  if (!res.ok) return [];",
+      "  return (await res.json()) as Row[];",
+      "}",
+      "",
+      "export default async function ${1:ServerTable}() {",
+      "  const rows = await getRows();",
+      "  if (rows.length === 0) return <div className=\"rounded-xl border border-dashed border-gray-300 bg-white p-10 text-center text-sm text-gray-500\">No records yet</div>;",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\">",
+      "      <table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Value</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{rows.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3 font-medium\">{r.value}</td></tr>))}</tbody></table>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Users (snxtable03)": {
+    "prefix": "snxtable03",
+    "description": "Next.js users table with status pills.",
+    "body": [
+      "export default function ${1:UsersTable}() {",
+      "  const users = [{ name: \"Anita Rao\", email: \"anita@acme.com\", role: \"Admin\", status: \"Active\" }, { name: \"Ravi Iyer\", email: \"ravi@acme.com\", role: \"Manager\", status: \"Active\" }, { name: \"Priya Nair\", email: \"priya@acme.com\", role: \"Employee\", status: \"Invited\" }];",
+      "  const tones: Record<string, string> = { Active: \"bg-emerald-50 text-emerald-700\", Invited: \"bg-blue-50 text-blue-700\" };",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Email</th><th className=\"px-4 py-3\">Role</th><th className=\"px-4 py-3\">Status</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{users.map((u) => (<tr key={u.email}><td className=\"px-4 py-3 font-medium\">{u.name}</td><td className=\"px-4 py-3 text-gray-600\">{u.email}</td><td className=\"px-4 py-3\">{u.role}</td><td className=\"px-4 py-3\"><span className={\"rounded-full text-xs px-2 py-0.5 \" + tones[u.status]}>{u.status}</span></td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Invoices (snxtable04)": {
+    "prefix": "snxtable04",
+    "description": "Next.js invoices table with status badges.",
+    "body": [
+      "export default function ${1:InvoicesTable}() {",
+      "  const items = [{ number: \"INV-2041\", customer: \"Acme\", amount: \"$2,400\", status: \"Paid\" }, { number: \"INV-2042\", customer: \"Tata\", amount: \"$4,820\", status: \"Due\" }, { number: \"INV-2043\", customer: \"Infosys\", amount: \"$1,200\", status: \"Overdue\" }];",
+      "  const tones: Record<string, string> = { Paid: \"bg-emerald-50 text-emerald-700\", Due: \"bg-amber-50 text-amber-700\", Overdue: \"bg-red-50 text-red-700\" };",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Invoice</th><th className=\"px-4 py-3\">Customer</th><th className=\"px-4 py-3\">Amount</th><th className=\"px-4 py-3\">Status</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((i) => (<tr key={i.number}><td className=\"px-4 py-3 font-mono text-xs\">{i.number}</td><td className=\"px-4 py-3\">{i.customer}</td><td className=\"px-4 py-3 font-medium\">{i.amount}</td><td className=\"px-4 py-3\"><span className={\"rounded-full text-xs px-2 py-0.5 \" + tones[i.status]}>{i.status}</span></td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Products (snxtable05)": {
+    "prefix": "snxtable05",
+    "description": "Next.js products table with SKU and stock highlighting.",
+    "body": [
+      "export default function ${1:ProductsTable}() {",
+      "  const items = [{ sku: \"SKU-1042\", name: \"Steel washers 8mm\", price: \"$0.40\", stock: 1280 }, { sku: \"SKU-2310\", name: \"Cardboard A4 box\", price: \"$1.10\", stock: 4 }, { sku: \"SKU-7766\", name: \"USB-C cable 1m\", price: \"$3.20\", stock: 312 }];",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">SKU</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Price</th><th className=\"px-4 py-3\">Stock</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((p) => (<tr key={p.sku}><td className=\"px-4 py-3 font-mono text-xs\">{p.sku}</td><td className=\"px-4 py-3\">{p.name}</td><td className=\"px-4 py-3 font-medium\">{p.price}</td><td className={\"px-4 py-3 \" + (p.stock < 10 ? \"text-red-700\" : \"text-gray-700\")}>{p.stock}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Tasks (snxtable06)": {
+    "prefix": "snxtable06",
+    "description": "Next.js tasks table with status badges.",
+    "body": [
+      "export default function ${1:TasksTable}() {",
+      "  const items = [{ title: \"Refactor auth\", assignee: \"Anita\", status: \"Doing\", due: \"28 May\" }, { title: \"Draft pricing\", assignee: \"Ravi\", status: \"Todo\", due: \"30 May\" }, { title: \"Migrate DB\", assignee: \"Priya\", status: \"Done\", due: \"24 May\" }];",
+      "  const tones: Record<string, string> = { Todo: \"bg-gray-100 text-gray-700\", Doing: \"bg-amber-50 text-amber-700\", Done: \"bg-emerald-50 text-emerald-700\" };",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Task</th><th className=\"px-4 py-3\">Assignee</th><th className=\"px-4 py-3\">Status</th><th className=\"px-4 py-3\">Due</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((t, i) => (<tr key={i}><td className=\"px-4 py-3\">{t.title}</td><td className=\"px-4 py-3\">{t.assignee}</td><td className=\"px-4 py-3\"><span className={\"rounded-full text-xs px-2 py-0.5 \" + tones[t.status]}>{t.status}</span></td><td className=\"px-4 py-3 text-gray-500\">{t.due}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Employees (snxtable07)": {
+    "prefix": "snxtable07",
+    "description": "Next.js employees table with ID and department.",
+    "body": [
+      "export default function ${1:EmployeesTable}() {",
+      "  const items = [{ empId: \"EMP-001\", name: \"Anita Rao\", department: \"Engineering\", joined: \"12 Mar 2022\" }, { empId: \"EMP-014\", name: \"Ravi Iyer\", department: \"Operations\", joined: \"01 Jul 2023\" }, { empId: \"EMP-042\", name: \"Priya Nair\", department: \"Finance\", joined: \"19 Oct 2024\" }];",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Emp ID</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Department</th><th className=\"px-4 py-3\">Joined</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((e) => (<tr key={e.empId}><td className=\"px-4 py-3 font-mono text-xs\">{e.empId}</td><td className=\"px-4 py-3 font-medium\">{e.name}</td><td className=\"px-4 py-3\">{e.department}</td><td className=\"px-4 py-3 text-gray-500\">{e.joined}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Transactions (snxtable08)": {
+    "prefix": "snxtable08",
+    "description": "Next.js transactions table colored by credit/debit.",
+    "body": [
+      "export default function ${1:TransactionsTable}() {",
+      "  const items = [{ date: \"25 May\", type: \"Credit\", amount: \"₹4,80,000\", party: \"Tata Steel\" }, { date: \"24 May\", type: \"Debit\", amount: \"₹1,20,000\", party: \"Acme Pvt Ltd\" }, { date: \"23 May\", type: \"Debit\", amount: \"₹8,40,000\", party: \"Payroll\" }];",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Date</th><th className=\"px-4 py-3\">Type</th><th className=\"px-4 py-3\">Amount</th><th className=\"px-4 py-3\">Party</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((t, i) => (<tr key={i}><td className=\"px-4 py-3 text-gray-500\">{t.date}</td><td className={\"px-4 py-3 \" + (t.type === \"Credit\" ? \"text-emerald-700\" : \"text-red-700\")}>{t.type}</td><td className=\"px-4 py-3 font-medium\">{t.amount}</td><td className=\"px-4 py-3\">{t.party}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Reports (snxtable09)": {
+    "prefix": "snxtable09",
+    "description": "Next.js reports table with schedule and run action.",
+    "body": [
+      "export default function ${1:ReportsTable}() {",
+      "  const items = [{ name: \"Monthly P&L\", schedule: \"Monthly\", last: \"01 May\" }, { name: \"Inventory aging\", schedule: \"Weekly\", last: \"19 May\" }, { name: \"Sales by region\", schedule: \"Daily\", last: \"Today\" }];",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">Report</th><th className=\"px-4 py-3\">Schedule</th><th className=\"px-4 py-3\">Last run</th><th className=\"px-4 py-3 text-right\">Actions</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((r) => (<tr key={r.name}><td className=\"px-4 py-3 font-medium\">{r.name}</td><td className=\"px-4 py-3\">{r.schedule}</td><td className=\"px-4 py-3 text-gray-500\">{r.last}</td><td className=\"px-4 py-3 text-right\"><button type=\"button\" className=\"rounded-md border border-gray-200 px-2 py-1 text-xs hover:bg-gray-50\">Run</button></td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — With Actions (snxtable10)": {
+    "prefix": "snxtable10",
+    "description": "Next.js table with row actions (Edit/Delete) calling onClick handlers.",
+    "body": [
+      "\"use client\";",
+      "import { useRouter } from \"next/navigation\";",
+      "",
+      "export default function ${1:ActionsTable}() {",
+      "  const router = useRouter();",
+      "  const items = [{ id: \"1\", name: \"Acme\" }, { id: \"2\", name: \"Tata\" }];",
+      "  async function remove(id: string) { await fetch(\"${2:/api/items/}\" + id, { method: \"DELETE\" }); router.refresh(); }",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3 text-right\">Actions</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3 text-right space-x-1\"><button type=\"button\" onClick={() => router.push(\"/items/\" + r.id)} className=\"rounded-md border border-gray-200 px-2 py-1 text-xs hover:bg-gray-50\">Edit</button><button type=\"button\" onClick={() => remove(r.id)} className=\"rounded-md border border-red-200 text-red-700 hover:bg-red-50 px-2 py-1 text-xs\">Delete</button></td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Status Badges (snxtable11)": {
+    "prefix": "snxtable11",
+    "description": "Next.js table with reusable status badges.",
+    "body": [
+      "export default function ${1:StatusTable}() {",
+      "  const items = [{ id: \"J-101\", name: \"Daily ledger sync\", status: \"active\" as const }, { id: \"J-102\", name: \"GST export\", status: \"pending\" as const }, { id: \"J-103\", name: \"Payroll batch\", status: \"failed\" as const }];",
+      "  const tones = { active: \"bg-emerald-50 text-emerald-700\", pending: \"bg-amber-50 text-amber-700\", failed: \"bg-red-50 text-red-700\" } as const;",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Job</th><th className=\"px-4 py-3\">Status</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3\"><span className={\"rounded-full text-xs px-2 py-0.5 \" + tones[r.status]}>{r.status}</span></td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Search (snxtable12)": {
+    "prefix": "snxtable12",
+    "description": "Next.js table with client-side search input filtering rows.",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:SearchTable}() {",
+      "  const [q, setQ] = useState(\"\");",
+      "  const items = [{ id: \"1\", name: \"Acme\" }, { id: \"2\", name: \"Tata\" }, { id: \"3\", name: \"Infosys\" }];",
+      "  const visible = items.filter((r) => r.name.toLowerCase().includes(q.toLowerCase()));",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white\">",
+      "      <div className=\"p-3 border-b border-gray-100\"><input type=\"search\" value={q} onChange={(e) => setQ(e.target.value)} placeholder=\"Search…\" className=\"w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm\" /></div>",
+      "      <table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{visible.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td></tr>))}{visible.length === 0 && (<tr><td colSpan={2} className=\"px-4 py-8 text-center text-xs text-gray-400\">No matches</td></tr>)}</tbody></table>",
+      "    </div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Filters (snxtable13)": {
+    "prefix": "snxtable13",
+    "description": "Next.js table with filter controls (status / date).",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:FilterTable}() {",
+      "  const [status, setStatus] = useState(\"\");",
+      "  const items = [{ id: \"1\", owner: \"Anita\", status: \"Open\" }, { id: \"2\", owner: \"Ravi\", status: \"Closed\" }];",
+      "  const visible = items.filter((r) => !status || r.status === status);",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white\"><div className=\"p-3 border-b border-gray-100 flex flex-wrap gap-2\"><select value={status} onChange={(e) => setStatus(e.target.value)} className=\"rounded-md border border-gray-300 px-2 py-1 text-sm\"><option value=\"\">All</option><option>Open</option><option>Closed</option></select><input type=\"date\" className=\"rounded-md border border-gray-300 px-2 py-1 text-sm\" /></div><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Owner</th><th className=\"px-4 py-3\">Status</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{visible.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.owner}</td><td className=\"px-4 py-3\">{r.status}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Pagination (snxtable14)": {
+    "prefix": "snxtable14",
+    "description": "Next.js table with client-side pagination (prev/next).",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:PaginatedTable}() {",
+      "  const items = Array.from({ length: 23 }).map((_, i) => ({ id: String(i + 1), name: \"Record \" + (i + 1) }));",
+      "  const pageSize = 5;",
+      "  const [page, setPage] = useState(1);",
+      "  const total = Math.ceil(items.length / pageSize);",
+      "  const rows = items.slice((page - 1) * pageSize, page * pageSize);",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{rows.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td></tr>))}</tbody></table><div className=\"p-3 border-t border-gray-100 flex items-center justify-between text-sm\"><span className=\"text-gray-500\">Page {page} of {total}</span><div className=\"space-x-1\"><button type=\"button\" disabled={page <= 1} onClick={() => setPage(page - 1)} className=\"rounded-md border border-gray-200 px-2 py-1 disabled:opacity-50\">Prev</button><button type=\"button\" disabled={page >= total} onClick={() => setPage(page + 1)} className=\"rounded-md border border-gray-200 px-2 py-1 disabled:opacity-50\">Next</button></div></div></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Selectable Rows (snxtable15)": {
+    "prefix": "snxtable15",
+    "description": "Next.js table with selectable rows and bulk-select indicator.",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:SelectableTable}() {",
+      "  const items = [{ id: \"1\", name: \"Acme\" }, { id: \"2\", name: \"Tata\" }, { id: \"3\", name: \"Infosys\" }];",
+      "  const [selected, setSelected] = useState<string[]>([]);",
+      "  function toggle(id: string) { setSelected((s) => s.includes(id) ? s.filter((x) => x !== id) : [...s, id]); }",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white\">{selected.length > 0 && <div className=\"px-4 py-2 bg-blue-50 text-sm text-blue-800 border-b border-blue-100\">{selected.length} selected</div>}<table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3 w-8\"><input type=\"checkbox\" aria-label=\"Select all\" checked={selected.length === items.length} onChange={(e) => setSelected(e.target.checked ? items.map((r) => r.id) : [])} /></th><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((r) => (<tr key={r.id} className={selected.includes(r.id) ? \"bg-blue-50/50\" : \"\"}><td className=\"px-4 py-3\"><input type=\"checkbox\" checked={selected.includes(r.id)} onChange={() => toggle(r.id)} aria-label={\"Select \" + r.name} /></td><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Loading State (snxtable16)": {
+    "prefix": "snxtable16",
+    "description": "Next.js table with a skeleton loading state.",
+    "body": [
+      "\"use client\";",
+      "import { useEffect, useState } from \"react\";",
+      "",
+      "interface Row { id: string; name: string; }",
+      "",
+      "export default function ${1:LoadingTable}() {",
+      "  const [rows, setRows] = useState<Row[]>([]);",
+      "  const [loading, setLoading] = useState(true);",
+      "  useEffect(() => { fetch(\"${2:/api/items}\").then((r) => r.json()).then(setRows).finally(() => setLoading(false)); }, []);",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\" aria-busy={loading}><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{loading ? (Array.from({ length: 4 }).map((_, i) => (<tr key={i}><td className=\"px-4 py-3\"><div className=\"h-3 w-10 bg-gray-100 rounded animate-pulse\" /></td><td className=\"px-4 py-3\"><div className=\"h-3 w-40 bg-gray-100 rounded animate-pulse\" /></td></tr>))) : (rows.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td></tr>)))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Empty State (snxtable17)": {
+    "prefix": "snxtable17",
+    "description": "Next.js table with polished empty state and create CTA.",
+    "body": [
+      "import Link from \"next/link\";",
+      "",
+      "interface Row { id: string; name: string; }",
+      "",
+      "export default function ${1:EmptyTable}({ rows = [] as Row[] }: { rows?: Row[] }) {",
+      "  if (rows.length === 0) {",
+      "    return (",
+      "      <div className=\"rounded-xl border border-dashed border-gray-300 bg-white p-10 text-center\">",
+      "        <p className=\"text-sm font-semibold text-gray-900\">No records yet</p>",
+      "        <p className=\"text-xs text-gray-500 mt-1\">Get started by creating your first entry.</p>",
+      "        <Link href=\"${2:/items/new}\" className=\"mt-4 inline-block rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2\">${6:Create record}</Link>",
+      "      </div>",
+      "    );",
+      "  }",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{rows.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Sortable (snxtable18)": {
+    "prefix": "snxtable18",
+    "description": "Next.js table with sortable columns and direction arrow.",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:SortableTable}() {",
+      "  const items = [{ id: \"1\", name: \"Acme\", value: 1200 }, { id: \"2\", name: \"Tata\", value: 4800 }, { id: \"3\", name: \"Infosys\", value: 800 }];",
+      "  const [sort, setSort] = useState<{ key: \"name\" | \"value\"; dir: \"asc\" | \"desc\" }>({ key: \"name\", dir: \"asc\" });",
+      "  const rows = [...items].sort((a, b) => { const av = a[sort.key]; const bv = b[sort.key]; if (av < bv) return sort.dir === \"asc\" ? -1 : 1; if (av > bv) return sort.dir === \"asc\" ? 1 : -1; return 0; });",
+      "  function head(key: \"name\" | \"value\", label: string) { const active = sort.key === key; return <button type=\"button\" onClick={() => setSort({ key, dir: active && sort.dir === \"asc\" ? \"desc\" : \"asc\" })} className=\"inline-flex items-center gap-1\">{label}<span aria-hidden=\"true\" className={active ? \"\" : \"opacity-30\"}>{active && sort.dir === \"desc\" ? \"↓\" : \"↑\"}</span></button>; }",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">{head(\"name\", \"Name\")}</th><th className=\"px-4 py-3\">{head(\"value\", \"Value\")}</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{rows.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3 font-medium\">{r.value}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Admin (snxtable19)": {
+    "prefix": "snxtable19",
+    "description": "Next.js admin table combining search + invite + status pills.",
+    "body": [
+      "\"use client\";",
+      "import { useState } from \"react\";",
+      "",
+      "export default function ${1:AdminTable}() {",
+      "  const items = [{ id: \"U-101\", name: \"Anita Rao\", status: \"Active\" }, { id: \"U-102\", name: \"Ravi Iyer\", status: \"Suspended\" }];",
+      "  const [q, setQ] = useState(\"\");",
+      "  const visible = items.filter((r) => r.name.toLowerCase().includes(q.toLowerCase()));",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white\"><div className=\"flex items-center justify-between p-3 border-b border-gray-100\"><input type=\"search\" value={q} onChange={(e) => setQ(e.target.value)} placeholder=\"Search users…\" className=\"rounded-md border border-gray-300 px-3 py-1.5 text-sm\" /><button type=\"button\" className=\"rounded-md bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1.5\">Invite</button></div><table className=\"w-full text-sm\"><thead className=\"bg-gray-50 text-left text-xs uppercase tracking-wider text-gray-500\"><tr><th className=\"px-4 py-3\">ID</th><th className=\"px-4 py-3\">Name</th><th className=\"px-4 py-3\">Status</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{visible.map((r) => (<tr key={r.id}><td className=\"px-4 py-3 font-mono text-xs\">{r.id}</td><td className=\"px-4 py-3\">{r.name}</td><td className=\"px-4 py-3\"><span className={\"rounded-full text-xs px-2 py-0.5 \" + (r.status === \"Active\" ? \"bg-emerald-50 text-emerald-700\" : \"bg-red-50 text-red-700\")}>{r.status}</span></td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Table — Compact (snxtable20)": {
+    "prefix": "snxtable20",
+    "description": "Next.js compact/dense table for data-heavy admin screens.",
+    "body": [
+      "export default function ${1:CompactTable}() {",
+      "  const items = Array.from({ length: 8 }).map((_, i) => ({ id: String(i + 1), name: \"Row \" + (i + 1), value: \"$\" + (100 + i * 12) }));",
+      "  return (",
+      "    <div className=\"rounded-xl border border-gray-200 bg-white overflow-hidden\"><table className=\"w-full text-xs\"><thead className=\"bg-gray-50 text-left uppercase tracking-wider text-gray-500\"><tr><th className=\"px-3 py-2\">ID</th><th className=\"px-3 py-2\">Name</th><th className=\"px-3 py-2\">Value</th></tr></thead><tbody className=\"divide-y divide-gray-100\">{items.map((r) => (<tr key={r.id}><td className=\"px-3 py-1.5 font-mono\">{r.id}</td><td className=\"px-3 py-1.5\">{r.name}</td><td className=\"px-3 py-1.5 font-medium\">{r.value}</td></tr>))}</tbody></table></div>",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Static Export (snxmeta01)": {
+    "prefix": "snxmeta01",
+    "description": "Next.js static metadata export with title, description and keywords.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  title: \"${1:Page title} | ${2:Shelb}\",",
+      "  description: \"${3:Short, search-friendly description of this page.}\",",
+      "  keywords: [\"${4:saas}\", \"${5:erp}\", \"${6:dashboard}\"],",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — generateMetadata (snxmeta02)": {
+    "prefix": "snxmeta02",
+    "description": "Next.js dynamic generateMetadata function from params.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export async function generateMetadata({ params }: { params: { ${1:slug}: string } }): Promise<Metadata> {",
+      "  const data = await fetch(\"${2:https://api.example.com/}\" + params.${1:slug}).then((r) => r.ok ? r.json() : null);",
+      "  return {",
+      "    title: data?.title ?? \"Not found\",",
+      "    description: data?.description ?? \"\",",
+      "  };",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Title Template (snxmeta03)": {
+    "prefix": "snxmeta03",
+    "description": "Next.js metadata with title template for nested layouts.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  title: {",
+      "    default: \"${1:Shelb}\",",
+      "    template: \"%s | ${1:Shelb}\",",
+      "  },",
+      "  description: \"${2:The operating system for modern teams.}\",",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Open Graph (snxmeta04)": {
+    "prefix": "snxmeta04",
+    "description": "Next.js metadata with OpenGraph tags for social sharing.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  title: \"${1:Page title}\",",
+      "  description: \"${2:Description}\",",
+      "  openGraph: {",
+      "    title: \"${1:Page title}\",",
+      "    description: \"${2:Description}\",",
+      "    url: \"${3:https://shelb.app}\",",
+      "    siteName: \"${4:Shelb}\",",
+      "    images: [{ url: \"${5:/og.png}\", width: 1200, height: 630, alt: \"${4:Shelb}\" }],",
+      "    type: \"website\",",
+      "  },",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Twitter Card (snxmeta05)": {
+    "prefix": "snxmeta05",
+    "description": "Next.js metadata with Twitter card tags.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  title: \"${1:Page title}\",",
+      "  description: \"${2:Description}\",",
+      "  twitter: {",
+      "    card: \"summary_large_image\",",
+      "    title: \"${1:Page title}\",",
+      "    description: \"${2:Description}\",",
+      "    site: \"${3:@shelbhq}\",",
+      "    creator: \"${3:@shelbhq}\",",
+      "    images: [\"${4:/og.png}\"],",
+      "  },",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Icons (snxmeta06)": {
+    "prefix": "snxmeta06",
+    "description": "Next.js metadata for favicons, apple-touch icons and manifest.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  icons: {",
+      "    icon: [{ url: \"${1:/favicon.ico}\", sizes: \"any\" }, { url: \"${2:/icon.svg}\", type: \"image/svg+xml\" }],",
+      "    apple: \"${3:/apple-touch-icon.png}\",",
+      "    shortcut: \"${1:/favicon.ico}\",",
+      "  },",
+      "  manifest: \"${4:/site.webmanifest}\",",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Robots (snxmeta07)": {
+    "prefix": "snxmeta07",
+    "description": "Next.js metadata for robots directives (index / follow controls).",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  robots: {",
+      "    index: ${1:true},",
+      "    follow: ${2:true},",
+      "    googleBot: { index: ${1:true}, follow: ${2:true}, \"max-snippet\": -1, \"max-image-preview\": \"large\", \"max-video-preview\": -1 },",
+      "  },",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Canonical Alternates (snxmeta08)": {
+    "prefix": "snxmeta08",
+    "description": "Next.js metadata with canonical URL and language alternates.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  alternates: {",
+      "    canonical: \"${1:https://shelb.app/page}\",",
+      "    languages: {",
+      "      \"en-US\": \"${1:https://shelb.app/page}\",",
+      "      \"fr-FR\": \"${2:https://shelb.app/fr/page}\",",
+      "      \"hi-IN\": \"${3:https://shelb.app/hi/page}\",",
+      "    },",
+      "  },",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Locale Alternates (snxmeta09)": {
+    "prefix": "snxmeta09",
+    "description": "Next.js generateMetadata for i18n with locale-aware OpenGraph.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {",
+      "  const baseUrl = \"${1:https://shelb.app}\";",
+      "  return {",
+      "    metadataBase: new URL(baseUrl),",
+      "    alternates: { canonical: \"/\" + params.locale, languages: { en: \"/en\", fr: \"/fr\", hi: \"/hi\" } },",
+      "    openGraph: { locale: params.locale, type: \"website\" },",
+      "  };",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Verification (snxmeta10)": {
+    "prefix": "snxmeta10",
+    "description": "Next.js metadata with site verification tags (Google, Yandex, etc).",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  verification: {",
+      "    google: \"${1:google-site-verification-token}\",",
+      "    yandex: \"${2:yandex-token}\",",
+      "    other: { \"msvalidate.01\": \"${3:bing-token}\" },",
+      "  },",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Blog Post (snxmeta11)": {
+    "prefix": "snxmeta11",
+    "description": "Next.js dynamic blog-post metadata from params with article OG type.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {",
+      "  const post = await fetch(\"${1:https://api.example.com/posts/}\" + params.slug).then((r) => r.ok ? r.json() : null);",
+      "  if (!post) return { title: \"Not found\" };",
+      "  return {",
+      "    title: post.title,",
+      "    description: post.excerpt,",
+      "    openGraph: { title: post.title, description: post.excerpt, type: \"article\", publishedTime: post.publishedAt, authors: [post.author], images: [{ url: post.cover }] },",
+      "    twitter: { card: \"summary_large_image\", title: post.title, description: post.excerpt, images: [post.cover] },",
+      "  };",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Product (snxmeta12)": {
+    "prefix": "snxmeta12",
+    "description": "Next.js dynamic product metadata with price-aware OG tags.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export async function generateMetadata({ params }: { params: { sku: string } }): Promise<Metadata> {",
+      "  const product = await fetch(\"${1:https://api.example.com/products/}\" + params.sku).then((r) => r.ok ? r.json() : null);",
+      "  if (!product) return { title: \"Product not found\" };",
+      "  return {",
+      "    title: product.name + \" · ${2:Shelb Store}\",",
+      "    description: product.shortDescription,",
+      "    openGraph: { title: product.name, description: product.shortDescription, images: [{ url: product.image }], type: \"website\" },",
+      "    other: { \"product:price:amount\": String(product.price), \"product:price:currency\": product.currency },",
+      "  };",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Manifest Export (snxmeta13)": {
+    "prefix": "snxmeta13",
+    "description": "Next.js app/manifest.ts exporting the PWA manifest.",
+    "body": [
+      "import type { MetadataRoute } from \"next\";",
+      "",
+      "export default function manifest(): MetadataRoute.Manifest {",
+      "  return {",
+      "    name: \"${1:Shelb}\",",
+      "    short_name: \"${1:Shelb}\",",
+      "    description: \"${2:The operating system for modern teams.}\",",
+      "    start_url: \"/\",",
+      "    display: \"standalone\",",
+      "    background_color: \"#ffffff\",",
+      "    theme_color: \"#1d4ed8\",",
+      "    icons: [",
+      "      { src: \"/icon-192.png\", sizes: \"192x192\", type: \"image/png\" },",
+      "      { src: \"/icon-512.png\", sizes: \"512x512\", type: \"image/png\" },",
+      "    ],",
+      "  };",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Sitemap (snxmeta14)": {
+    "prefix": "snxmeta14",
+    "description": "Next.js app/sitemap.ts exporting a dynamic sitemap.",
+    "body": [
+      "import type { MetadataRoute } from \"next\";",
+      "",
+      "export default async function sitemap(): Promise<MetadataRoute.Sitemap> {",
+      "  const baseUrl = \"${1:https://shelb.app}\";",
+      "  const slugs = await fetch(\"${2:https://api.example.com/posts/slugs}\").then((r) => r.ok ? r.json() : []) as string[];",
+      "  const staticRoutes: MetadataRoute.Sitemap = [",
+      "    { url: baseUrl, lastModified: new Date(), changeFrequency: \"daily\", priority: 1 },",
+      "    { url: baseUrl + \"/pricing\", lastModified: new Date(), changeFrequency: \"monthly\", priority: 0.8 },",
+      "  ];",
+      "  const blogRoutes: MetadataRoute.Sitemap = slugs.map((slug) => ({ url: baseUrl + \"/blog/\" + slug, lastModified: new Date(), changeFrequency: \"weekly\", priority: 0.6 }));",
+      "  return [...staticRoutes, ...blogRoutes];",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Robots Export (snxmeta15)": {
+    "prefix": "snxmeta15",
+    "description": "Next.js app/robots.ts exporting robots.txt rules.",
+    "body": [
+      "import type { MetadataRoute } from \"next\";",
+      "",
+      "export default function robots(): MetadataRoute.Robots {",
+      "  return {",
+      "    rules: [",
+      "      { userAgent: \"*\", allow: \"/\", disallow: [\"/admin\", \"/api\"] },",
+      "    ],",
+      "    sitemap: \"${1:https://shelb.app/sitemap.xml}\",",
+      "    host: \"${2:https://shelb.app}\",",
+      "  };",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — JSON-LD Script (snxmeta16)": {
+    "prefix": "snxmeta16",
+    "description": "Next.js JSON-LD structured-data script (Organization schema).",
+    "body": [
+      "export default function ${1:OrganizationJsonLd}() {",
+      "  const json = {",
+      "    \"@context\": \"https://schema.org\",",
+      "    \"@type\": \"Organization\",",
+      "    name: \"${2:Shelb}\",",
+      "    url: \"${3:https://shelb.app}\",",
+      "    logo: \"${4:https://shelb.app/logo.png}\",",
+      "    sameAs: [\"${5:https://twitter.com/shelbhq}\", \"${6:https://www.linkedin.com/company/shelb}\"],",
+      "  };",
+      "  return (",
+      "    <script type=\"application/ld+json\" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />",
+      "  );",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Theme Color (snxmeta17)": {
+    "prefix": "snxmeta17",
+    "description": "Next.js viewport export with theme color for light/dark schemes.",
+    "body": [
+      "import type { Viewport } from \"next\";",
+      "",
+      "export const viewport: Viewport = {",
+      "  themeColor: [",
+      "    { media: \"(prefers-color-scheme: light)\", color: \"#ffffff\" },",
+      "    { media: \"(prefers-color-scheme: dark)\", color: \"#0a0a0a\" },",
+      "  ],",
+      "  colorScheme: \"light dark\",",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Viewport (snxmeta18)": {
+    "prefix": "snxmeta18",
+    "description": "Next.js viewport export with width and initial scale for mobile.",
+    "body": [
+      "import type { Viewport } from \"next\";",
+      "",
+      "export const viewport: Viewport = {",
+      "  width: \"device-width\",",
+      "  initialScale: 1,",
+      "  maximumScale: 5,",
+      "  userScalable: true,",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Apple Touch Icon (snxmeta19)": {
+    "prefix": "snxmeta19",
+    "description": "Next.js metadata configuring apple-touch icons and PWA hints.",
+    "body": [
+      "import type { Metadata } from \"next\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  appleWebApp: {",
+      "    capable: true,",
+      "    title: \"${1:Shelb}\",",
+      "    statusBarStyle: \"default\",",
+      "    startupImage: [\"${2:/apple-touch-startup.png}\"],",
+      "  },",
+      "  icons: {",
+      "    apple: [",
+      "      { url: \"${3:/apple-touch-icon-180.png}\", sizes: \"180x180\" },",
+      "    ],",
+      "  },",
+      "};$0"
+    ]
+  },
+
+  "Shelb Next Metadata — Full SEO Bundle (snxmeta20)": {
+    "prefix": "snxmeta20",
+    "description": "Next.js comprehensive SEO metadata bundle (title template + OG + Twitter + robots + alternates).",
+    "body": [
+      "import type { Metadata, Viewport } from \"next\";",
+      "",
+      "const siteUrl = \"${1:https://shelb.app}\";",
+      "",
+      "export const metadata: Metadata = {",
+      "  metadataBase: new URL(siteUrl),",
+      "  title: { default: \"${2:Shelb}\", template: \"%s | ${2:Shelb}\" },",
+      "  description: \"${3:The operating system for modern teams.}\",",
+      "  keywords: [\"saas\", \"erp\", \"dashboard\", \"admin\"],",
+      "  authors: [{ name: \"${2:Shelb}\", url: siteUrl }],",
+      "  alternates: { canonical: siteUrl },",
+      "  openGraph: { title: \"${2:Shelb}\", description: \"${3:The operating system for modern teams.}\", url: siteUrl, siteName: \"${2:Shelb}\", images: [{ url: \"/og.png\", width: 1200, height: 630 }], type: \"website\" },",
+      "  twitter: { card: \"summary_large_image\", title: \"${2:Shelb}\", description: \"${3:The operating system for modern teams.}\", site: \"${4:@shelbhq}\", creator: \"${4:@shelbhq}\", images: [\"/og.png\"] },",
+      "  robots: { index: true, follow: true, googleBot: { index: true, follow: true, \"max-image-preview\": \"large\", \"max-snippet\": -1, \"max-video-preview\": -1 } },",
+      "  icons: { icon: \"/favicon.ico\", apple: \"/apple-touch-icon.png\" },",
+      "  manifest: \"/site.webmanifest\",",
+      "};",
+      "",
+      "export const viewport: Viewport = { themeColor: [{ media: \"(prefers-color-scheme: light)\", color: \"#ffffff\" }, { media: \"(prefers-color-scheme: dark)\", color: \"#0a0a0a\" }], width: \"device-width\", initialScale: 1 };$0"
+    ]
+  }
+}

@@ -1,0 +1,822 @@
+{
+  "Shelb Next API — GET (snxapi01)": {
+    "prefix": "snxapi01",
+    "description": "Next.js App Router GET route handler returning a JSON list.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "",
+      "export async function GET() {",
+      "  const items = await fetch(\"${1:https://api.example.com/}${2:items}\", { cache: \"no-store\" })",
+      "    .then((r) => (r.ok ? r.json() : []));",
+      "  return NextResponse.json({ items });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — POST (snxapi02)": {
+    "prefix": "snxapi02",
+    "description": "Next.js App Router POST route handler creating a resource.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const body = await request.json();",
+      "  const res = await fetch(\"${1:https://api.example.com/}${2:items}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) });",
+      "  if (!res.ok) return NextResponse.json({ error: \"Create failed\" }, { status: 502 });",
+      "  return NextResponse.json(await res.json(), { status: 201 });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — PUT (snxapi03)": {
+    "prefix": "snxapi03",
+    "description": "Next.js PUT route handler with dynamic [id] param.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {",
+      "  const body = await request.json();",
+      "  const res = await fetch(\"${1:https://api.example.com/}${2:items}/\" + params.id, { method: \"PUT\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) });",
+      "  if (!res.ok) return NextResponse.json({ error: \"Update failed\" }, { status: 502 });",
+      "  return NextResponse.json(await res.json());",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — PATCH (snxapi04)": {
+    "prefix": "snxapi04",
+    "description": "Next.js PATCH route handler for partial updates.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {",
+      "  const patch = await request.json();",
+      "  const res = await fetch(\"${1:https://api.example.com/}${2:items}/\" + params.id, { method: \"PATCH\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(patch) });",
+      "  if (!res.ok) return NextResponse.json({ error: \"Patch failed\" }, { status: 502 });",
+      "  return NextResponse.json(await res.json());",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — DELETE (snxapi05)": {
+    "prefix": "snxapi05",
+    "description": "Next.js DELETE route handler that returns 204 on success.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "",
+      "export async function DELETE(_request: Request, { params }: { params: { id: string } }) {",
+      "  const res = await fetch(\"${1:https://api.example.com/}${2:items}/\" + params.id, { method: \"DELETE\" });",
+      "  if (!res.ok) return NextResponse.json({ error: \"Delete failed\" }, { status: 502 });",
+      "  return new NextResponse(null, { status: 204 });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — CRUD (snxapi06)": {
+    "prefix": "snxapi06",
+    "description": "Next.js full CRUD route file exporting GET / POST / PUT / DELETE.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "const base = \"${1:https://api.example.com/}${2:items}\";",
+      "",
+      "export async function GET() {",
+      "  const data = await fetch(base, { cache: \"no-store\" }).then((r) => r.json());",
+      "  return NextResponse.json(data);",
+      "}",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const body = await request.json();",
+      "  const res = await fetch(base, { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) });",
+      "  return NextResponse.json(await res.json(), { status: res.status });",
+      "}",
+      "",
+      "export async function PUT(request: NextRequest) {",
+      "  const body = await request.json();",
+      "  const res = await fetch(base + \"/\" + body.id, { method: \"PUT\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) });",
+      "  return NextResponse.json(await res.json(), { status: res.status });",
+      "}",
+      "",
+      "export async function DELETE(request: NextRequest) {",
+      "  const { id } = await request.json();",
+      "  await fetch(base + \"/\" + id, { method: \"DELETE\" });",
+      "  return new NextResponse(null, { status: 204 });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Auth Login (snxapi07)": {
+    "prefix": "snxapi07",
+    "description": "Next.js auth login route handler issuing an HttpOnly cookie.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const { email, password } = await request.json();",
+      "  if (!email || !password) return NextResponse.json({ error: \"Missing credentials\" }, { status: 400 });",
+      "  const res = await fetch(\"${1:https://api.example.com/auth/login}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ email, password }) });",
+      "  if (!res.ok) return NextResponse.json({ error: \"Invalid credentials\" }, { status: 401 });",
+      "  const { token, user } = await res.json();",
+      "  const response = NextResponse.json({ user });",
+      "  response.cookies.set(\"${2:shelb_session}\", token, { httpOnly: true, secure: true, sameSite: \"lax\", path: \"/\", maxAge: 60 * 60 * 24 * 7 });",
+      "  return response;",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Auth Register (snxapi08)": {
+    "prefix": "snxapi08",
+    "description": "Next.js auth register route handler that signs the user in immediately.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const body = await request.json();",
+      "  if (!body?.email || !body?.password) return NextResponse.json({ error: \"Email and password required\" }, { status: 400 });",
+      "  const res = await fetch(\"${1:https://api.example.com/auth/register}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) });",
+      "  if (!res.ok) return NextResponse.json({ error: \"Could not register\" }, { status: 400 });",
+      "  const { token, user } = await res.json();",
+      "  const response = NextResponse.json({ user }, { status: 201 });",
+      "  response.cookies.set(\"${2:shelb_session}\", token, { httpOnly: true, secure: true, sameSite: \"lax\", path: \"/\" });",
+      "  return response;",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Current User (snxapi09)": {
+    "prefix": "snxapi09",
+    "description": "Next.js /api/me route returning the current user or 401.",
+    "body": [
+      "import { cookies } from \"next/headers\";",
+      "import { NextResponse } from \"next/server\";",
+      "",
+      "export async function GET() {",
+      "  const token = cookies().get(\"${1:shelb_session}\")?.value;",
+      "  if (!token) return NextResponse.json({ user: null }, { status: 401 });",
+      "  const res = await fetch(\"${2:https://api.example.com/auth/me}\", { headers: { \"Authorization\": \"Bearer \" + token }, cache: \"no-store\" });",
+      "  if (!res.ok) return NextResponse.json({ user: null }, { status: res.status });",
+      "  return NextResponse.json(await res.json());",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — File Upload (snxapi10)": {
+    "prefix": "snxapi10",
+    "description": "Next.js file upload route handler reading multipart/form-data.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const form = await request.formData();",
+      "  const file = form.get(\"file\");",
+      "  if (!(file instanceof File)) return NextResponse.json({ error: \"No file uploaded\" }, { status: 400 });",
+      "  if (file.size > 5 * 1024 * 1024) return NextResponse.json({ error: \"File too large\" }, { status: 413 });",
+      "  // TODO: stream `file` to your storage (S3 / R2 / Supabase) via ${1:/api/storage}",
+      "  return NextResponse.json({ name: file.name, size: file.size, type: file.type, url: \"${2:/uploads/}\" + file.name }, { status: 201 });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Paginated List (snxapi11)": {
+    "prefix": "snxapi11",
+    "description": "Next.js paginated list route handler returning items + page metadata.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function GET(request: NextRequest) {",
+      "  const { searchParams } = new URL(request.url);",
+      "  const page = Number(searchParams.get(\"page\") ?? 1);",
+      "  const pageSize = Number(searchParams.get(\"pageSize\") ?? 20);",
+      "  const upstream = await fetch(\"${1:https://api.example.com/}${2:items}?page=\" + page + \"&pageSize=\" + pageSize, { cache: \"no-store\" });",
+      "  if (!upstream.ok) return NextResponse.json({ error: \"Upstream failed\" }, { status: 502 });",
+      "  const { items, total } = await upstream.json();",
+      "  return NextResponse.json({ items, page, pageSize, total, totalPages: Math.max(1, Math.ceil(total / pageSize)) });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Search (snxapi12)": {
+    "prefix": "snxapi12",
+    "description": "Next.js search route handler that proxies a ?q= parameter.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function GET(request: NextRequest) {",
+      "  const q = new URL(request.url).searchParams.get(\"q\")?.trim() ?? \"\";",
+      "  if (!q) return NextResponse.json({ items: [] });",
+      "  const upstream = await fetch(\"${1:https://api.example.com/search}?q=\" + encodeURIComponent(q), { cache: \"no-store\" });",
+      "  if (!upstream.ok) return NextResponse.json({ error: \"Search failed\" }, { status: 502 });",
+      "  return NextResponse.json(await upstream.json());",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Filter (snxapi13)": {
+    "prefix": "snxapi13",
+    "description": "Next.js filter route handler that forwards multiple querystring filters.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function GET(request: NextRequest) {",
+      "  const params = new URL(request.url).searchParams;",
+      "  const allowed = [\"status\", \"owner\", \"from\", \"to\"];",
+      "  const query = new URLSearchParams();",
+      "  for (const key of allowed) { const v = params.get(key); if (v) query.set(key, v); }",
+      "  const upstream = await fetch(\"${1:https://api.example.com/}${2:items}?\" + query.toString(), { cache: \"no-store\" });",
+      "  if (!upstream.ok) return NextResponse.json({ error: \"Filter failed\" }, { status: 502 });",
+      "  return NextResponse.json(await upstream.json());",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Protected Route (snxapi14)": {
+    "prefix": "snxapi14",
+    "description": "Next.js protected route handler that 401s without a valid session cookie.",
+    "body": [
+      "import { cookies } from \"next/headers\";",
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function GET(_request: NextRequest) {",
+      "  const token = cookies().get(\"${1:shelb_session}\")?.value;",
+      "  if (!token) return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });",
+      "  const upstream = await fetch(\"${2:https://api.example.com/}${3:secure/data}\", { headers: { \"Authorization\": \"Bearer \" + token }, cache: \"no-store\" });",
+      "  if (upstream.status === 401) return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });",
+      "  if (!upstream.ok) return NextResponse.json({ error: \"Upstream failed\" }, { status: 502 });",
+      "  return NextResponse.json(await upstream.json());",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Validation (snxapi15)": {
+    "prefix": "snxapi15",
+    "description": "Next.js validation route handler with lightweight schema checks.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "interface ${1:Payload} { name: string; email: string; }",
+      "",
+      "function validate(body: unknown): { ok: true; data: ${1:Payload} } | { ok: false; errors: Record<string, string> } {",
+      "  const errors: Record<string, string> = {};",
+      "  const b = (body ?? {}) as Partial<${1:Payload}>;",
+      "  if (!b.name || b.name.length < 2) errors.name = \"Name is required\";",
+      "  if (!b.email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(b.email)) errors.email = \"Invalid email\";",
+      "  if (Object.keys(errors).length > 0) return { ok: false, errors };",
+      "  return { ok: true, data: b as ${1:Payload} };",
+      "}",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const body = await request.json().catch(() => null);",
+      "  const result = validate(body);",
+      "  if (!result.ok) return NextResponse.json({ errors: result.errors }, { status: 422 });",
+      "  return NextResponse.json({ ok: true, data: result.data }, { status: 201 });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Error Handling (snxapi16)": {
+    "prefix": "snxapi16",
+    "description": "Next.js route handler with structured try/catch and a typed error response.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "class HttpError extends Error { constructor(public status: number, message: string) { super(message); } }",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  try {",
+      "    const body = await request.json();",
+      "    const res = await fetch(\"${1:https://api.example.com/}${2:resource}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) });",
+      "    if (res.status === 404) throw new HttpError(404, \"Not found\");",
+      "    if (!res.ok) throw new HttpError(502, \"Upstream error\");",
+      "    return NextResponse.json(await res.json(), { status: 201 });",
+      "  } catch (err) {",
+      "    if (err instanceof HttpError) return NextResponse.json({ error: err.message }, { status: err.status });",
+      "    return NextResponse.json({ error: \"Unexpected error\" }, { status: 500 });",
+      "  }",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Webhook (snxapi17)": {
+    "prefix": "snxapi17",
+    "description": "Next.js webhook route handler verifying a signature header.",
+    "body": [
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const signature = request.headers.get(\"${1:x-webhook-signature}\");",
+      "  const secret = process.env.${2:WEBHOOK_SECRET};",
+      "  if (!signature || !secret) return NextResponse.json({ error: \"Signature missing\" }, { status: 401 });",
+      "  const raw = await request.text();",
+      "  // TODO: verify HMAC signature using `crypto.subtle` and reject if invalid",
+      "  let event: { type: string; data: unknown };",
+      "  try { event = JSON.parse(raw); } catch { return NextResponse.json({ error: \"Invalid payload\" }, { status: 400 }); }",
+      "  switch (event.type) {",
+      "    case \"invoice.paid\": /* handle */ break;",
+      "    case \"customer.created\": /* handle */ break;",
+      "    default: /* ignore */ break;",
+      "  }",
+      "  return NextResponse.json({ received: true });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Report Export (snxapi18)": {
+    "prefix": "snxapi18",
+    "description": "Next.js report export route streaming a CSV download.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "",
+      "export async function GET() {",
+      "  const rows = await fetch(\"${1:https://api.example.com/}${2:reports/sales}\", { cache: \"no-store\" }).then((r) => r.ok ? r.json() : []) as { date: string; amount: number; customer: string }[];",
+      "  const header = \"date,amount,customer\";",
+      "  const body = rows.map((r) => [r.date, r.amount, JSON.stringify(r.customer)].join(\",\")).join(\"\\n\");",
+      "  const csv = header + \"\\n\" + body;",
+      "  return new NextResponse(csv, { status: 200, headers: { \"Content-Type\": \"text/csv; charset=utf-8\", \"Content-Disposition\": \"attachment; filename=\\\"${3:sales-report.csv}\\\"\" } });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Audit Log (snxapi19)": {
+    "prefix": "snxapi19",
+    "description": "Next.js audit log route accepting actor + action + resource entries.",
+    "body": [
+      "import { cookies } from \"next/headers\";",
+      "import { NextRequest, NextResponse } from \"next/server\";",
+      "",
+      "interface AuditEntry { action: string; resource: string; meta?: Record<string, unknown>; }",
+      "",
+      "export async function POST(request: NextRequest) {",
+      "  const token = cookies().get(\"${1:shelb_session}\")?.value;",
+      "  if (!token) return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });",
+      "  const entry = (await request.json()) as AuditEntry;",
+      "  if (!entry?.action || !entry?.resource) return NextResponse.json({ error: \"action and resource are required\" }, { status: 400 });",
+      "  await fetch(\"${2:https://api.example.com/audit-log}\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\", \"Authorization\": \"Bearer \" + token }, body: JSON.stringify({ ...entry, at: new Date().toISOString(), ip: request.headers.get(\"x-forwarded-for\") ?? \"unknown\" }) });",
+      "  return NextResponse.json({ ok: true }, { status: 202 });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next API — Health Check (snxapi20)": {
+    "prefix": "snxapi20",
+    "description": "Next.js /api/health route returning status, uptime and version.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "",
+      "const startedAt = Date.now();",
+      "",
+      "export async function GET() {",
+      "  return NextResponse.json({",
+      "    status: \"ok\",",
+      "    service: \"${1:shelb-app}\",",
+      "    version: process.env.${2:APP_VERSION} ?? \"dev\",",
+      "    uptimeMs: Date.now() - startedAt,",
+      "    timestamp: new Date().toISOString(),",
+      "  });",
+      "}$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Basic (snxmid01)": {
+    "prefix": "snxmid01",
+    "description": "Next.js basic middleware that lets all requests through (template).",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(_request: NextRequest) {",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${1:/((?!_next|favicon.ico|api/health).*)}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Auth (snxmid02)": {
+    "prefix": "snxmid02",
+    "description": "Next.js middleware that redirects unauthenticated users to /login.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const token = request.cookies.get(\"${1:shelb_session}\")?.value;",
+      "  if (!token) {",
+      "    const url = request.nextUrl.clone();",
+      "    url.pathname = \"${2:/login}\";",
+      "    url.searchParams.set(\"next\", request.nextUrl.pathname);",
+      "    return NextResponse.redirect(url);",
+      "  }",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${3:/dashboard/:path*}\", \"${4:/settings/:path*}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Role (snxmid03)": {
+    "prefix": "snxmid03",
+    "description": "Next.js middleware checking a role claim in a session cookie payload.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "function readRole(token: string | undefined): string | null {",
+      "  if (!token) return null;",
+      "  try { const payload = JSON.parse(atob(token.split(\".\")[1] ?? \"\")); return payload?.role ?? null; } catch { return null; }",
+      "}",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const role = readRole(request.cookies.get(\"${1:shelb_session}\")?.value);",
+      "  if (role !== \"${2:Admin}\") {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"${3:/forbidden}\"; return NextResponse.redirect(url);",
+      "  }",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${4:/admin/:path*}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Tenant (snxmid04)": {
+    "prefix": "snxmid04",
+    "description": "Next.js middleware extracting tenant subdomain and adding it as a header.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const host = request.headers.get(\"host\") ?? \"\";",
+      "  const tenant = host.split(\".\")[0];",
+      "  if (!tenant || [\"www\", \"app\", \"${1:shelb}\"].includes(tenant)) return NextResponse.next();",
+      "  const response = NextResponse.next();",
+      "  response.headers.set(\"${2:x-tenant}\", tenant);",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Locale (snxmid05)": {
+    "prefix": "snxmid05",
+    "description": "Next.js middleware that prefixes the URL with a supported locale.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const SUPPORTED = [\"en\", \"fr\", \"hi\"] as const;",
+      "const DEFAULT = \"${1:en}\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const { pathname } = request.nextUrl;",
+      "  if (SUPPORTED.some((l) => pathname === \"/\" + l || pathname.startsWith(\"/\" + l + \"/\"))) return NextResponse.next();",
+      "  const accept = request.headers.get(\"accept-language\")?.split(\",\")[0]?.split(\"-\")[0];",
+      "  const locale = SUPPORTED.includes(accept as (typeof SUPPORTED)[number]) ? accept : DEFAULT;",
+      "  const url = request.nextUrl.clone(); url.pathname = \"/\" + locale + pathname;",
+      "  return NextResponse.redirect(url);",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|api|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Rate Limit (snxmid06)": {
+    "prefix": "snxmid06",
+    "description": "Next.js middleware rate-limit placeholder using an in-memory map (swap for KV/Redis).",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const WINDOW_MS = 60_000;",
+      "const LIMIT = 60;",
+      "const hits = new Map<string, { count: number; resetAt: number }>();",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const ip = request.headers.get(\"x-forwarded-for\")?.split(\",\")[0] ?? \"unknown\";",
+      "  const now = Date.now();",
+      "  const entry = hits.get(ip);",
+      "  if (!entry || entry.resetAt < now) { hits.set(ip, { count: 1, resetAt: now + WINDOW_MS }); return NextResponse.next(); }",
+      "  entry.count += 1;",
+      "  if (entry.count > LIMIT) return NextResponse.json({ error: \"Too many requests\" }, { status: 429 });",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${1:/api/:path*}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Logging (snxmid07)": {
+    "prefix": "snxmid07",
+    "description": "Next.js middleware that logs request method + path + latency budget.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const start = Date.now();",
+      "  const id = crypto.randomUUID();",
+      "  console.log(\"[req]\", id, request.method, request.nextUrl.pathname);",
+      "  const response = NextResponse.next();",
+      "  response.headers.set(\"x-request-id\", id);",
+      "  response.headers.set(\"server-timing\", \"app;dur=\" + (Date.now() - start));",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Maintenance (snxmid08)": {
+    "prefix": "snxmid08",
+    "description": "Next.js middleware that returns a maintenance page when a flag is set.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  if (process.env.${1:MAINTENANCE} === \"true\" && !request.nextUrl.pathname.startsWith(\"/maintenance\")) {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"/maintenance\"; return NextResponse.rewrite(url);",
+      "  }",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|api|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — CORS (snxmid09)": {
+    "prefix": "snxmid09",
+    "description": "Next.js middleware adding CORS headers for an allow-listed origin.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const ALLOW = new Set([\"${1:https://app.shelb.com}\", \"${2:http://localhost:3000}\"]);",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const origin = request.headers.get(\"origin\") ?? \"\";",
+      "  const response = NextResponse.next();",
+      "  if (ALLOW.has(origin)) {",
+      "    response.headers.set(\"Access-Control-Allow-Origin\", origin);",
+      "    response.headers.set(\"Access-Control-Allow-Credentials\", \"true\");",
+      "    response.headers.set(\"Access-Control-Allow-Methods\", \"GET,POST,PUT,PATCH,DELETE,OPTIONS\");",
+      "    response.headers.set(\"Access-Control-Allow-Headers\", \"Content-Type, Authorization\");",
+      "  }",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/api/:path*\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Geo Block (snxmid10)": {
+    "prefix": "snxmid10",
+    "description": "Next.js middleware blocking requests from disallowed countries.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const BLOCKED = new Set([\"${1:KP}\", \"${2:IR}\"]);",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const country = request.geo?.country ?? request.headers.get(\"x-vercel-ip-country\") ?? \"\";",
+      "  if (country && BLOCKED.has(country)) return new NextResponse(\"Not available in your region.\", { status: 451 });",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Bot Detection (snxmid11)": {
+    "prefix": "snxmid11",
+    "description": "Next.js middleware that flags well-known bots via user-agent header.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const BOT_PATTERN = /bot|crawler|spider|crawling/i;",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const ua = request.headers.get(\"user-agent\") ?? \"\";",
+      "  const response = NextResponse.next();",
+      "  response.headers.set(\"${1:x-bot}\", BOT_PATTERN.test(ua) ? \"true\" : \"false\");",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — A/B Test (snxmid12)": {
+    "prefix": "snxmid12",
+    "description": "Next.js middleware that assigns an A/B bucket via cookie and rewrites paths.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const cookie = request.cookies.get(\"${1:ab_bucket}\")?.value;",
+      "  const bucket = cookie ?? (Math.random() < 0.5 ? \"a\" : \"b\");",
+      "  const url = request.nextUrl.clone();",
+      "  if (url.pathname === \"${2:/pricing}\") { url.pathname = \"/pricing/\" + bucket; }",
+      "  const response = NextResponse.rewrite(url);",
+      "  if (!cookie) response.cookies.set(\"${1:ab_bucket}\", bucket, { path: \"/\", maxAge: 60 * 60 * 24 * 30 });",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"${2:/pricing}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Feature Flag (snxmid13)": {
+    "prefix": "snxmid13",
+    "description": "Next.js middleware that 404s a route when a feature flag is off.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const enabled = process.env.${1:FEATURE_BETA} === \"true\";",
+      "  if (!enabled) {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"/not-found\"; return NextResponse.rewrite(url);",
+      "  }",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${2:/beta/:path*}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Redirect (snxmid14)": {
+    "prefix": "snxmid14",
+    "description": "Next.js middleware that 301-redirects legacy paths to new ones.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const REDIRECTS: Record<string, string> = {",
+      "  \"${1:/old-pricing}\": \"${2:/pricing}\",",
+      "  \"${3:/blog/old-slug}\": \"${4:/blog/new-slug}\",",
+      "};",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const target = REDIRECTS[request.nextUrl.pathname];",
+      "  if (!target) return NextResponse.next();",
+      "  const url = request.nextUrl.clone(); url.pathname = target;",
+      "  return NextResponse.redirect(url, 301);",
+      "}",
+      "",
+      "export const config = { matcher: [Object.keys({ ${1:\"/old-pricing\"}: 1, ${3:\"/blog/old-slug\"}: 1 })] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Rewrite (snxmid15)": {
+    "prefix": "snxmid15",
+    "description": "Next.js middleware that rewrites a URL based on a cookie segment.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const segment = request.cookies.get(\"${1:segment}\")?.value ?? \"default\";",
+      "  if (request.nextUrl.pathname === \"${2:/home}\") {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"/home/\" + segment;",
+      "    return NextResponse.rewrite(url);",
+      "  }",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${2:/home}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Headers (snxmid16)": {
+    "prefix": "snxmid16",
+    "description": "Next.js middleware that adds common security headers to every response.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(_request: NextRequest) {",
+      "  const response = NextResponse.next();",
+      "  response.headers.set(\"X-Frame-Options\", \"DENY\");",
+      "  response.headers.set(\"X-Content-Type-Options\", \"nosniff\");",
+      "  response.headers.set(\"Referrer-Policy\", \"strict-origin-when-cross-origin\");",
+      "  response.headers.set(\"Permissions-Policy\", \"camera=(), microphone=(), geolocation=()\");",
+      "  response.headers.set(\"Strict-Transport-Security\", \"max-age=63072000; includeSubDomains; preload\");",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next/static|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — CSRF Token (snxmid17)": {
+    "prefix": "snxmid17",
+    "description": "Next.js middleware issuing a CSRF token cookie on safe methods.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const response = NextResponse.next();",
+      "  if ([\"GET\", \"HEAD\", \"OPTIONS\"].includes(request.method)) {",
+      "    if (!request.cookies.get(\"${1:csrf_token}\")) {",
+      "      const token = crypto.randomUUID();",
+      "      response.cookies.set(\"${1:csrf_token}\", token, { sameSite: \"lax\", secure: true, path: \"/\" });",
+      "    }",
+      "    return response;",
+      "  }",
+      "  const cookieToken = request.cookies.get(\"${1:csrf_token}\")?.value;",
+      "  const headerToken = request.headers.get(\"${2:x-csrf-token}\");",
+      "  if (!cookieToken || cookieToken !== headerToken) return NextResponse.json({ error: \"Invalid CSRF token\" }, { status: 403 });",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/api/:path*\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Trailing Slash (snxmid18)": {
+    "prefix": "snxmid18",
+    "description": "Next.js middleware that strips trailing slashes (except root).",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const { pathname } = request.nextUrl;",
+      "  if (pathname.length > 1 && pathname.endsWith(\"/\")) {",
+      "    const url = request.nextUrl.clone(); url.pathname = pathname.replace(/\\/+$/, \"\");",
+      "    return NextResponse.redirect(url, 308);",
+      "  }",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|api|favicon.ico).*)\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — IP Allowlist (snxmid19)": {
+    "prefix": "snxmid19",
+    "description": "Next.js middleware that allows only a configured IP list to reach /admin.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const ALLOWED = (process.env.${1:ADMIN_IP_ALLOWLIST} ?? \"\").split(\",\").map((ip) => ip.trim()).filter(Boolean);",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const ip = request.headers.get(\"x-forwarded-for\")?.split(\",\")[0]?.trim() ?? \"\";",
+      "  if (ALLOWED.length > 0 && !ALLOWED.includes(ip)) return new NextResponse(\"Forbidden\", { status: 403 });",
+      "  return NextResponse.next();",
+      "}",
+      "",
+      "export const config = { matcher: [\"${2:/admin/:path*}\"] };$0"
+    ]
+  },
+
+  "Shelb Next Middleware — Comprehensive (snxmid20)": {
+    "prefix": "snxmid20",
+    "description": "Next.js comprehensive middleware combining auth, role, tenant, locale and security headers.",
+    "body": [
+      "import { NextResponse } from \"next/server\";",
+      "import type { NextRequest } from \"next/server\";",
+      "",
+      "const LOCALES = [\"en\", \"fr\", \"hi\"] as const;",
+      "",
+      "function parseRole(token: string | undefined): string | null {",
+      "  if (!token) return null;",
+      "  try { return JSON.parse(atob(token.split(\".\")[1] ?? \"\")).role ?? null; } catch { return null; }",
+      "}",
+      "",
+      "export function middleware(request: NextRequest) {",
+      "  const { pathname } = request.nextUrl;",
+      "  const token = request.cookies.get(\"${1:shelb_session}\")?.value;",
+      "  const role = parseRole(token);",
+      "  if (pathname.startsWith(\"/dashboard\") && !token) {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"${2:/login}\"; url.searchParams.set(\"next\", pathname);",
+      "    return NextResponse.redirect(url);",
+      "  }",
+      "  if (pathname.startsWith(\"/admin\") && role !== \"${3:Admin}\") {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"${4:/forbidden}\"; return NextResponse.redirect(url);",
+      "  }",
+      "  const host = request.headers.get(\"host\") ?? \"\";",
+      "  const tenant = host.split(\".\")[0];",
+      "  const hasLocale = LOCALES.some((l) => pathname === \"/\" + l || pathname.startsWith(\"/\" + l + \"/\"));",
+      "  if (!hasLocale && !pathname.startsWith(\"/api\")) {",
+      "    const url = request.nextUrl.clone(); url.pathname = \"/${5:en}\" + pathname; return NextResponse.redirect(url);",
+      "  }",
+      "  const response = NextResponse.next();",
+      "  if (tenant && ![\"www\", \"app\"].includes(tenant)) response.headers.set(\"x-tenant\", tenant);",
+      "  response.headers.set(\"X-Frame-Options\", \"DENY\");",
+      "  response.headers.set(\"X-Content-Type-Options\", \"nosniff\");",
+      "  response.headers.set(\"Referrer-Policy\", \"strict-origin-when-cross-origin\");",
+      "  return response;",
+      "}",
+      "",
+      "export const config = { matcher: [\"/((?!_next|favicon.ico|api/health).*)\"] };$0"
+    ]
+  }
+}

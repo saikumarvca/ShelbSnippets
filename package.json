@@ -119,7 +119,68 @@
       {
         "language": "json",
         "path": "snippets/erp.code-snippets"
-      }
+      },
+
+      { "language": "javascript",      "path": "snippets/react-auth-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/react-auth-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/react-auth-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/react-auth-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/react-ui-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/react-ui-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/react-ui-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/react-ui-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/react-dashboard-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/react-dashboard-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/react-dashboard-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/react-dashboard-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/nextjs-auth-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/nextjs-auth-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/nextjs-auth-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/nextjs-auth-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/nextjs-page-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/nextjs-page-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/nextjs-page-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/nextjs-page-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/nextjs-api-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/nextjs-api-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/nextjs-api-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/nextjs-api-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/vite-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/vite-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/vite-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/vite-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/erp-ui-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/erp-ui-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/erp-ui-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/erp-ui-blocks.code-snippets" },
+      { "language": "json",            "path": "snippets/erp-ui-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce-auth-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-auth-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-auth-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-auth-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-checkout-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/ecommerce-admin-blocks.code-snippets" },
+
+      { "language": "javascript",      "path": "snippets/auth-api-state-blocks.code-snippets" },
+      { "language": "typescript",      "path": "snippets/auth-api-state-blocks.code-snippets" },
+      { "language": "javascriptreact", "path": "snippets/auth-api-state-blocks.code-snippets" },
+      { "language": "typescriptreact", "path": "snippets/auth-api-state-blocks.code-snippets" }
     ]
   },
   "scripts": {
