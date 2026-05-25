@@ -1,32 +1,71 @@
 # Shelb Snippets — Validation Report
 
-_Generated: 2026-05-25 (website-commerce-blocks rewrite pass)_
+_Generated: 2026-05-25 (website-content-blocks pricing/stats/team/gallery/timeline rewrite pass)_
 
 ## 1. Summary
 
-| Check                                              | Result            |
-|----------------------------------------------------|-------------------|
-| Total snippet files scanned                        | **38**            |
-| Total snippets discovered                          | **2,163**         |
-| `package.json` valid JSON                          | PASS              |
-| Invalid `.code-snippets` JSON files                | **0**             |
-| Duplicate JSON keys in any file                    | **0**             |
-| Prefixes starting with `shelb-`                    | **0**             |
-| Duplicate prefixes across files                    | **0**             |
-| Missing required prefixes (all groups)             | **0**             |
-| Snippet files not registered in `package.json`     | **0**             |
-| TypeScript parse-check (200 e-com snippets)        | **0** failures    |
-| TypeScript parse-check (80 marketing snippets)     | **0** failures    |
-| TypeScript parse-check (100 content snippets)      | **0** failures    |
-| TypeScript parse-check (120 storefront snippets)   | **0** failures    |
-| TypeScript parse-check (100 commerce snippets)     | **0** failures    |
-| `npm run validate:snippets`                        | exit 0            |
+| Check                                                   | Result            |
+|---------------------------------------------------------|-------------------|
+| Total snippet files scanned                             | **38**            |
+| Total snippets discovered                               | **2,163**         |
+| `package.json` valid JSON                               | PASS              |
+| Invalid `.code-snippets` JSON files                     | **0**             |
+| Duplicate JSON keys in any file                         | **0**             |
+| Prefixes starting with `shelb-`                         | **0**             |
+| Duplicate prefixes across files                         | **0**             |
+| Missing required prefixes (all groups)                  | **0**             |
+| Snippet files not registered in `package.json`          | **0**             |
+| TypeScript parse-check (200 e-com snippets)             | **0** failures    |
+| TypeScript parse-check (80 marketing snippets)          | **0** failures    |
+| TypeScript parse-check (100 content snippets — round 1) | **0** failures    |
+| TypeScript parse-check (120 storefront snippets)        | **0** failures    |
+| TypeScript parse-check (100 commerce snippets)          | **0** failures    |
+| TypeScript parse-check (100 content snippets — round 2) | **0** failures    |
+| `npm run validate:snippets`                             | exit 0            |
 
 **Marketplace readiness: READY.**
 
 ---
 
-## 2. Scope of the latest pass (website-commerce-blocks)
+## 2. Scope of the latest pass (website-content-blocks, round 2)
+
+Only one file was edited in this pass: `snippets/website-content-blocks.code-snippets`.
+No sibling files were touched in this pass.
+
+`website-content-blocks.code-snippets` now contains **200 snippets**
+across 10 families:
+
+| Family         | Count | Notes                                                  |
+|----------------|-------|--------------------------------------------------------|
+| `srenew`       | 20    | Preserved from a previous pass.                        |
+| `sretest`      | 20    | Preserved from a previous pass.                        |
+| `srefaq`       | 20    | Preserved from a previous pass.                        |
+| `srecontact`   | 20    | Preserved from a previous pass.                        |
+| `srefooter`    | 20    | Preserved from a previous pass.                        |
+| `srepricing`   | 20    | New, hand-authored to the user's 20 exact labels.      |
+| `srestats`     | 20    | New, hand-authored to the user's 20 exact labels.      |
+| `sreteam`      | 20    | New, hand-authored to the user's 20 exact labels.      |
+| `sregallery`   | 20    | New, hand-authored to the user's 20 exact labels.      |
+| `sretimeline`  | 20    | New, hand-authored to the user's 20 exact labels.      |
+
+All 100 newly-authored bodies are React + TypeScript + Tailwind CSS, use
+typed `Plan` / `Stat` / `Member` / `Item` / `Step` sample arrays where
+useful, use `useState` for the snippets that require billing toggle,
+department tabs, gallery filter, gallery lightbox and tag filter behaviour,
+and use accessible markup (`section` + `aria-labelledby`, `role="tablist"` +
+`aria-selected`, `role="dialog" + aria-modal`, semantic `<ol>` / `<dl>` /
+`<dt>` / `<dd>` / `<figure>` / `<figcaption>`). They never reach for
+external dependencies.
+
+The generator is reproducible:
+
+```
+node scripts/gen_website_content_2.js
+```
+
+---
+
+## 2a. Scope of the previous pass (website-commerce-blocks)
 
 Only one file was edited in this pass: `snippets/website-commerce-blocks.code-snippets`.
 Three sibling files were edited only to remove duplicate prefixes that have moved
