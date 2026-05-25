@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Remove-Item \"c:\\\\Users\\\\Administrator\\\\Downloads\\\\ShelbSnippets\\\\snippets\\\\prisma.code-snippets.bak\" -Force)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\Administrator\\\\Downloads\\\\ShelbSnippets\\\\snippets\\\\prisma.code-snippets.tmp\" -Force)",
+      "PowerShell(python -c \"import cairosvg; print\\('cairosvg ok'\\)\" 2>&1)",
+      "PowerShell(python -c \"import PIL; print\\('Pillow ok'\\)\" 2>&1)",
+      "PowerShell($f = Get-Item \"c:\\\\Users\\\\Administrator\\\\Downloads\\\\ShelbSnippets\\\\media\\\\icon.png\"; \"Size: $\\($f.Length\\) bytes\"; $bytes = [System.IO.File]::ReadAllBytes\\($f.FullName\\); $sig = [System.Text.Encoding]::ASCII.GetString\\($bytes[1..3]\\); \"PNG signature check \\(expect 'PNG'\\): $sig\")",
+      "Bash(npm run *)"
+    ]
+  }
+}

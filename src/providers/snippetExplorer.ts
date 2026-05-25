@@ -14,7 +14,7 @@ export class SnippetExplorer implements vscode.TreeDataProvider<SnippetItem> {
 
   private analytics: AnalyticsService;
 
-  constructor(context: vscode.ExtensionContext, analytics: AnalyticsService) {
+  constructor(_context: vscode.ExtensionContext, analytics: AnalyticsService) {
     this.analytics = analytics;
   }
 

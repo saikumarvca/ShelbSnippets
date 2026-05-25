@@ -1,4 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24">
-  <rect width="24" height="24" rx="4" fill="#0ea5a4"/>
-  <text x="12" y="16" font-size="9" text-anchor="middle" fill="white" font-family="Arial">Shelb</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#3730A3"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="128" height="128" rx="22" fill="url(#bg)"/>
+  <!-- Subtle top shine -->
+  <rect width="128" height="128" rx="22" fill="url(#shine)"/>
+
+  <!-- Left angle bracket < -->
+  <polyline
+    points="40,34 18,64 40,94"
+    fill="none"
+    stroke="#C4B5FD"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Right angle bracket > -->
+  <polyline
+    points="88,34 110,64 88,94"
+    fill="none"
+    stroke="#C4B5FD"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Forward slash / (amber accent) -->
+  <line
+    x1="60" y1="92"
+    x2="68" y2="36"
+    stroke="#FCD34D"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
 </svg>

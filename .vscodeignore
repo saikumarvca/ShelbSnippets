@@ -1,6 +1,12 @@
 node_modules
 .vscode
+.git
+.gitignore
 .DS_Store
+.claude
+src
+esbuild.js
+tsconfig.json
 out/test
-*.map
-*.ts
+**/*.map
+**/*.ts
