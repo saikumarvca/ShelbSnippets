@@ -2,13 +2,28 @@
   "Next App Router Page (snx)": {
     "prefix": "snx",
     "body": [
-      "export default function Page() {",
+      "'use client';",
+      "",
+      "import React from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  className?: string;",
+      "}",
+      "",
+      "export default function ${1:ComponentName}({ className = '' }: ${1:ComponentName}Props) {",
       "  return (",
-      "    <main>${0}</main>",
+      "    <div className={`w-full rounded-2xl bg-white p-6 shadow-sm ${className}`}>",
+      "      <h1 className=\"text-2xl font-bold text-gray-900\">${2:Title}</h1>",
+      "      <p className=\"mt-2 text-gray-600\">${3:Description}</p>",
+      "",
+      "      <div className=\"mt-6\">",
+      "        ${0}",
+      "      </div>",
+      "    </div>",
       "  );",
       "}"
     ],
-    "description": "Next.js App Router page"
+    "description": "Create a Next.js client component with TypeScript props and Tailwind styling"
   },
 
   "Layout (snxl)": {

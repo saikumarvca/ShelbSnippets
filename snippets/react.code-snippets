@@ -1,16 +1,43 @@
 {
-  "React Component (sre)": {
-    "prefix": "sre",
-    "body": [
-      "import React from 'react';",
-      "",
-      "export default function ${1:Component}(${2:props}) {",
-      "  return (",
-      "    <div>${0}</div>",
-      "  );",
-      "}"
-    ],
-    "description": "Create a React functional component"
+  
+    "React Enterprise Component (sre)": {
+      "prefix": "sre",
+      "body": [
+        "import React from 'react';",
+        "",
+        "interface ${1:ComponentName}Props {",
+        "  className?: string;",
+        "  children?: React.ReactNode;",
+        "}",
+        "",
+        "export default function ${1:ComponentName}({",
+        "  className = '',",
+        "  children,",
+        "}: ${1:ComponentName}Props) {",
+        "  return (",
+        "    <section className={`w-full rounded-2xl border bg-white p-6 shadow-sm ${className}`}>",
+        "      <div className=\"mx-auto max-w-7xl\">",
+        "        <h2 className=\"text-2xl font-semibold tracking-tight text-gray-900\">",
+        "          ${2:Section Title}",
+        "        </h2>",
+        "",
+        "        <p className=\"mt-2 text-sm leading-6 text-gray-600\">",
+        "          ${3:Section description goes here.}",
+        "        </p>",
+        "",
+        "        <div className=\"mt-6\">",
+        "          {children || (",
+        "            <div className=\"rounded-xl border border-dashed p-6 text-sm text-gray-500\">",
+        "              ${0:Add your content here}",
+        "            </div>",
+        "          )}",
+        "        </div>",
+        "      </div>",
+        "    </section>",
+        "  );",
+        "}"
+      ],
+      "description": "Create an enterprise-grade React TypeScript component with props, children, className, and Tailwind layout"
   },
 
   "React Memo Component (srem)": {
@@ -18,13 +45,49 @@
     "body": [
       "import React from 'react';",
       "",
-      "export const ${1:Component} = React.memo(function ${1:Component}(${2:props}) {",
+      "interface ${1:Component}Props {",
+      "  ${2}",
+      "}",
+      "",
+      "export const ${1:Component} = React.memo(function ${1:Component}({ ${3} }: ${1:Component}Props) {",
       "  return (",
       "    <div>${0}</div>",
       "  );",
       "});"
+      // ─────────────────────────────────────
+    // EXAMPLE — delete when done
+    // ─────────────────────────────────────
+    // import React from 'react';
+    //
+    // interface CardProps {
+    //   title: string;
+    //   price: number;
+    // }
+    //
+    // export const Card = React.memo(function Card({ title, price }: CardProps) {
+    //   return (
+    //     <div>{title}</div>
+    //   );
+    // });
+    // ─────────────────────────────────────
     ],
     "description": "Memoized component"
+    // ─────────────────────────────────────
+    // EXAMPLE — delete when done
+    // ─────────────────────────────────────
+    // import React from 'react';
+    //
+    // interface CardProps {
+    //   title: string;
+    //   price: number;
+    // }
+    //
+    // export const Card = React.memo(function Card({ title, price }: CardProps) {
+    //   return (
+    //     <div>{title}</div>
+    //   );
+    // });
+    // ─────────────────────────────────────
   },
 
   "ForwardRef Component (sref)": {
